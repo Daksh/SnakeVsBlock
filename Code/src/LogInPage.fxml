@@ -8,7 +8,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar layoutX="61.0" layoutY="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -50,25 +49,25 @@
                <children>
                   <SplitPane dividerPositions="0.6" orientation="VERTICAL" prefHeight="464.0" prefWidth="498.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #000000;">
                            <children>
                               <Button alignment="CENTER" layoutX="184.0" layoutY="166.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" text="Login" />
                               <Button alignment="CENTER" layoutX="184.0" layoutY="214.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" text="Sign Up" />
                               <TextField layoutX="248.0" layoutY="48.0" promptText="Username" />
                               <TextField layoutX="248.0" layoutY="106.0" promptText="Password" />
-                              <Label layoutX="95.0" layoutY="50.0" text="Username :">
+                              <Label layoutX="71.0" layoutY="50.0" text="USERNAME:" textFill="#f8f6f6">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="95.0" layoutY="110.0" text="Password : ">
+                              <Label layoutX="76.0" layoutY="109.0" text="PASSWORD:" textFill="WHITE">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="16.0" />
                                  </font>
                               </Label>
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="448.0" prefWidth="496.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="448.0" prefWidth="496.0" style="-fx-background-color: #000000;">
                            <children>
                               <Button alignment="CENTER" layoutX="184.0" layoutY="40.0" mnemonicParsing="false" text="Login as a Guest" />
                               <Button alignment="CENTER" layoutX="184.0" layoutY="91.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" text="Main Menu" />
