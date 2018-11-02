@@ -35,7 +35,13 @@ public class Snake {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
-                    case LEFT:  goLeft  = true; break;
+                    case LEFT:
+                    {
+                        transition1.setByX(-10);
+                        transition1.setDuration(Duration.millis(40));
+                        transition1.play();
+                        break;
+                    }
                     case RIGHT: goRight  = true; break;
                 }
             }
@@ -58,13 +64,13 @@ public class Snake {
                 if (goRight)
                 {
                     transition1.setByX(10);
-                    transition1.setDuration(Duration.millis(300));
+                    transition1.setDuration(Duration.millis(40));
                     transition1.play();
                 }
                 if (goLeft){
                     System.out.println("Left");
                     transition1.setByX(-10);
-                    transition1.setDuration(Duration.millis(300));
+                    transition1.setDuration(Duration.millis(40));
                     transition1.play();
                 }
             }

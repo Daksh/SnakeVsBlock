@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -16,7 +17,7 @@
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Region prefHeight="100.0" prefWidth="108.0" />
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Leaderboard" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Leaderboard" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="48.0" />
                </font>
@@ -35,10 +36,20 @@
                   <Insets />
                </HBox.margin>
             </Region>
-            <Button mnemonicParsing="false" text="Main Menu">
+            <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="30.0" style="-fx-background-color: #000000;">
                <HBox.margin>
-                  <Insets top="20.0" />
+                  <Insets left="15.0" top="20.0" />
                </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="54.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/icons8-flip.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
             </Button>
          </children>
       </HBox>

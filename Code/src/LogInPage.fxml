@@ -34,9 +34,9 @@
           </Menu>
         </menus>
       </MenuBar>
-      <SplitPane dividerPositions="0.3" layoutY="32.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="500.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
+      <SplitPane dividerPositions="0.3" layoutY="32.0" maxHeight="700.0" maxWidth="500.0" minHeight="700.0" minWidth="500.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="500.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="100.0" minWidth="160.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <Label alignment="CENTER" layoutX="194.0" layoutY="77.0" prefHeight="196.0" prefWidth="498.0" style="-fx-background-color: #000000;" text="SNAKE VS BLOCK" textAlignment="CENTER" textFill="#e9f503" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
@@ -45,11 +45,11 @@
                   </Label>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #000000;">
+          <AnchorPane minHeight="100.0" minWidth="160.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #000000;">
                <children>
-                  <SplitPane dividerPositions="0.6" orientation="VERTICAL" prefHeight="464.0" prefWidth="498.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.6" maxHeight="464.0" maxWidth="498.0" minHeight="464.0" minWidth="498.0" orientation="VERTICAL" prefHeight="464.0" prefWidth="498.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #000000;">
+                      <AnchorPane minHeight="100.0" minWidth="160.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #000000;">
                            <children>
                               <Button alignment="CENTER" layoutX="184.0" layoutY="166.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" text="Login" />
                               <Button alignment="CENTER" layoutX="184.0" layoutY="214.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" text="Sign Up" />
@@ -67,7 +67,7 @@
                               </Label>
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="448.0" prefWidth="496.0" style="-fx-background-color: #000000;">
+                      <AnchorPane minWidth="496.0" prefHeight="448.0" prefWidth="496.0" style="-fx-background-color: #000000;">
                            <children>
                               <Button alignment="CENTER" layoutX="184.0" layoutY="40.0" mnemonicParsing="false" text="Login as a Guest" />
                               <Button alignment="CENTER" layoutX="184.0" layoutY="91.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" text="Main Menu" />
