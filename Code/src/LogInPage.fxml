@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -34,11 +35,11 @@
           </Menu>
         </menus>
       </MenuBar>
-      <SplitPane dividerPositions="0.3" layoutY="32.0" maxHeight="700.0" maxWidth="500.0" minHeight="700.0" minWidth="500.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="500.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
+      <SplitPane dividerPositions="0.2" layoutY="32.0" maxHeight="700.0" maxWidth="500.0" minHeight="700.0" minWidth="500.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="500.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
         <items>
           <AnchorPane minHeight="100.0" minWidth="160.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Label alignment="CENTER" layoutX="194.0" layoutY="77.0" prefHeight="196.0" prefWidth="498.0" style="-fx-background-color: #000000;" text="SNAKE VS BLOCK" textAlignment="CENTER" textFill="#e9f503" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label alignment="CENTER" layoutX="194.0" layoutY="77.0" prefHeight="196.0" prefWidth="498.0" style="-fx-background-color: #000000;" text="Snake Vs Block" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
                         <Font size="48.0" />
                      </font>
@@ -51,26 +52,55 @@
                     <items>
                       <AnchorPane minHeight="100.0" minWidth="160.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #000000;">
                            <children>
-                              <Button alignment="CENTER" layoutX="184.0" layoutY="166.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" text="Login" />
-                              <Button alignment="CENTER" layoutX="184.0" layoutY="214.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" text="Sign Up" />
-                              <TextField layoutX="248.0" layoutY="48.0" promptText="Username" />
-                              <TextField layoutX="248.0" layoutY="106.0" promptText="Password" />
-                              <Label layoutX="71.0" layoutY="50.0" text="USERNAME:" textFill="#f8f6f6">
+                              <Button alignment="CENTER" layoutX="214.0" layoutY="155.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="35.0">
+                                 <graphic>
+                                    <ImageView fitHeight="49.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-password-100.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                              <TextField layoutX="248.0" layoutY="33.0" promptText="Username" />
+                              <TextField layoutX="248.0" layoutY="94.0" promptText="Password" />
+                              <Label layoutX="70.0" layoutY="36.0" text="USERNAME:" textFill="#f8f6f6">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="76.0" layoutY="109.0" text="PASSWORD:" textFill="WHITE">
+                              <Label layoutX="69.0" layoutY="97.0" text="PASSWORD:" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
+                              <Button alignment="CENTER" layoutX="214.0" layoutY="232.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="35.0">
+                                 <graphic>
+                                    <ImageView fitHeight="49.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-plus-100.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
                            </children>
                         </AnchorPane>
                       <AnchorPane minWidth="496.0" prefHeight="448.0" prefWidth="496.0" style="-fx-background-color: #000000;">
                            <children>
-                              <Button alignment="CENTER" layoutX="184.0" layoutY="40.0" mnemonicParsing="false" text="Login as a Guest" />
-                              <Button alignment="CENTER" layoutX="184.0" layoutY="91.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" text="Main Menu" />
+                              <Button alignment="CENTER" layoutX="212.0" layoutY="28.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="69.0">
+                                 <graphic>
+                                    <ImageView fitHeight="53.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-decision-80.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                              <Button alignment="CENTER" layoutX="211.0" layoutY="115.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="69.0">
+                                 <graphic>
+                                    <ImageView fitHeight="62.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-exit_sign.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
                            </children>
                         </AnchorPane>
                     </items>

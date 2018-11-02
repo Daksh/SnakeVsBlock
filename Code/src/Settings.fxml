@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <MenuBar layoutX="61.0" layoutY="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Game">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="New Game" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="Resume Game" />
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Leaderboard">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Player Leaderboard" />
+                        <MenuItem mnemonicParsing="false" text="Star Player" />
+                        <MenuItem mnemonicParsing="false" text="Global Leaderboard" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Settings" />
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <SplitPane dividerPositions="0.2" layoutY="32.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="500.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <children>
+                  <HBox prefHeight="196.0" prefWidth="498.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                              <Label alignment="CENTER" prefHeight="196.0" prefWidth="498.0" style="-fx-background-color: #000000;" text="Snake Vs Block" textAlignment="CENTER" textFill="WHITE">
+                                  <font>
+                                      <Font size="48.0" />
+                                  </font>
+                           <graphic>
+                              <ImageView fitHeight="94.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Images/icons8-settings.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                              </Label>
+                     </children>
+                  </HBox>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #000000;">
+               <children>
+                  <VBox prefHeight="530.0" prefWidth="498.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <HBox prefHeight="80.0" prefWidth="498.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="92.0" prefWidth="498.0" style="-fx-background-color: #000000;" text="Avatar" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="50.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-avatar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Region prefHeight="100.0" prefWidth="60.0" />
+                              <Button mnemonicParsing="false" style="-fx-background-color: #000000;">
+                                 <graphic>
+                                    <ImageView fitHeight="89.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-filled-circle-filled-100%20(2).png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: #000000;">
+                                 <graphic>
+                                    <ImageView fitHeight="107.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-filled-circle-filled-100.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button mnemonicParsing="false" style="-fx-background-color: #000000;">
+                                 <graphic>
+                                    <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-filled-circle-filled-100%20(3).png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="258.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #000000;">
+                                 <graphic>
+                                    <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-filled-circle-filled-100%20(1).png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="90.0" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Region prefHeight="100.0" prefWidth="60.0" />
+                              <Button mnemonicParsing="false" style="-fx-background-color: #000000;">
+                                 <graphic>
+                                    <ImageView fitHeight="89.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-beach_ball.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: #000000;">
+                                 <graphic>
+                                    <ImageView fitHeight="107.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-football2.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button mnemonicParsing="false" style="-fx-background-color: #000000;">
+                                 <graphic>
+                                    <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-ultra_ball.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="258.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #000000;">
+                                 <graphic>
+                                    <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-mega_ball.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="498.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="92.0" prefWidth="498.0" style="-fx-background-color: #000000;" text="Theme" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="41.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-landscape.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="90.0" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Region prefHeight="100.0" prefWidth="60.0" />
+                              <Button mnemonicParsing="false" style="-fx-background-color: #000000;">
+                                 <graphic>
+                                    <ImageView fitHeight="89.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-cooling-80.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: #000000;">
+                                 <graphic>
+                                    <ImageView fitHeight="107.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-forest-96.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button mnemonicParsing="false" style="-fx-background-color: #000000;">
+                                 <graphic>
+                                    <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-night-80.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="258.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #000000;">
+                                 <graphic>
+                                    <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-western-96.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Region prefHeight="96.0" prefWidth="224.0" />
+                              <Button mnemonicParsing="false" style="-fx-background-color: #000000;">
+                                 <graphic>
+                                    <ImageView fitHeight="59.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../Images/icons8-flip.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <padding>
+                                    <Insets top="20.0" />
+                                 </padding>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
