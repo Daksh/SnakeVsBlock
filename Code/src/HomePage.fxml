@@ -51,7 +51,14 @@
                   <Button layoutX="191.0" layoutY="88.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="116.0" style="-fx-background-image: poverty.jpg;" text="Play Game" />
                   <Button layoutX="191.0" layoutY="194.0" mnemonicParsing="false" style="-fx-background-image: poverty.jpg;" text="Resume Game" />
                   <Button layoutX="191.0" layoutY="279.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="116.0" style="-fx-background-image: poverty.jpg;" text="Exit" />
-                  <Button layoutX="53.0" layoutY="378.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="116.0" style="-fx-background-image: poverty.jpg;" text="Settings" />
+                  <Button layoutX="53.0" layoutY="378.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="40.0" style="-fx-background-color: #0000; -fx-background-radius: 2000;">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/settings.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Button layoutX="334.0" layoutY="378.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="116.0" style="-fx-background-image: poverty.jpg;" text="Leaderboard" />
                </children>
                 </AnchorPane>
