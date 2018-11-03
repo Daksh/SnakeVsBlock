@@ -34,6 +34,5 @@ public class Wall {
         transition1.setCycleCount(Animation.INDEFINITE);
         transition1.play();
 
-
     }
 }

@@ -47,6 +47,7 @@ public class Game extends Application {
         masterSnake.addSnake(scene);
         testWall.addWall(scene);
         testMagnet.addMagnet(scene);
+        testBlock.addMenu(scene);
 
         primaryStage.show();
     }
