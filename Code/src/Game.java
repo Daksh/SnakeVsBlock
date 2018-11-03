@@ -25,6 +25,7 @@ public class Game extends Application {
     Snake masterSnake = new Snake();
     Block testBlock = new Block();
     Wall testWall = new Wall();
+    Magnet testMagnet = new Magnet();
     BorderPane layout;
 
     public static void main(String[] args) {
@@ -55,6 +56,8 @@ public class Game extends Application {
         testBlock.addBlock(scene);
         masterSnake.addSnake(scene);
         testWall.addWall(scene);
+        testMagnet.addMagnet(scene);
+
         primaryStage.show();
     }
 
