@@ -54,13 +54,13 @@ public class Snake {
             @Override
             public void handle(long now) {
 
-                if (goRight)
+                if (goRight && snakeHead.getTranslateX() <230)
                 {
                     transition1.setByX(10);
                     transition1.setDuration(Duration.millis(40));
                     transition1.play();
                 }
-                if (goLeft){
+                if (goLeft && snakeHead.getTranslateX()>-230){
                     transition1.setByX(-10);
                     transition1.setDuration(Duration.millis(40));
                     transition1.play();

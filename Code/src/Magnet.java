@@ -1,20 +1,9 @@
-import javafx.animation.Animation;
-import javafx.animation.TranslateTransition;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
 
-import java.io.File;
-
-import static javafx.scene.paint.Color.WHITE;
-
-public class Magnet {
-    ImageView MagView= new ImageView();
+public class Magnet extends Tokens{
+    protected  String path = "./../Images/icons8-magnet-96.png";
+    /*ImageView MagView= new ImageView();
     protected void addMagnet(Scene scene) {
-        File imagefile= new File("./../Images/icons8-magnet-96.png");
+        File imagefile= new File(path);
         Image magnetImage = new Image(imagefile.toURI().toString());
         MagView.setImage(magnetImage);
         MagView.setFitHeight(30);
@@ -37,9 +26,11 @@ public class Magnet {
         transition1.setDuration(Duration.millis(7000));
         transition1.setCycleCount(1);
         transition1.play();
+    }*/
 
 
+    @Override
+    protected String getPath() {
+        return this.path;
     }
-
-
 }
