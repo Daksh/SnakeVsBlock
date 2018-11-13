@@ -73,13 +73,13 @@ public class Blocks {
     }
 
     protected void addBlock(Scene scene) {
-        Group rootScene = (Group)scene.getRoot();
+        Group rootSceneGroup = (Group)scene.getRoot();
 
         //(0,-500) is the starting point where we spawn the set of Blocks
-        _oneBlockGroup = initBlocks(rootScene,0,-800);
+        _oneBlockGroup = initBlocks(rootSceneGroup,0,-800);
 
         //(0,-150) for the other set of blocks
-        _anotherBlockGroup = initBlocks(rootScene,0,-150);
+        _anotherBlockGroup = initBlocks(rootSceneGroup,0,-150);
 
 
         //To repeat the inner code
@@ -91,11 +91,11 @@ public class Blocks {
 
                 if(_oneBlockGroup.getLayoutY() > 750){
                     //Destroy the reference as the group of Blocks has moved out of the screen
-                    _oneBlockGroup = initBlocks(rootScene,0,-500);//-800 originally
+                    _oneBlockGroup = initBlocks(rootSceneGroup,0,-500);//-800 originally
                 } else moveBlockGroup(_oneBlockGroup);
 
                 if(_anotherBlockGroup.getLayoutY() > 750){
-                    _anotherBlockGroup = initBlocks(rootScene,0,-500);//-150 originally
+                    _anotherBlockGroup = initBlocks(rootSceneGroup,0,-500);//-150 originally
                 } else moveBlockGroup(_anotherBlockGroup);
 
             }
