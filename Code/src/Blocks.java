@@ -4,54 +4,52 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-
 import java.util.Random;
-
 import static javafx.scene.paint.Color.*;
 
 public class Blocks {
-    private Group oneBlockGroup, anotherBlockGroup;
-    private boolean collision;
-    
-    private void modifyBlocksRandom(Group blockGroup){
+    private static final int WIDTH = 100, HEIGHT = 100;
+    private Group _oneBlockGroup, _anotherBlockGroup;
+    private boolean _collision;
+    private Snake _snakeRef;
+    private Random _random;
 
+    public Blocks(Snake snake){
+        _snakeRef = snake;
+        _random = new Random();
     }
+
+    private StackPane makeBlock(javafx.scene.paint.Color color, int weight, int xCoord){
+        //if weight = 0 we do not want a block there
+//        if(weight == 0)
+//            return null;
+
+        Rectangle Block = new Rectangle(WIDTH,HEIGHT,color);
+        Text text = new Text(Integer.toString(weight));
+
+        StackPane stack = new StackPane();
+        stack.getChildren().addAll(Block, text);
+        stack.setLayoutX(xCoord);
+
+        return stack;
+    }
+    
     private Group initBlocks(int x, int y){
-        Rectangle Block1= new Rectangle(100,100, YELLOW);
-        int ctr1=0; //Counter (Value/Size of the block)
-        Text text1 = new Text(Integer.toString(ctr1));
-        StackPane stack1 = new StackPane();
-        stack1.getChildren().addAll(Block1, text1);
-        stack1.setLayoutX(0);
+        //Random Blocks
 
-        Rectangle Block2= new Rectangle(100,100, RED);
-        int ctr2=0;
-        Text text2 = new Text(Integer.toString(ctr2));
-        StackPane stack2 = new StackPane();
-        stack2.getChildren().addAll(Block2, text2);
-        stack2.setLayoutX(100);
+        //Length of Snake
+        int maxBlockWeight = _snakeRef.get_length(); // of the minimumWeightedBlock of the group
 
-        Rectangle Block3= new Rectangle(100,100, BLUE);
-        int ctr3=0;
-        Text text3 = new Text(Integer.toString(ctr3));
-        StackPane stack3 = new StackPane();
-        stack3.getChildren().addAll(Block3, text3);
-        stack3.setLayoutX(200);
+        int[] weight = new int[5];
+        for(int i = 0; i<5; i++)
+            weight[i] = _random.nextInt(maxBlockWeight*5);
+        weight[_random.nextInt(5)] = _random.nextInt(maxBlockWeight);
 
-        Rectangle Block4= new Rectangle(100,100, GREEN);
-        int ctr4=0;
-        Text text4 = new Text(Integer.toString(ctr4));
-        StackPane stack4 = new StackPane();
-        stack4.getChildren().addAll(Block4, text4);
-        stack4.setLayoutX(300);
-
-
-        Rectangle Block5= new Rectangle(100,100, ORANGE);
-        int ctr5=0;
-        Text text5 = new Text(Integer.toString(ctr5));
-        StackPane stack5 = new StackPane();
-        stack5.getChildren().addAll(Block5, text5);
-        stack5.setLayoutX(400);
+        StackPane stack1 = makeBlock(YELLOW,weight[0],0);
+        StackPane stack2 = makeBlock(RED,weight[1],100);
+        StackPane stack3 = makeBlock(BLUE,weight[2],200);
+        StackPane stack4 = makeBlock(GREEN,weight[3],300);
+        StackPane stack5 = makeBlock(ORANGE,weight[4],400);
 
         Group localBlockGroup = new Group();
         localBlockGroup.getChildren().add(stack1);
@@ -68,26 +66,24 @@ public class Blocks {
 
     protected void addBlock(Scene scene) {
         //(0,-500) is the starting point where we spawn the set of Blocks
-        oneBlockGroup = initBlocks(0,-800);
+        _oneBlockGroup = initBlocks(0,-800);
 
         //(0,-150) for the other set of blocks
-        anotherBlockGroup = initBlocks(0,-150);
+        _anotherBlockGroup = initBlocks(0,-150);
 
         Group sceneRoot = (Group)scene.getRoot();
-        sceneRoot.getChildren().add(oneBlockGroup);
-        sceneRoot.getChildren().add(anotherBlockGroup);
-
-        Random random = new Random();
+        sceneRoot.getChildren().add(_oneBlockGroup);
+        sceneRoot.getChildren().add(_anotherBlockGroup);
 
         //To repeat the inner code
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 //How many blocks do we wish to spawn - we get from Random
-                int rInt1 = random.nextInt(5);
+                int rInt1 = _random.nextInt(5);
 
-                moveBlockGroup(oneBlockGroup);
-                moveBlockGroup(anotherBlockGroup);
+                moveBlockGroup(_oneBlockGroup);
+                moveBlockGroup(_anotherBlockGroup);
 
 
 
@@ -102,27 +98,26 @@ public class Blocks {
         if (yCoord > 750) //Basically it would just be 755
             blockGroup.setLayoutY(yCoord-1255);//Moving the blocksSet that goes out of screen, to the TOP where we cannot see
         else{
-            if (!collision) {
+            if (!_collision) {
                 blockGroup.setLayoutY(blockGroup.getLayoutY()+5);
-//                modifyBlocksRandom();
             }
             else{
-                //There is a collision!
+                //There is a _collision!
             }
         }
     }
 
     public boolean getIsCollidedRn(){
-        return this.collision;
+        return this._collision;
     }
     public void setCollisionWithSnake(Boolean x){
-        this.collision = x;
+        this._collision = x;
     }
 
     public int yCoordinateOfFirstSetOfBlocks(){
-        return (int) oneBlockGroup.getLayoutY();
+        return (int) _oneBlockGroup.getLayoutY();
     }
     public int yCoordinateOfSecondSetOfBlocks(){
-        return (int) anotherBlockGroup.getLayoutY();
+        return (int) _anotherBlockGroup.getLayoutY();
     }
 }
