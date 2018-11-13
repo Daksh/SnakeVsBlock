@@ -1,9 +1,12 @@
 import javafx.animation.Animation;
+import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+
+import java.util.Random;
 
 import static javafx.scene.paint.Color.*;
 import static javafx.scene.paint.Color.ORANGE;
@@ -33,6 +36,20 @@ public class Wall {
         transition1.setDuration(Duration.millis(7000));
         transition1.setCycleCount(Animation.INDEFINITE);
         transition1.play();
+
+        //wallgroup.setLayoutX();
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                if (wallgroup.getLayoutY()>750) {
+                    wallgroup.setLayoutY(-500);
+                }
+                else{
+                    wallgroup.setLayoutY(wallgroup.getLayoutY()+5);
+                }
+            }
+        };
+        timer.start();
 
     }
 }

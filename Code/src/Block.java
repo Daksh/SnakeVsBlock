@@ -67,15 +67,22 @@ public class Block {
         transition1.setByY(1700);
         transition1.setDuration(Duration.millis(7000));
         transition1.setCycleCount(Animation.INDEFINITE);
-        transition1.play();
+        //transition1.play();
+        block1.setLayoutX(0);
+        block1.setLayoutY(-500);
 
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 Random random = new Random();
                 int rInt1 = random.nextInt(5);
-
-
+                //System.out.println(rInt1);
+                if (block1.getLayoutY()>750) {
+                    block1.setLayoutY(-500);
+                }
+                else{
+                    block1.setLayoutY(block1.getLayoutY()+5);
+                }
             }
         };
         timer.start();

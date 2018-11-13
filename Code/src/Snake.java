@@ -13,7 +13,7 @@ import static javafx.scene.paint.Color.*;
 
 public class Snake {
     ArrayList<Circle> SnakeBody = new ArrayList<Circle>();
-
+    //int snakePosx, getSnakePosy;
     boolean goLeft, goRight;
     protected void addSnake(Scene scene) {
 
@@ -42,6 +42,8 @@ public class Snake {
         snake2.getChildren().add(snakeBody6);
         snake2.getChildren().add(snakeBody7);
         snake2.getChildren().add(snakeBody8);
+        snake2.setLayoutX(0);
+        snake2.setLayoutY(0);
 
         snakeBody4.setVisible(false);
         snakeBody5.setVisible(false);
@@ -52,9 +54,9 @@ public class Snake {
 
         snake1.getChildren().add(snake2);
 
-        TranslateTransition transition1 = new TranslateTransition();
+        //TranslateTransition transition1 = new TranslateTransition();
 
-        transition1.setNode(snake2);
+        //transition1.setNode(snake2);
 
         //transition1.setByY(-0);
         //transition1.setDuration(Duration.millis(3000));
@@ -84,16 +86,20 @@ public class Snake {
             @Override
             public void handle(long now) {
 
-                if (goRight && snakeHead.getTranslateX() <240)
+                if (goRight && snake2.getLayoutX()<240)
                 {
-                    transition1.setByX(10);
-                    transition1.setDuration(Duration.millis(40));
-                    transition1.play();
+                    //System.out.println("Right: "+snake2.getTranslateX());
+                    snake2.setLayoutX(snake2.getLayoutX()+10);
+                    //transition1.setByX(10);
+                    //transition1.setDuration(Duration.millis(40));
+                    //transition1.play();
                 }
-                if (goLeft && snakeHead.getTranslateX()>-240){
-                    transition1.setByX(-10);
-                    transition1.setDuration(Duration.millis(40));
-                    transition1.play();
+                if (goLeft && snake2.getLayoutX()>-240){
+                    //System.out.println("Left: "+snake2.getTranslateX());
+                    snake2.setLayoutX(snake2.getLayoutX()-10);
+                    //transition1.setByX(-10);
+                    //transition1.setDuration(Duration.millis(40));
+                    //transition1.play();
                 }
             }
         };
