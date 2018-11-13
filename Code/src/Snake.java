@@ -1,11 +1,9 @@
 import javafx.animation.AnimationTimer;
-import javafx.animation.TranslateTransition;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Circle;
-import javafx.util.Duration;
 
 import java.util.ArrayList;
 
