@@ -106,8 +106,8 @@ public class Snake {
 
     protected boolean hasCollided (Blocks B1) {
         //-400 because the coordinate boundaries seem different in Snake.java and Blocks.java
-//        if ((snake2.getLayoutY()==B1.yCoordinateOfFirstSetOfBlocks()-400) || (snake2.getLayoutY()==B1.yCoordinateOfSecondSetOfBlocks()-400))
-//            return true;
+        if ((snake2.getLayoutY()==B1.yCoordinateOfFirstSetOfBlocks()-400) || (snake2.getLayoutY()==B1.yCoordinateOfSecondSetOfBlocks()-400))
+            return true;
         return false;
     }
 }
