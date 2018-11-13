@@ -15,7 +15,8 @@ public class Snake {
     ArrayList<Circle> SnakeBody = new ArrayList<Circle>();
     //int snakePosx, getSnakePosy;
     boolean goLeft, goRight;
-    protected void addSnake(Scene scene) {
+    Group snake2;
+    protected void addSnake(Scene scene, Block B1) {
 
 
         Circle snakeLabel= new Circle(250,510,10, BLUE);
@@ -31,7 +32,7 @@ public class Snake {
         Circle snakeBody8= new Circle(250,690,10, RED);
 
         Group snake1= (Group) scene.getRoot();
-        Group snake2= new Group();
+        snake2= new Group();
         snake2.getChildren().add(snakeLabel);
         snake2.getChildren().add(snakeHead);
         snake2.getChildren().add(snakeBody1);
@@ -51,16 +52,7 @@ public class Snake {
         snakeBody7.setVisible(false);
         snakeBody8.setVisible(false);
 
-
         snake1.getChildren().add(snake2);
-
-        //TranslateTransition transition1 = new TranslateTransition();
-
-        //transition1.setNode(snake2);
-
-        //transition1.setByY(-0);
-        //transition1.setDuration(Duration.millis(3000));
-        //transition1.play();
 
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -85,25 +77,29 @@ public class Snake {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-
-                if (goRight && snake2.getLayoutX()<240)
-                {
-                    //System.out.println("Right: "+snake2.getTranslateX());
-                    snake2.setLayoutX(snake2.getLayoutX()+10);
-                    //transition1.setByX(10);
-                    //transition1.setDuration(Duration.millis(40));
-                    //transition1.play();
+                if (hasCollided(B1)) {
+                    double d1=snake2.getLayoutX();
+                    B1.collision=true;
+                    //if ()
+                    //System.out.println(d1);
                 }
-                if (goLeft && snake2.getLayoutX()>-240){
-                    //System.out.println("Left: "+snake2.getTranslateX());
-                    snake2.setLayoutX(snake2.getLayoutX()-10);
-                    //transition1.setByX(-10);
-                    //transition1.setDuration(Duration.millis(40));
-                    //transition1.play();
+                else {
+                    if (goRight && snake2.getLayoutX() < 240) {
+                        snake2.setLayoutX(snake2.getLayoutX() + 10);
+                    }
+                    if (goLeft && snake2.getLayoutX() > -240) {
+                        snake2.setLayoutX(snake2.getLayoutX() - 10);
+                    }
                 }
             }
         };
         timer.start();
+    }
 
+    protected boolean hasCollided (Block B1) {
+        if (snake2.getLayoutY()==B1.block1.getLayoutY()-400) {
+            return true;
+        }
+        return false;
     }
 }

@@ -20,15 +20,7 @@ public abstract class Tokens {
     ImageView TokenView= new ImageView();
 
     protected void addToken(Scene scene) {
-//        String path = t1.getPath();
-//        File imagefile= new File(path);
-//        Image TokenImage = new Image(imagefile.toURI().toString());
-//        TokenView.setImage(TokenImage);
-//        TokenView.setFitHeight(30);
-//        TokenView.setFitWidth(30);
 
-        //TokenView.setX(200);
-        //TokenView.setY(-1000);
         Group tokens= new Group();
 
         tokens.getChildren().add(TokenView);
@@ -36,16 +28,7 @@ public abstract class Tokens {
         Group tokensgroup= (Group) scene.getRoot();
 
         tokensgroup.getChildren().add(tokens);
-        TranslateTransition transition1 = new TranslateTransition();
 
-        transition1.setNode(tokens);
-
-        transition1.setByY(1700);
-        transition1.setDuration(Duration.millis(7000));
-        transition1.setCycleCount(1);
-        //transition1.play();
-        tokens.setLayoutX(0);
-        tokens.setLayoutY(1000);
 
         AnimationTimer timer = new AnimationTimer() {
             @Override
@@ -53,7 +36,7 @@ public abstract class Tokens {
                 Random random = new Random();
                 int rInt1 = random.nextInt(5);
                 if (tokens.getLayoutY()>750) {
-                    System.out.println("hello");
+                    //System.out.println("hello");
                     Tokens t1= getToken(rInt1);
                     String path = t1.getPath();
                     File imagefile= new File(path);

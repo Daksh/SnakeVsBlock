@@ -49,40 +49,15 @@ public class Game extends Application {
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         testBlock.addBlock(scene);
-        masterSnake.addSnake(scene);
+        masterSnake.addSnake(scene, testBlock);
         //testWall.addWall(scene);
         //Tokens Tokenobj = getToken(rInt);
         //System.out.println(rInt);
         testMagnet.addToken(scene);
         //testBlock.addMenu(scene);
-        System.out.println(testBlock.getBlock().getTranslateX());
 
         primaryStage.show();
     }
-
-//    protected static Tokens getToken(int a) {
-//        Tokens obj;
-//        switch (a) {
-//            case 0:
-//                obj = new Magnet();
-//                break;
-//            case 1:
-//                obj = new Shield();
-//                break;
-//            case 2:
-//                obj = new Coin();
-//                break;
-//            case 3:
-//                obj = new TBall();
-//                break;
-//            case 4:
-//                obj = new DestroyBlocks();
-//                break;
-//            default:
-//                obj = null;
-//        }
-//        return obj;
-//    }
 
 }
 
