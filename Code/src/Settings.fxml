@@ -41,7 +41,7 @@
                     <children>
                   <HBox prefHeight="196.0" prefWidth="498.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                              <Label alignment="CENTER" prefHeight="196.0" prefWidth="498.0" style="-fx-background-color: #000000;" text="Snake Vs Block" textAlignment="CENTER" textFill="WHITE">
+                              <Label alignment="CENTER" prefHeight="196.0" prefWidth="498.0" style="-fx-background-color: #000000;" text="Snake Vs Blocks" textAlignment="CENTER" textFill="WHITE">
                                   <font>
                                       <Font size="48.0" />
                                   </font>

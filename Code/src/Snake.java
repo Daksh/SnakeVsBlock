@@ -14,7 +14,7 @@ public class Snake {
     //int snakePosx, getSnakePosy;
     boolean goLeft, goRight;
     Group snake2;
-    protected void addSnake(Scene scene, Block B1) {
+    protected void addSnake(Scene scene, Blocks B1) {
 
 
         Circle snakeLabel= new Circle(250,510,10, BLUE);
@@ -77,7 +77,7 @@ public class Snake {
             public void handle(long now) {
                 if (hasCollided(B1)) {
                     double d1=snake2.getLayoutX();
-                    B1.collision=true;
+                    B1.setCollisionWithSnake(true);
                     //if ()
                     //System.out.println(d1);
                 }
@@ -94,10 +94,10 @@ public class Snake {
         timer.start();
     }
 
-    protected boolean hasCollided (Block B1) {
-        if (snake2.getLayoutY()==B1.block1.getLayoutY()-400) {
-            return true;
-        }
+    protected boolean hasCollided (Blocks B1) {
+        //-400 because the coordinate boundaries seem different in Snake.java and Blocks.java
+//        if ((snake2.getLayoutY()==B1.yCoordinateOfFirstSetOfBlocks()-400) || (snake2.getLayoutY()==B1.yCoordinateOfSecondSetOfBlocks()-400))
+//            return true;
         return false;
     }
 }

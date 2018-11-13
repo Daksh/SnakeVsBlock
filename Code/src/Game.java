@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class Game extends Application {
     private Snake masterSnake = new Snake();
-    private Block testBlock = new Block();
+    private Blocks testBlocks = new Blocks();
     private Wall testWall = new Wall(); //White lines
     private Magnet testMagnet = new Magnet();
     private BorderPane layout;
@@ -48,13 +48,13 @@ public class Game extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
-        testBlock.addBlock(scene);
-        masterSnake.addSnake(scene, testBlock);
+        testBlocks.addBlock(scene);
+        masterSnake.addSnake(scene, testBlocks);
         //testWall.addWall(scene);
         //Tokens Tokenobj = getToken(rInt);
         //System.out.println(rInt);
         testMagnet.addToken(scene);
-        //testBlock.addMenu(scene);
+        //testBlocks.addMenu(scene);
 
         primaryStage.show();
     }
