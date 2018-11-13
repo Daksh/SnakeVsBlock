@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class Game extends Application {
     private Snake masterSnake = new Snake();
-    private Blocks testBlocks = new Blocks();
+    private Blocks testBlocks = new Blocks(masterSnake);
     private Wall testWall = new Wall(); //White lines
     private Magnet testMagnet = new Magnet();
     private BorderPane layout;
