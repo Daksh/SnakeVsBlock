@@ -43,7 +43,7 @@ public abstract class Tokens {
                     TokenView.setFitHeight(30);
                     TokenView.setFitWidth(30);
                     tokens.setLayoutY(-700);
-                    tokens.setLayoutX(random.nextInt(480)-240);
+                    tokens.setLayoutX(random.nextInt(440)-220);//Bounded from 20 to 220 when the screen is from 0 to 240
                 }
                 else{
                     tokens.setLayoutY(tokens.getLayoutY()+5);
