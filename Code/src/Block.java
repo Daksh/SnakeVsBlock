@@ -1,12 +1,9 @@
-import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
-import javafx.animation.TranslateTransition;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 
 import java.util.Random;
 
@@ -88,7 +85,4 @@ public class Block {
         timer.start();
     }
 
-    protected Group getBlock() {
-        return block1;
-    }
 }

@@ -9,8 +9,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import java.util.Random;
 
+import java.util.Random;
 
 public class Game extends Application {
     private Snake masterSnake = new Snake();

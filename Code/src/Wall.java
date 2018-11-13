@@ -6,10 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-import java.util.Random;
-
-import static javafx.scene.paint.Color.*;
-import static javafx.scene.paint.Color.ORANGE;
+import static javafx.scene.paint.Color.WHITE;
 
 public class Wall {
     protected void addWall(Scene scene) {
