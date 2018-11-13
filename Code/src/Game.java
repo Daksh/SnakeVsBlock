@@ -13,13 +13,13 @@ import java.util.Random;
 
 
 public class Game extends Application {
-    Snake masterSnake = new Snake();
-    Block testBlock = new Block();
-    Wall testWall = new Wall();
-    Magnet testMagnet = new Magnet();
-    BorderPane layout;
-    Random random = new Random();
-    int rInt = random.nextInt(5);
+    private Snake masterSnake = new Snake();
+    private Block testBlock = new Block();
+    private Wall testWall = new Wall(); //White lines
+    private Magnet testMagnet = new Magnet();
+    private BorderPane layout;
+    private Random random = new Random();
+    private int rInt = random.nextInt(5);
 
 
     public static void main(String[] args) {
