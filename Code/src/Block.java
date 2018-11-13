@@ -1,4 +1,5 @@
 import javafx.animation.Animation;
+import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -7,12 +8,17 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+import java.util.Random;
+
 import static javafx.scene.paint.Color.*;
 
 public class Block {
+    Group block1;
     protected void addBlock(Scene scene) {
+        int a=0;
+        a++;
         Rectangle Block1= new Rectangle(100,100, YELLOW);
-        Text text1 = new Text("Lorem");
+        Text text1 = new Text(Integer.toString(a));
         StackPane stack1 = new StackPane();
         stack1.getChildren().addAll(Block1, text1);
         stack1.setLayoutX(0);
@@ -42,7 +48,7 @@ public class Block {
         stack5.getChildren().addAll(Block5, text5);
         stack5.setLayoutX(400);
 
-        Group block1= new Group();
+        block1= new Group();
 
         block1.getChildren().add(stack1);
         block1.getChildren().add(stack2);
@@ -62,9 +68,22 @@ public class Block {
         transition1.setDuration(Duration.millis(7000));
         transition1.setCycleCount(Animation.INDEFINITE);
         transition1.play();
+
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                Random random = new Random();
+                int rInt1 = random.nextInt(5);
+
+
+            }
+        };
+        timer.start();
     }
 
-    protected void addMenu(Scene scene) {
+
+
+    /*protected void addMenu(Scene scene) {
         Rectangle Block1= new Rectangle(50,30, GREY);
         Text text1 = new Text("Restart");
         StackPane stack1 = new StackPane();
@@ -101,5 +120,9 @@ public class Block {
         Group blocks= (Group) scene.getRoot();
         blocks.getChildren().add(block1);
 
+    }*/
+
+    protected Group getBlock() {
+        return block1;
     }
 }

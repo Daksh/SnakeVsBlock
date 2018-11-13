@@ -29,9 +29,9 @@ public class Game extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("SnakeVsBlock");
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("Play.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayDisp.fxml"));
         Group ballGroup= new Group();
-        //Parent root = loader.load();
+        Parent root = loader.load();
         Scene scene = new Scene(ballGroup, 500,700, Color.BLACK);
         Menu gameMenu = new Menu("Game");
         gameMenu.getItems().add(new MenuItem("Restart Game"));
@@ -44,6 +44,7 @@ public class Game extends Application {
 
         BorderPane layout = new BorderPane();
         layout.setTop(Bar);
+        ballGroup.getChildren().add(Bar);
 
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
@@ -51,9 +52,10 @@ public class Game extends Application {
         masterSnake.addSnake(scene);
         testWall.addWall(scene);
         Tokens Tokenobj = getToken(rInt);
-        System.out.println(rInt);
+        //System.out.println(rInt);
         testMagnet.addToken(scene, Tokenobj);
-        testBlock.addMenu(scene);
+        //testBlock.addMenu(scene);
+        System.out.println(testBlock.getBlock().getTranslateX());
 
         primaryStage.show();
     }
