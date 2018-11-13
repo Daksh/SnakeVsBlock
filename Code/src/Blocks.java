@@ -3,6 +3,8 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import java.util.Random;
 import static javafx.scene.paint.Color.*;
@@ -37,6 +39,7 @@ public class Blocks {
         block.setArcHeight(20.0);
 
         Text text = new Text(Integer.toString(weight));
+        text.setFont(Font.font(null, FontWeight.LIGHT, 20));
 
         StackPane stack = new StackPane();
         stack.getChildren().addAll(block, text);

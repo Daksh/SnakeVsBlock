@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
@@ -12,11 +14,12 @@ import java.util.ArrayList;
 import static javafx.scene.paint.Color.*;
 
 public class Snake {
-    private static final int SNAKEX = 250;
+    private static final int SNAKEX = 250, RADIUS = 15, STARTY=510;
 
     private ArrayList<Circle> SnakeBody = new ArrayList<Circle>();
 
     private Group _snakeGroup;
+    private Circle[] _snakeBody;
     private StackPane _snakeHead;
     private int _length;
     private boolean _goLeft, _goRight;
@@ -30,19 +33,35 @@ public class Snake {
     }
 
     public void set_length(int length){
+        if(length==0){
+            System.out.println("END GAME!!!");
+            //add code here :P
+            return;
+        }
         _length = length;
 
         //update the label on snake's head
-        _snakeHead = getHead(length);
+        StackPane pseudo = getHead(length);
+        _snakeHead.getChildren().removeAll();
+        _snakeHead.getChildren().addAll(pseudo.getChildren());
+
+        for(int i=0; i<_snakeBody.length; i++){
+            if(i<length-1) _snakeBody[i].setVisible(true);
+            else _snakeBody[i].setVisible(false);
+        }
     }
 
     private StackPane getHead(int length){
         StackPane x = new StackPane();
-        Circle circle = new Circle(10, GREEN);
+        Circle circle = new Circle(RADIUS, GREEN);
         Text text = new Text(Integer.toString(length));
+        text.setFill(WHITE);
+        text.setFont(Font.font(null, FontWeight.BOLD, RADIUS));
+
         x.getChildren().addAll(circle, text);
-        x.setLayoutX(SNAKEX);
-        x.setLayoutY(510);
+        //-10 (-RADIUS instead) because circle and StackPane have different defns of positioning
+        x.setLayoutX(SNAKEX-RADIUS);
+        x.setLayoutY(STARTY-RADIUS);
         return x;
     }
 
@@ -52,21 +71,17 @@ public class Snake {
 
         _snakeHead = getHead(get_length());
 
-        Circle[] snakeBody = new Circle[9];
+        _snakeBody = new Circle[9];
         _snakeGroup.getChildren().add(_snakeHead);
 
-        for(int i=0; i<snakeBody.length; i++) {
-            snakeBody[i] = new Circle(SNAKEX, 530 + 20 * i, 10, RED);
-            _snakeGroup.getChildren().add(snakeBody[i]);
+        for(int i = 0; i< _snakeBody.length; i++) {
+            _snakeBody[i] = new Circle(SNAKEX, STARTY+ 2*RADIUS*(i+1), RADIUS, RED);
+            _snakeGroup.getChildren().add(_snakeBody[i]);
         }
         _snakeGroup.setLayoutX(0);
         _snakeGroup.setLayoutY(0);
 
-        snakeBody[4].setVisible(false);
-        snakeBody[5].setVisible(false);
-        snakeBody[6].setVisible(false);
-        snakeBody[7].setVisible(false);
-        snakeBody[8].setVisible(false);
+        for(int i=4; i<9; i++) _snakeBody[i].setVisible(false);
 
         rootSceneGroup.getChildren().add(_snakeGroup);
 
