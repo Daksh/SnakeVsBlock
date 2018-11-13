@@ -14,6 +14,16 @@ public class Snake {
     //int snakePosx, getSnakePosy;
     boolean goLeft, goRight;
     Group snake2;
+    private int _length;
+
+    public Snake(){
+        _length = 5;
+    }
+
+    public int get_length(){
+        return _length;
+    }
+
     protected void addSnake(Scene scene, Blocks B1) {
 
 
