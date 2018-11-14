@@ -129,41 +129,36 @@ public class Snake {
     }
 
     private void moveHorizontally(int delta){
-        //Change this code if we want to make the snake transit smoothly
-//        _snakeGroup.setLayoutX(_snakeGroup.getLayoutX() + delta);
         int destination = (int)_snakeHead.getLayoutX()+delta;
         _snakeHead.setLayoutX(destination);
-
-//        System.out.println("Delta, Destination: "+delta+","+destination);
-
-        //THIS SEEMS CORRECT
         destination+=RADIUS;
-//        if(delta>0) destination+=RADIUS;//cause of ref problem
-//        else destination-=RADIUS;
 
         for(int i=0; i<_snakeBody.length; i++){
-            double thisDelta = (double)(_snakeBody.length-i+1)/20;
-            thisDelta = (double)(destination - _snakeBody[i].getCenterX())/20*(double)(_snakeBody.length-i+1);
-            thisDelta = 1;
+            double thisDelta = 1;
             if(delta<0)
-                thisDelta = -1*thisDelta;
+                thisDelta = -1;
             jiggleCircle(_snakeBody[i], thisDelta,destination);
-//            _snakeBody[i].setCenterX(_snakeBody[i].getCenterX()+thisDelta);
         }
     }
 
     private void jiggleCircle(Circle circle, double delta, int dest){
 //        circle.setCenterX(dest);
+        if(circle.idProperty()==null)
+            return;
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 if(delta<0 && circle.getCenterX()>dest){//Moving Left
-                    circle.setCenterX(circle.getCenterX()+delta);
-                    System.out.println(2);
+//                    circle.setCenterX(circle.getCenterX()-1);
+                    circle.setTranslateX(circle.getTranslateX() - 1);
+                    System.out.println(dest+" "+circle.idProperty()+" "+circle.getCenterX());
+//                    System.out.println(2);
                 }
                 if(delta>0 && circle.getCenterX()<dest) {//Moving Right
-                    circle.setCenterX(circle.getCenterX() + delta);
+//                    circle.setCenterX(circle.getCenterX() + 1);
+                    circle.setTranslateX(circle.getTranslateX() + 1);
                     System.out.println(3);
+                    System.out.println(dest+" "+circle.idProperty()+" "+circle.getCenterX());
                 }
             }
         };
