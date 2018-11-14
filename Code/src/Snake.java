@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import static javafx.scene.paint.Color.*;
 
 public class Snake {
-    private static final int SNAKEX = 250, RADIUS = 15, STARTY=510;
+    private static final int SNAKEX = 250, RADIUS = 15, STARTY=510, BLOCKHEIGHT=Blocks.HEIGHT;
 
     private ArrayList<Circle> SnakeBody = new ArrayList<Circle>();
 
@@ -114,6 +114,7 @@ public class Snake {
 
                 }
                 else {
+                    B1.setCollisionWithSnake(false);
                     if (_goRight && _snakeGroup.getLayoutX() < 240)
                         moveHorizontally(10);
                     if (_goLeft && _snakeGroup.getLayoutX() > -240)
@@ -125,13 +126,18 @@ public class Snake {
     }
 
     private void moveHorizontally(int delta){
-        //Change this code if we want to make the snake transit smoothly
+        //Change this code if we want to make the snake transit smoothly IT DOES NOT WORK! Check jiggle branch
         _snakeGroup.setLayoutX(_snakeGroup.getLayoutX() + delta);
     }
 
     private boolean hasCollided (Blocks B1) {
-        //-400 because the coordinate boundaries seem different in Snake.java and Blocks.java
-        if ((_snakeGroup.getLayoutY()==B1.yCoordinateOfFirstSetOfBlocks()-400) || (_snakeGroup.getLayoutY()==B1.yCoordinateOfSecondSetOfBlocks()-400))
+        double checkFrom = _snakeGroup.getLayoutY();
+        double checkWith = B1.yCoordinateOfFirstSetOfBlocks()-400-BLOCKHEIGHT+((double)RADIUS/2);
+        if (checkFrom>checkWith && checkFrom<checkWith+BLOCKHEIGHT)
+            return true;
+
+        checkWith = B1.yCoordinateOfSecondSetOfBlocks()-400-BLOCKHEIGHT+((double)RADIUS/2);
+        if(checkFrom>checkWith && checkFrom<checkWith+BLOCKHEIGHT)
             return true;
         return false;
     }

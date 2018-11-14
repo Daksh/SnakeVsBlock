@@ -10,7 +10,8 @@ import java.util.Random;
 import static javafx.scene.paint.Color.*;
 
 public class Blocks {
-    private static final int WIDTH = 98, HEIGHT = 100, BLOCK_SPEED = 3;
+    public static final int WIDTH = 98, HEIGHT = 100;
+    public static double BLOCK_SPEED = 3;
 
     //Set of Colors of Google, https://www.color-hex.com/color-palette/67855
     private static final javafx.scene.paint.Color[] colorPalette = {javafx.scene.paint.Color.web("#4285f4"),
@@ -111,7 +112,7 @@ public class Blocks {
             blockGroup.setLayoutY(blockGroup.getLayoutY()+BLOCK_SPEED);
         else{
             //There is a _collision!
-            blockGroup.setLayoutY(blockGroup.getLayoutY()+BLOCK_SPEED/2);
+            blockGroup.setLayoutY(blockGroup.getLayoutY()+BLOCK_SPEED/5);
         }
     }
 
