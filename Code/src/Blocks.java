@@ -13,7 +13,7 @@ import java.util.Random;
 import static javafx.scene.paint.Color.*;
 
 public class Blocks {
-    public static final int WIDTH = 98, HEIGHT = 100, NUM=5;
+    public static final int WIDTH = 98, HEIGHT = 100, NUM=5, SLEEPMIL=100;
     public static double BLOCK_SPEED = 3;
 
     //Set of Colors of Google, https://www.color-hex.com/color-palette/67855
@@ -73,7 +73,7 @@ public class Blocks {
 
         int[] weight = new int[5];
         for(int i = 0; i<5; i++)
-            weight[i] = _random.nextInt(maxBlockWeight*5);
+            weight[i] = _random.nextInt(maxBlockWeight*3);
         weight[_random.nextInt(5)] = _random.nextInt((int)Math.ceil((double)maxBlockWeight/2));// Divided by 2 because we have 2 blockLayers at 1 pt in time
 
         StackPane[] stacks = new StackPane[5];
@@ -158,18 +158,45 @@ public class Blocks {
 //        System.out.println(stack.getChildren().get(1).getClass());//TEXT
 
         String weightString = ((javafx.scene.text.Text)stack.getChildren().get(1)).getText();
+        //DOES NOT WORK FOR SOME REASON :(
+        //((javafx.scene.text.Text)stack.getChildren().get(1)).setText("WHAT");
         int weight = Integer.parseInt(weightString);
 
         int snakeLen = _snakeRef.get_length();
 
         if(weight>=snakeLen)
             Game.over();
-        else if(weight<=5) { //CHECK EQUALITY NEEDED OR NOT
+        else if(weight<=5) {
             _snakeRef.reduce_length(weight);
 //            stack.getChildren().removeAll();
             if(by.equals("one")) _oneBlockStack[pos].getChildren().remove(0,1);// .removeAll();
             else _anotherBlockStack[pos].getChildren().remove(0,1);//.clear();//removeAll();
             System.out.println("Removed all elements from stack");
+            this._collision = false;
+        } else{
+            while(weight>1){
+                _snakeRef.reduce_length(1);
+                weight-=1;
+//                ((javafx.scene.text.Text)stack.getChildren().get(1)).setText(Integer.toString(weight));
+
+                //Trying to make the changes directly but this does not work either
+                /*if(by.equals("one")){
+                    if(_oneBlockStack[pos]!=null)
+                        ((javafx.scene.text.Text)_oneBlockStack[pos].getChildren().get(1)).setText(Integer.toString(weight));
+                } else{
+                    if(_anotherBlockStack[pos]!=null)
+                        ((javafx.scene.text.Text)_anotherBlockStack[pos].getChildren().get(1)).setText(Integer.toString(weight));
+                }*/
+
+                try {
+                    Thread.sleep(SLEEPMIL);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            _snakeRef.reduce_length(weight);
+            if(by.equals("one")) _oneBlockStack[pos].getChildren().remove(0,1);
+            else _anotherBlockStack[pos].getChildren().remove(0,1);
             this._collision = false;
         }
 

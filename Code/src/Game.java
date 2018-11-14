@@ -50,7 +50,7 @@ public class Game extends Application {
         primaryStage.setResizable(false);
 
         //There is a problem as both of the following need each other :\
-        masterSnake = new Snake(5, scene);
+        masterSnake = new Snake(20, scene);
         testBlocks = new Blocks(masterSnake,scene);//needs Snake to know what kind of blocks to spell
         masterSnake.setBlocksRef(testBlocks);
 
