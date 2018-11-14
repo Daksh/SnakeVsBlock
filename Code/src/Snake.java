@@ -132,10 +132,14 @@ public class Snake {
         //Change this code if we want to make the snake transit smoothly
 //        _snakeGroup.setLayoutX(_snakeGroup.getLayoutX() + delta);
         int destination = (int)_snakeHead.getLayoutX()+delta;
-
         _snakeHead.setLayoutX(destination);
 
-        destination+=RADIUS;//cause of ref problem
+//        System.out.println("Delta, Destination: "+delta+","+destination);
+
+        //THIS SEEMS CORRECT
+        destination+=RADIUS;
+//        if(delta>0) destination+=RADIUS;//cause of ref problem
+//        else destination-=RADIUS;
 
         for(int i=0; i<_snakeBody.length; i++){
             double thisDelta = (double)(_snakeBody.length-i+1)/20;
@@ -149,20 +153,18 @@ public class Snake {
     }
 
     private void jiggleCircle(Circle circle, double delta, int dest){
-
-//        double source = circle.getCenterX();
-//        System.out.println("Source, des: "+source+", "+dest);
-//        TranslateTransition t = new TranslateTransition(Duration.millis(500), circle);
-//        t.setFromX(source);
-//        t.setToX(dest);
-//        t.play();
+//        circle.setCenterX(dest);
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                System.out.println("Before: "+delta+" "+dest+" "+circle.getCenterX());
-                if((delta<0 && circle.getCenterX()>dest)||(delta>0 && circle.getCenterX()<dest))
+                if(delta<0 && circle.getCenterX()>dest){//Moving Left
                     circle.setCenterX(circle.getCenterX()+delta);
-                System.out.println("After: "+delta+" "+dest+" "+circle.getCenterX());
+                    System.out.println(2);
+                }
+                if(delta>0 && circle.getCenterX()<dest) {//Moving Right
+                    circle.setCenterX(circle.getCenterX() + delta);
+                    System.out.println(3);
+                }
             }
         };
         timer.start();
