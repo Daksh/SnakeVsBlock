@@ -74,7 +74,7 @@ public class Blocks {
         int[] weight = new int[5];
         for(int i = 0; i<5; i++)
             weight[i] = _random.nextInt(maxBlockWeight*5);
-        weight[_random.nextInt(5)] = _random.nextInt(maxBlockWeight);
+        weight[_random.nextInt(5)] = _random.nextInt((int)Math.ceil((double)maxBlockWeight/2));// Divided by 2 because we have 2 blockLayers at 1 pt in time
 
         StackPane[] stacks = new StackPane[5];
         Group localBlockGroup = new Group();

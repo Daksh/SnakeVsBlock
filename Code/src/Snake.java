@@ -23,14 +23,19 @@ public class Snake {
     private Circle[] _snakeBody;
     private StackPane _snakeHead;
     private int _length;
-    private boolean _goLeft, _goRight;
+    private boolean _goLeft, _goRight, _checkedCollision;
     private Scene _scene;
     private Blocks _blocksRef;
 
-    public Snake(int length, Scene scene, Blocks blocks){
+    public void setBlocksRef(Blocks blocks){
+        _blocksRef = blocks;
+    }
+
+    public Snake(int length, Scene scene){
         _length = length;
         _scene = scene;
-        _blocksRef = blocks;
+        _checkedCollision = false;
+
         addKeyListeners();
 
         Group rootSceneGroup = (Group) _scene.getRoot();
@@ -62,7 +67,7 @@ public class Snake {
     }
 
     private void set_length(int length){
-        if(length==0){
+        if(length==0){//REMOVE?
             System.out.println("END GAME!!!");
             //add code here :P
             return;
@@ -120,12 +125,13 @@ public class Snake {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if (hasCollided(_blocksRef)>0) {
+                if (_checkedCollision==false && _blocksRef!=null && inRegionOfBlocks(_blocksRef)>0) {
                     double d1= _snakeGroup.getLayoutX();
-//                    System.out.println(d1);
-                    _blocksRef.checkCollisionWithSnake(hasCollided(_blocksRef),d1);//to confirm the block availab. at that position
+                    _blocksRef.checkCollisionWithSnake(inRegionOfBlocks(_blocksRef),d1);//to confirm the block availab. at that position
+                    _checkedCollision = true;
                 } else {
-                    _blocksRef.setCollisionWithSnake(false);
+                    if(!(_blocksRef!=null && inRegionOfBlocks(_blocksRef)>0)) _checkedCollision = false;
+                    if (_blocksRef!=null) _blocksRef.setCollisionWithSnake(false);
                     if (_goRight && _snakeGroup.getLayoutX() < 240)
                         moveHorizontally(10);
                     if (_goLeft && _snakeGroup.getLayoutX() > -240)
@@ -141,7 +147,7 @@ public class Snake {
         _snakeGroup.setLayoutX(_snakeGroup.getLayoutX() + delta);
     }
 
-    private int hasCollided (Blocks B1) { //just by the y coordinate
+    private int inRegionOfBlocks(Blocks B1) { //just by the y coordinate
         double checkFrom = _snakeGroup.getLayoutY();
         double checkWith = B1.yCoordinateOfFirstSetOfBlocks()-400-BLOCKHEIGHT+((double)RADIUS/2);
         if (checkFrom>checkWith && checkFrom<checkWith+BLOCKHEIGHT)
