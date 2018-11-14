@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class Game extends Application {
     private Snake masterSnake;
-    private Blocks testBlocks = new Blocks(masterSnake);
+    private Blocks testBlocks;
     private Wall testWall = new Wall(); //White lines
     private Magnet testMagnet = new Magnet();
     private BorderPane layout;
@@ -48,9 +48,12 @@ public class Game extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
-        testBlocks.addBlock(scene);
 
+        //There is a problem as both of the following need each other :\
+        testBlocks = new Blocks(masterSnake,scene);//needs Snake to know what kind of blocks to spell
         masterSnake = new Snake(5, scene, testBlocks);
+
+
 
         //testWall.addWall(scene);
         //Tokens Tokenobj = getToken(rInt);

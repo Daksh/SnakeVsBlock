@@ -28,11 +28,21 @@ public class Blocks {
     private Snake _snakeRef;
     private Random _random;
 
-    public Blocks(Snake snake){
+    public Blocks(Snake snake, Scene scene){
         _snakeRef = snake;
         _random = new Random();
         _oneBlockStack = new StackPane[NUM];
         _anotherBlockStack = new StackPane[NUM];
+
+        Group rootSceneGroup = (Group)scene.getRoot();
+
+        //(0,-500) is the starting point where we spawn the set of Blocks
+        _oneBlockGroup = initBlocks(rootSceneGroup,0,-800, "one");
+
+        //(0,-150) for the other set of blocks
+        _anotherBlockGroup = initBlocks(rootSceneGroup,0,-150, "another");
+
+        animateBlocks(rootSceneGroup);
     }
 
     private StackPane makeBlock(int weight, int xCoord){
@@ -85,16 +95,7 @@ public class Blocks {
         return localBlockGroup;
     }
 
-    protected void addBlock(Scene scene) {
-        Group rootSceneGroup = (Group)scene.getRoot();
-
-        //(0,-500) is the starting point where we spawn the set of Blocks
-        _oneBlockGroup = initBlocks(rootSceneGroup,0,-800, "one");
-
-        //(0,-150) for the other set of blocks
-        _anotherBlockGroup = initBlocks(rootSceneGroup,0,-150, "another");
-
-
+    private void animateBlocks(Group rootSceneGroup) {
         //To repeat the inner code
         AnimationTimer timer = new AnimationTimer() {
             @Override
