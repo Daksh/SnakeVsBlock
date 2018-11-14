@@ -1,4 +1,5 @@
 import javafx.animation.AnimationTimer;
+import javafx.animation.TranslateTransition;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -8,13 +9,14 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 
 import static javafx.scene.paint.Color.*;
 
 public class Snake {
-    private static final int SNAKEX = 250, RADIUS = 15, STARTY=510;
+    private static final int SNAKEX = 250, RADIUS = 15, STARTY=510, RIGHTBOUND = 240, LEFTBOUND = -240;
 
     private ArrayList<Circle> SnakeBody = new ArrayList<Circle>();
 
@@ -83,8 +85,11 @@ public class Snake {
 
         for(int i=4; i<9; i++) _snakeBody[i].setVisible(false);
 
+        //Adding the whole snake into the scene's group
         rootSceneGroup.getChildren().add(_snakeGroup);
 
+
+        //Handling KeyBoard Interrupts
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -94,7 +99,6 @@ public class Snake {
                 }
             }
         });
-
         scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -114,9 +118,9 @@ public class Snake {
 
                 }
                 else {
-                    if (_goRight && _snakeGroup.getLayoutX() < 240)
+                    if (_goRight && _snakeGroup.getLayoutX() < RIGHTBOUND)
                         moveHorizontally(10);
-                    if (_goLeft && _snakeGroup.getLayoutX() > -240)
+                    if (_goLeft && _snakeGroup.getLayoutX() > LEFTBOUND)
                         moveHorizontally(-10);
                 }
             }
@@ -126,7 +130,42 @@ public class Snake {
 
     private void moveHorizontally(int delta){
         //Change this code if we want to make the snake transit smoothly
-        _snakeGroup.setLayoutX(_snakeGroup.getLayoutX() + delta);
+//        _snakeGroup.setLayoutX(_snakeGroup.getLayoutX() + delta);
+        int destination = (int)_snakeHead.getLayoutX()+delta;
+
+        _snakeHead.setLayoutX(destination);
+
+        destination+=RADIUS;//cause of ref problem
+
+        for(int i=0; i<_snakeBody.length; i++){
+            double thisDelta = (double)(_snakeBody.length-i+1)/20;
+            thisDelta = (double)(destination - _snakeBody[i].getCenterX())/20*(double)(_snakeBody.length-i+1);
+            thisDelta = 1;
+            if(delta<0)
+                thisDelta = -1*thisDelta;
+            jiggleCircle(_snakeBody[i], thisDelta,destination);
+//            _snakeBody[i].setCenterX(_snakeBody[i].getCenterX()+thisDelta);
+        }
+    }
+
+    private void jiggleCircle(Circle circle, double delta, int dest){
+
+//        double source = circle.getCenterX();
+//        System.out.println("Source, des: "+source+", "+dest);
+//        TranslateTransition t = new TranslateTransition(Duration.millis(500), circle);
+//        t.setFromX(source);
+//        t.setToX(dest);
+//        t.play();
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                System.out.println("Before: "+delta+" "+dest+" "+circle.getCenterX());
+                if((delta<0 && circle.getCenterX()>dest)||(delta>0 && circle.getCenterX()<dest))
+                    circle.setCenterX(circle.getCenterX()+delta);
+                System.out.println("After: "+delta+" "+dest+" "+circle.getCenterX());
+            }
+        };
+        timer.start();
     }
 
     private boolean hasCollided (Blocks B1) {

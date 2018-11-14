@@ -53,30 +53,30 @@ public abstract class Tokens {
         timer.start();
     }
 
-    protected static Tokens getToken(int a) {
-        Tokens obj;
-        switch (a) {
-            case 0:
-                obj = new Magnet();
-                break;
-            case 1:
-                obj = new Shield();
-                break;
-            case 2:
-                obj = new Coin();
-                break;
-            case 3:
-                obj = new TBall();
-                break;
-            case 4:
-                obj = new DestroyBlocks();
-                break;
-            default:
-                obj = null;
-        }
-        return obj;
+    protected Tokens getToken(int a) {
+        return this;
+//        Tokens obj;
+//        switch (a) {
+//            case 0:
+//                obj = new Magnet();
+//                break;
+//            case 1:
+//                obj = new Shield();
+//                break;
+//            case 2:
+//                obj = new Coin();
+//                break;
+//            case 3:
+//                obj = new TBall();
+//                break;
+//            case 4:
+//                obj = new DestroyBlocks();
+//                break;
+//            default:
+//                obj = null;
+//        }
+//        return obj;
     }
-
 
     protected abstract String getPath();
 }
