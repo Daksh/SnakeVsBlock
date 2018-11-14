@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import static javafx.scene.paint.Color.*;
 
+//maybe implement Singular Design Concept
 public class Snake {
     private static final int SNAKEX = 250, RADIUS = 15, STARTY=510, BLOCKHEIGHT=Blocks.HEIGHT;
 
@@ -23,9 +24,33 @@ public class Snake {
     private StackPane _snakeHead;
     private int _length;
     private boolean _goLeft, _goRight;
+    private Scene _scene;
+    private Blocks _blocksRef;
 
-    public Snake(){
-        _length = 5;
+    public Snake(int length, Scene scene, Blocks blocks){
+        _length = length;
+        _scene = scene;
+        _blocksRef = blocks;
+        addKeyListeners();
+
+        Group rootSceneGroup = (Group) _scene.getRoot();
+        _snakeGroup = new Group();
+        _snakeHead = getHead(get_length());
+        _snakeBody = new Circle[9];
+        _snakeGroup.getChildren().add(_snakeHead);
+
+        for(int i = 0; i< _snakeBody.length; i++) {
+            _snakeBody[i] = new Circle(SNAKEX, STARTY+ 2*RADIUS*(i+1), RADIUS, RED);
+            _snakeGroup.getChildren().add(_snakeBody[i]);
+        }
+        _snakeGroup.setLayoutX(0);
+        _snakeGroup.setLayoutY(0);
+
+        for(int i=_length; i<9; i++) _snakeBody[i].setVisible(false);
+
+        rootSceneGroup.getChildren().add(_snakeGroup);
+
+        animateSnake();
     }
 
     public int get_length(){
@@ -69,27 +94,8 @@ public class Snake {
         return x;
     }
 
-    protected void addSnake(Scene scene, Blocks B1) {
-        Group rootSceneGroup = (Group) scene.getRoot();
-        _snakeGroup = new Group();
-
-        _snakeHead = getHead(get_length());
-
-        _snakeBody = new Circle[9];
-        _snakeGroup.getChildren().add(_snakeHead);
-
-        for(int i = 0; i< _snakeBody.length; i++) {
-            _snakeBody[i] = new Circle(SNAKEX, STARTY+ 2*RADIUS*(i+1), RADIUS, RED);
-            _snakeGroup.getChildren().add(_snakeBody[i]);
-        }
-        _snakeGroup.setLayoutX(0);
-        _snakeGroup.setLayoutY(0);
-
-        for(int i=4; i<9; i++) _snakeBody[i].setVisible(false);
-
-        rootSceneGroup.getChildren().add(_snakeGroup);
-
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+    private void addKeyListeners(){
+        _scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
@@ -99,7 +105,7 @@ public class Snake {
             }
         });
 
-        scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+        _scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
@@ -108,16 +114,18 @@ public class Snake {
                 }
             }
         });
+    }
 
+    private void animateSnake() {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if (hasCollided(B1)>0) {
+                if (hasCollided(_blocksRef)>0) {
                     double d1= _snakeGroup.getLayoutX();
 //                    System.out.println(d1);
-                    B1.checkCollisionWithSnake(hasCollided(B1),d1);//to confirm the block availab. at that position
+                    _blocksRef.checkCollisionWithSnake(hasCollided(_blocksRef),d1);//to confirm the block availab. at that position
                 } else {
-                    B1.setCollisionWithSnake(false);
+                    _blocksRef.setCollisionWithSnake(false);
                     if (_goRight && _snakeGroup.getLayoutX() < 240)
                         moveHorizontally(10);
                     if (_goLeft && _snakeGroup.getLayoutX() > -240)

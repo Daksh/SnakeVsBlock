@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.util.Random;
 
 public class Game extends Application {
-    private Snake masterSnake = new Snake();
+    private Snake masterSnake;
     private Blocks testBlocks = new Blocks(masterSnake);
     private Wall testWall = new Wall(); //White lines
     private Magnet testMagnet = new Magnet();
@@ -49,7 +49,9 @@ public class Game extends Application {
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         testBlocks.addBlock(scene);
-        masterSnake.addSnake(scene, testBlocks);
+
+        masterSnake = new Snake(5, scene, testBlocks);
+
         //testWall.addWall(scene);
         //Tokens Tokenobj = getToken(rInt);
         //System.out.println(rInt);
