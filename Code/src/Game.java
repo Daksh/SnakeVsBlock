@@ -58,6 +58,15 @@ public class Game extends Application {
 
         primaryStage.show();
     }
+    public static void over() {
+        System.out.println("GAME OVER from GAME.java");
+        try {
+            Thread.sleep(1000);
+            System.exit(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
 

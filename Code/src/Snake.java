@@ -32,7 +32,11 @@ public class Snake {
         return _length;
     }
 
-    public void set_length(int length){
+    public void reduce_length(int delta){
+        set_length(get_length()-delta);
+    }
+
+    private void set_length(int length){
         if(length==0){
             System.out.println("END GAME!!!");
             //add code here :P
@@ -108,12 +112,11 @@ public class Snake {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if (hasCollided(B1)) {
+                if (hasCollided(B1)>0) {
                     double d1= _snakeGroup.getLayoutX();
-                    B1.setCollisionWithSnake(true);
-
-                }
-                else {
+//                    System.out.println(d1);
+                    B1.checkCollisionWithSnake(hasCollided(B1),d1);//to confirm the block availab. at that position
+                } else {
                     B1.setCollisionWithSnake(false);
                     if (_goRight && _snakeGroup.getLayoutX() < 240)
                         moveHorizontally(10);
@@ -130,15 +133,15 @@ public class Snake {
         _snakeGroup.setLayoutX(_snakeGroup.getLayoutX() + delta);
     }
 
-    private boolean hasCollided (Blocks B1) {
+    private int hasCollided (Blocks B1) { //just by the y coordinate
         double checkFrom = _snakeGroup.getLayoutY();
         double checkWith = B1.yCoordinateOfFirstSetOfBlocks()-400-BLOCKHEIGHT+((double)RADIUS/2);
         if (checkFrom>checkWith && checkFrom<checkWith+BLOCKHEIGHT)
-            return true;
+            return 1;
 
         checkWith = B1.yCoordinateOfSecondSetOfBlocks()-400-BLOCKHEIGHT+((double)RADIUS/2);
         if(checkFrom>checkWith && checkFrom<checkWith+BLOCKHEIGHT)
-            return true;
-        return false;
+            return 2;
+        return 0;
     }
 }
