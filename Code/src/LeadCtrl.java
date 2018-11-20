@@ -13,7 +13,7 @@ public class LeadCtrl {
     @FXML
     public void handleHomeBtnClick() throws IOException {
         Stage stage = (Stage) homebtn.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
 
         stage.setScene(new Scene(root));
     }

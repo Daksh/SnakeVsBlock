@@ -1,4 +1,5 @@
 import javafx.animation.AnimationTimer;
+import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
@@ -8,6 +9,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import javax.swing.plaf.synth.SynthTextAreaUI;
+import java.awt.*;
 import java.util.Iterator;
 import java.util.Random;
 import static javafx.scene.paint.Color.*;
@@ -102,7 +104,6 @@ public class Blocks {
             public void handle(long now) {
                 //How many blocks do we wish to spawn - we get from Random
                 int rInt1 = _random.nextInt(5);
-
                 if(_oneBlockGroup.getLayoutY() > 750){
                     //Destroy the reference as the group of Blocks has moved out of the screen
                     _oneBlockGroup = initBlocks(rootSceneGroup,0,-500,"one");//-800 originally
@@ -111,7 +112,6 @@ public class Blocks {
                 if(_anotherBlockGroup.getLayoutY() > 750){
                     _anotherBlockGroup = initBlocks(rootSceneGroup,0,-500,"another");//-150 originally
                 } else moveBlockGroup(_anotherBlockGroup);
-
             }
         };
         timer.start();

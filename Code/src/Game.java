@@ -21,7 +21,6 @@ public class Game extends Application {
     private Random random = new Random();
     private int rInt = random.nextInt(5);
 
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -32,7 +31,8 @@ public class Game extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayDisp.fxml"));
         Group ballGroup= new Group();
         Parent root = loader.load();
-        Scene scene = new Scene(ballGroup, 500,700, Color.BLACK);
+        Group superGroup = new Group();
+
         Menu gameMenu = new Menu("Game");
         gameMenu.getItems().add(new MenuItem("Restart Game"));
         gameMenu.getItems().add(new MenuItem("Exit Game"));
@@ -41,10 +41,14 @@ public class Game extends Application {
 
         MenuBar Bar = new MenuBar();
         Bar.getMenus().addAll(gameMenu,gameMenu2);
+        Bar.setMinWidth(500.0);
 
         BorderPane layout = new BorderPane();
         layout.setTop(Bar);
         ballGroup.getChildren().add(Bar);
+
+		superGroup.getChildren().addAll(ballGroup, root);
+		Scene scene = new Scene(superGroup, 500,700, Color.BLACK);
 
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
