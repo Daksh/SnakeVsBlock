@@ -40,6 +40,9 @@
                <HBox.margin>
                   <Insets left="15.0" top="20.0" />
                </HBox.margin>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
                <graphic>
                   <ImageView fitHeight="54.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -47,9 +50,6 @@
                      </image>
                   </ImageView>
                </graphic>
-               <padding>
-                  <Insets left="5.0" />
-               </padding>
             </Button>
          </children>
       </HBox>

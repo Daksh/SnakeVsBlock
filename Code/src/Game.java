@@ -70,6 +70,13 @@ public class Game extends Application {
     	//Need to create functions here and arrange code.
         primaryStage.setTitle("SnakeVsBlock");
         Game playGame = new Game();
+		//FXMLLoader loader = new FXMLLoader(getClass().getResource("Leaderboard.fxml"));
+		//Parent root = loader.load();
+		Group HomeGroup = new Group();
+		//HomeGroup.getChildren().add(root);
+		Scene scene = new Scene(HomeGroup);
+		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
         playGame.setUpGame(masterSnake, testBlocks, testWall, testMagnet, primaryStage);
 
         primaryStage.show();
