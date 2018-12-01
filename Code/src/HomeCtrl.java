@@ -65,9 +65,7 @@ public class HomeCtrl {
     @FXML
     public void exitGame() throws IOException {
         Stage stage = (Stage) Exitbtn.getScene().getWindow();
-        //Parent root = FXMLLoader.load(getClass().getResource("PlayDisp.fxml"));
-
-        //stage.setScene(new Scene(root));
+        System.exit(1);
     }
 
 	/**
@@ -78,9 +76,8 @@ public class HomeCtrl {
     @FXML
     public void openSettings() throws IOException {
         Stage stage = (Stage) Exitbtn.getScene().getWindow();
-        //Parent root = FXMLLoader.load(getClass().getResource("Settings.fxml"));
-
-        //stage.setScene(new Scene(root));
+        Parent root = FXMLLoader.load(getClass().getResource("Settings.fxml"));
+        stage.setScene(new Scene(root));
     }
 }
 

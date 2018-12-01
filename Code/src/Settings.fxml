@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SettingsCtrl">
     <children>
         <MenuBar layoutX="61.0" layoutY="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <menus>
@@ -219,7 +219,7 @@
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Region prefHeight="96.0" prefWidth="224.0" />
-                              <Button mnemonicParsing="false" style="-fx-background-color: #000000;">
+                              <Button id="homebtn" fx:id="homebtn" mnemonicParsing="false" onMouseClicked="#handleHomeBtnClick" style="-fx-background-color: #000000;">
                                  <graphic>
                                     <ImageView fitHeight="59.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

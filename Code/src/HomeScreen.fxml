@@ -80,7 +80,7 @@
                                     </image>
                                 </ImageView>
                             </graphic></Button>
-                        <Button fx:id="settingsbtn" layoutX="53.0" layoutY="378.0" mnemonicParsing="false" onMouseClicked="#openSettings" prefHeight="50.0" prefWidth="40.0" style="-fx-background-color: #0000; -fx-background-radius: 2000;">
+                        <Button id="settingsbtn" fx:id="settingsbtn" layoutX="53.0" layoutY="378.0" mnemonicParsing="false" onMouseClicked="#openSettings" prefHeight="50.0" prefWidth="40.0" style="-fx-background-color: #0000; -fx-background-radius: 2000;">
                             <graphic>
                                 <ImageView fitHeight="32.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                                     <image>

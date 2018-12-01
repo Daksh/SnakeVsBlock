@@ -30,6 +30,7 @@ public class Game extends Application {
     public static int Score = 0;
     public static Menu gameMenu3;
     Game playGame;
+    public static boolean isResumable = false;
 
 	protected void setUpGame (Snake masterSnake, Blocks testBlocks, Wall testWall, Tokens testMagnet, Stage primaryStage) throws IOException
 	{
@@ -80,7 +81,7 @@ public class Game extends Application {
         primaryStage.setTitle("SnakeVsBlock");
         playGame = new Game();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeScreen.fxml"));
 		Parent root = loader.load();
 		Group HomeGroup = new Group();
 		HomeGroup.getChildren().add(root);
