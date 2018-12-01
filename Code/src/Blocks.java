@@ -71,8 +71,14 @@ public class Blocks {
         animateBlocks(rootSceneGroup);
     }
 
-    private StackPane makeBlock(int weight, int xCoord){
-        //if weight = 0 we do not want a block there
+	/**
+	 * Makes a stack pane to link the block with its weight and xCoordinate
+	 *
+	 * @param weight Initial weight of block to be created. Weight  = 0 -> No block required in that position.
+	 * @param xCoord Horizontal position of block on screen.
+	 * @return StackPane of Block
+	 */
+	private StackPane makeBlock(int weight, int xCoord){
         if(weight == 0)
             return null;
 
@@ -90,7 +96,16 @@ public class Blocks {
 
         return stack;
     }
-    
+
+	/**
+	 * Initializes group of blocks with random weights.
+	 * Maximum possible weight has been defined.
+	 * @param rootScene All blocks are added to this group which is added to scene.
+	 * @param x Initializes the x coordinate of block group ( = 0)
+	 * @param y Initalizes the y coordinate of block group. Different for both block groups.
+	 * @param from ( = 1 when oneBlockGroup else anotherBlockGroup)
+	 * @return Returns a group of blocks
+	 */
     private Group initBlocks(Group rootScene, int x, int y,String from){
         //Random Blocks
 
@@ -121,7 +136,11 @@ public class Blocks {
         return localBlockGroup;
     }
 
-    private void animateBlocks(Group rootSceneGroup) {
+	/**
+	 * Repeats code inside animation timer to start second group animation
+	 * @param rootSceneGroup Passes the group where blocks need to be initialized,
+	 */
+	private void animateBlocks(Group rootSceneGroup) {
         //To repeat the inner code
         AnimationTimer timer = new AnimationTimer() {
             @Override
@@ -141,7 +160,12 @@ public class Blocks {
         timer.start();
     }
 
-    private void moveBlockGroup(Group blockGroup){
+	/**
+	 * Translates group of blocks from top to bottom of screen.
+	 * TODO : Check block speed/5. can cause trouble if block speed is increased.
+	 * @param blockGroup Group of blocks that are being translated
+	 */
+	private void moveBlockGroup(Group blockGroup){
         if (!_collision)
             blockGroup.setLayoutY(blockGroup.getLayoutY()+BLOCK_SPEED);
         else{
@@ -150,10 +174,20 @@ public class Blocks {
         }
     }
 
-    public boolean getIsCollidedRn(){
+	/**
+	 * Check for collision
+	 * @return boolean value of collision status
+	 */
+	public boolean getIsCollidedRn(){
         return this._collision;
     }
-    public void checkCollisionWithSnake(int blockNumber, double x){
+
+	/**
+	 * Checks for collision between block and snake
+	 * @param blockNumber block inside group (1 to 5) with which collision occurs.
+	 * @param x x coordinate of snake
+	 */
+	public void checkCollisionWithSnake(int blockNumber, double x){
         int pos=-1;
         if(x < -150) pos = 0;
         else if(x < -50) pos = 1;
@@ -171,7 +205,14 @@ public class Blocks {
             else setCollisionWithSnake(false);
         }
     }
-    public void setCollisionWithSnake(StackPane stack, String by, int pos){
+
+	/**
+	 * Handles collision between block and snake.
+	 * @param stack Reference to Stack of blocks
+	 * @param by Checks th group of blocks which collied with snake ( one - _oenBlockGroup, else - anotherBlockGroup)
+	 * @param pos position ( block number inside stack with which collision occurs. )
+	 */
+	public void setCollisionWithSnake(StackPane stack, String by, int pos){
 //        System.out.println(stack.getChildren().getClass());
 
 //        Iterator iterator = stack.getChildren().iterator();
