@@ -29,6 +29,7 @@ public class Game extends Application {
     private int rInt = random.nextInt(5);
     public static int Score = 0;
     public static Menu gameMenu3;
+    Game playGame;
 
 	protected void setUpGame (Snake masterSnake, Blocks testBlocks, Wall testWall, Tokens testMagnet, Stage primaryStage) throws IOException
 	{
@@ -77,17 +78,17 @@ public class Game extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("SnakeVsBlock");
-        Game playGame = new Game();
+        playGame = new Game();
 
-		//FXMLLoader loader = new FXMLLoader(getClass().getResource("Leaderboard.fxml"));
-		//Parent root = loader.load();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Settings.fxml"));
+		Parent root = loader.load();
 		Group HomeGroup = new Group();
-		//HomeGroup.getChildren().add(root);
+		HomeGroup.getChildren().add(root);
 
 		Scene scene = new Scene(HomeGroup);
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
-        playGame.setUpGame(masterSnake, testBlocks, testWall, testMagnet, primaryStage);
+        //playGame.setUpGame(masterSnake, testBlocks, testWall, testMagnet, primaryStage);
 
         primaryStage.show();
     }

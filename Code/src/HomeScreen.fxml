@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomeCtrl">
     <children>
         <MenuBar layoutX="61.0" layoutY="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -56,7 +60,7 @@
                             <graphic>
                                 <ImageView fitHeight="72.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../Images/icons8-play.png" />
+                                        <Image url="@icons8-play.png" />
                                     </image>
                                 </ImageView>
                             </graphic></Button>
@@ -64,7 +68,7 @@
                             <graphic>
                                 <ImageView fitHeight="41.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../Images/icons8-more.png" />
+                                        <Image url="@icons8-more.png" />
                                     </image>
                                 </ImageView>
                             </graphic></Button>
@@ -72,7 +76,7 @@
                             <graphic>
                                 <ImageView fitHeight="63.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../Images/icons8-exit_sign.png" />
+                                        <Image url="@icons8-exit_sign.png" />
                                     </image>
                                 </ImageView>
                             </graphic></Button>
@@ -80,7 +84,7 @@
                             <graphic>
                                 <ImageView fitHeight="32.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../Images/settings.png" />
+                                        <Image url="@settings.png" />
                                     </image>
                                 </ImageView>
                             </graphic></Button>
@@ -88,7 +92,7 @@
                             <graphic>
                                 <ImageView fitHeight="55.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../Images/icons8-leaderboard.png" />
+                                        <Image url="@icons8-leaderboard.png" />
                                     </image>
                                 </ImageView>
                             </graphic></Button>

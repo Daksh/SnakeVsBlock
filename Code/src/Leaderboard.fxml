@@ -49,9 +49,9 @@
                   <Insets left="5.0" />
                </padding>
                <graphic>
-                  <ImageView fitHeight="54.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="LeadImg" fitHeight="54.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Images/icons8-flip.png" />
+                        <Image url="@icons8-flip.png" />
                      </image>
                   </ImageView>
                </graphic>

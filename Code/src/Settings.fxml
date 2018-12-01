@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <MenuBar layoutX="61.0" layoutY="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -44,7 +48,7 @@
                            <graphic>
                               <ImageView fitHeight="94.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../Images/icons8-settings.png" />
+                                    <Image url="@icons8-settings.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -66,7 +70,7 @@
                                  <graphic>
                                     <ImageView fitHeight="50.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/icons8-avatar.png" />
+                                          <Image url="@icons8-avatar.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -80,7 +84,7 @@
                                  <graphic>
                                     <ImageView fitHeight="89.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/YellowCircle.png" />
+                                          <Image url="@YellowCircle.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -89,7 +93,7 @@
                                  <graphic>
                                     <ImageView fitHeight="107.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/RedCircle.png" />
+                                          <Image url="@RedCircle.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -98,7 +102,7 @@
                                  <graphic>
                                     <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/BlueCircle.png" />
+                                          <Image url="@BlueCircle.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -107,7 +111,7 @@
                                  <graphic>
                                     <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/GreenCircle.png" />
+                                          <Image url="@GreenCircle.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -121,7 +125,7 @@
                                  <graphic>
                                     <ImageView fitHeight="89.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/icons8-beach_ball.png" />
+                                          <Image url="@icons8-beach_ball.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -130,7 +134,7 @@
                                  <graphic>
                                     <ImageView fitHeight="107.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/icons8-football2.png" />
+                                          <Image url="@icons8-football2.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -139,7 +143,7 @@
                                  <graphic>
                                     <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/icons8-ultra_ball.png" />
+                                          <Image url="@icons8-ultra_ball.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -148,7 +152,7 @@
                                  <graphic>
                                     <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/icons8-mega_ball.png" />
+                                          <Image url="@icons8-mega_ball.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -164,7 +168,7 @@
                                  <graphic>
                                     <ImageView fitHeight="41.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/icons8-landscape.png" />
+                                          <Image url="@icons8-landscape.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -178,7 +182,7 @@
                                  <graphic>
                                     <ImageView fitHeight="89.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/icons8-cooling-80.png" />
+                                          <Image url="@icons8-cooling-80.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -187,7 +191,7 @@
                                  <graphic>
                                     <ImageView fitHeight="107.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/icons8-forest-96.png" />
+                                          <Image url="@icons8-forest-96.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -196,7 +200,7 @@
                                  <graphic>
                                     <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/icons8-night-80.png" />
+                                          <Image url="@icons8-night-80.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -205,7 +209,7 @@
                                  <graphic>
                                     <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/icons8-western-96.png" />
+                                          <Image url="@icons8-western-96.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -219,7 +223,7 @@
                                  <graphic>
                                     <ImageView fitHeight="59.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Images/icons8-flip.png" />
+                                          <Image url="@icons8-flip.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
