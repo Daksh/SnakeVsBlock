@@ -14,4 +14,19 @@ public class Shield extends Tokens {
     protected String getPath() {
         return this.path;
     }
+
+    /*@Override
+    public void collides(){
+        if(_tokenGroup!=null && _snake!=null) {
+            System.out.println("Shield COLLISION");
+            _tokenGroup.getChildren().clear();
+//            Snake.setShield(true);
+//            try {
+//                Thread.sleep(5000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            Snake.setShield(false);
+        }
+    }*/
 }

@@ -13,4 +13,12 @@ public class Magnet extends Tokens{
     protected String getPath() {
         return this.path;
     }
+
+//    @Override
+//    public void collides(){
+//        if(_tokenGroup!=null && _snake!=null) {
+//            System.out.println("Magnet COLLISION");
+//            _tokenGroup.getChildren().clear();
+//        }
+//    }
 }

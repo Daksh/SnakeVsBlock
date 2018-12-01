@@ -14,4 +14,12 @@ public class DestroyBlocks extends Tokens {
     protected String getPath() {
         return this.path;
     }
+
+//    @Override
+//    public void collides(){
+//        if(_tokenGroup!=null && _snake!=null) {
+//            System.out.println("DestroyBlocks COLLISION");
+//            _tokenGroup.getChildren().clear();
+//        }
+//    }
 }
