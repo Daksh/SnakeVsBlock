@@ -17,11 +17,11 @@ public class TBall extends Tokens {
         return this.path;
     }
 
-//    @Override
-//    public void collides(){
-//        if(_tokenGroup!=null && _snake!=null) {
-//            System.out.println("TBall COLLISION");
-//            _tokenGroup.getChildren().clear();
-//        }
-//    }
+    @Override
+    public void collides(){
+        if(_tokenGroup!=null && _snake!=null) {
+            System.out.println("TBall COLLISION");
+            _tokenGroup.getChildren().clear();
+        }
+    }
 }

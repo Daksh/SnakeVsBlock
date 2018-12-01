@@ -94,7 +94,7 @@ public abstract class Tokens {
             System.out.println("is null");
             return false;
         }
-	    double sx = 240+_snake.getXCoordinate();
+	    double sx = 235+_snake.getXCoordinate();
 	    double sy = 500+_snake.getYCoordinate(); //always 0 it seems
 	    double myx = _tokenGroup.getLayoutX();
 	    double myy = _tokenGroup.getLayoutY();

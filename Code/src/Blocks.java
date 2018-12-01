@@ -218,9 +218,9 @@ public class Blocks {
         int weight = Integer.parseInt(weightString);
         int snakeLen = _snakeRef.get_length();
 
-        if(weight>=snakeLen)
+        if(weight>=snakeLen && !Snake.getShieldStatus())
             Game.over();
-        else if(weight<=5) {
+        else if(weight<=5 || Snake.getShieldStatus()) {
             _snakeRef.reduce_length(weight);
 
             if(by.equals("one")) _oneBlockStack[pos].getChildren().remove(0,1);// .removeAll();
