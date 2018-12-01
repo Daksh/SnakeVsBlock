@@ -21,7 +21,7 @@ public abstract class Tokens {
 //
 //        path1 = tokenObj.getPath();
 //    }
-
+    public static double TOKEN_SPEED = 3;
     ImageView TokenView= new ImageView();
 
     protected void addToken(Scene scene) {
@@ -53,7 +53,7 @@ public abstract class Tokens {
                     tokens.setLayoutX(random.nextInt(440)-220);//Bounded from 20 to 220 when the screen is from 0 to 240
                 }
                 else{
-                    tokens.setLayoutY(tokens.getLayoutY()+5);
+                    tokens.setLayoutY(tokens.getLayoutY()+TOKEN_SPEED);
                 }
             }
         };
