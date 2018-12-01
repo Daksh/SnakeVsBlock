@@ -94,6 +94,7 @@ public class Snake {
 	 */
 	public void reduce_length(int delta){
         set_length(get_length()-delta);
+		Game.gameMenu3.setText(Integer.toString(Integer.parseInt(Game.gameMenu3.getText())+delta));
     }
 
 	/**

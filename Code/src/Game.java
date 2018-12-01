@@ -27,6 +27,8 @@ public class Game extends Application {
     private BorderPane layout;
     private Random random = new Random();
     private int rInt = random.nextInt(5);
+    public static int Score = 0;
+    public static Menu gameMenu3;
 
 	protected void setUpGame (Snake masterSnake, Blocks testBlocks, Wall testWall, Tokens testMagnet, Stage primaryStage) throws IOException
 	{
@@ -40,9 +42,12 @@ public class Game extends Application {
 		gameMenu.getItems().add(new MenuItem("Exit Game"));
 		Menu gameMenu2 = new Menu("Settings");
 		gameMenu2.getItems().add(new MenuItem("Modify settings"));
+		Menu gameMenu4 = new Menu ( "											Score: ");
+		gameMenu3 = new Menu (Integer.toString(Score));
+
 
 		MenuBar Bar = new MenuBar();
-		Bar.getMenus().addAll(gameMenu,gameMenu2);
+		Bar.getMenus().addAll(gameMenu,gameMenu2, gameMenu4,gameMenu3);
 		Bar.setMinWidth(500.0);
 
 		BorderPane layout = new BorderPane();
