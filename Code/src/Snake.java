@@ -23,9 +23,6 @@ public class Snake {
 
     private ArrayList<Circle> SnakeBody = new ArrayList<Circle>();
 
-    /**
-     * Hi there
-     */
     private Group _snakeGroup;
     private Circle[] _snakeBody;
     private StackPane _snakeHead;
@@ -34,10 +31,6 @@ public class Snake {
     private Scene _scene;
     private Blocks _blocksRef;
 
-    /**
-     * setBlockssssssss
-     * @param blocks
-     */
     public void setBlocksRef(Blocks blocks){
         _blocksRef = blocks;
     }
