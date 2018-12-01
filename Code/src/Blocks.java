@@ -1,3 +1,9 @@
+/**
+ * Initializes two sets of blocks repeatedly to move from top to bottom of the screen.
+ *
+ * @author Daksh Shah and Arsh Verma
+ */
+
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;

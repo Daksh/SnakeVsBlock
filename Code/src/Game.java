@@ -1,3 +1,9 @@
+/**
+ *Initializes the game play
+ *
+ * @author	Daksh Shah & Arsh Verma
+ */
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;

@@ -1,3 +1,9 @@
+/**
+ * Serves as controller class for Leaderboard FXML file.
+ *
+ * @author Daksh Shah and Arsh Verma
+ */
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

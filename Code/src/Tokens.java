@@ -1,3 +1,10 @@
+/**
+ * Abstract class that Randomly chooses one token to be initialized in game play window.
+ * Token moves from top to bottom of screen.
+ *
+ * @author Daksh Shah and Arsh Verma
+ */
+
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;

@@ -1,3 +1,11 @@
+/**
+ *
+ * Initializes walls that serve as obstructions during game play.
+ * Restricts snake movement to a section of the screen
+ *
+ * @author Daksh Shah & Arsh Verma
+ */
+
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
