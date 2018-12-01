@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LeadCtrl {
-    private Button homebtn;
+    public Button homebtn;
 
 	/**
 	 * Loads Home Screen elements on stage when Home Button is clicked by user.

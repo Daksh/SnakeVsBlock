@@ -16,11 +16,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HomeCtrl {
-    private Button leaderboardbtn;
-    private Button settingsbtn;
-    private Button Exitbtn;
-    private Button resumebtn;
-    private Button playGamebtn;
+    public Button leaderboardbtn;
+    public Button settingsbtn;
+    public Button Exitbtn;
+    public Button resumebtn;
+    public Button playGamebtn;
 
 	/**
 	 * Loads Leaderboard elements on stage when Leaderboard Button is clicked by user.
@@ -76,9 +76,9 @@ public class HomeCtrl {
 	 * @throws IOException
 	 */
     @FXML
-    public void settingsGame() throws IOException {
+    public void openSettings() throws IOException {
         Stage stage = (Stage) Exitbtn.getScene().getWindow();
-        //Parent root = FXMLLoader.load(getClass().getResource("PlayDisp.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("Settings.fxml"));
 
         //stage.setScene(new Scene(root));
     }
