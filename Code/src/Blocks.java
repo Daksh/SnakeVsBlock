@@ -1,5 +1,4 @@
 import javafx.animation.AnimationTimer;
-import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
@@ -8,11 +7,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
-import java.awt.*;
-import java.util.Iterator;
 import java.util.Random;
-import static javafx.scene.paint.Color.*;
 
 public class Blocks {
     public static final int WIDTH = 98, HEIGHT = 100, NUM=5, SLEEPMIL=100;
