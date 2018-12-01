@@ -16,7 +16,12 @@ import java.io.IOException;
 
 public class LeadCtrl {
     private Button homebtn;
-    @FXML
+
+	/**
+	 * Loads Home Screen elements on stage when Home Button is clicked by user.
+	 * @throws IOException
+	 */
+	@FXML
     public void handleHomeBtnClick() throws IOException {
         Stage stage = (Stage) homebtn.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));

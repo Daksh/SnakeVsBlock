@@ -22,7 +22,11 @@ public class HomeCtrl {
     private Button resumebtn;
     private Button playGamebtn;
 
-    @FXML
+	/**
+	 * Loads Leaderboard elements on stage when Leaderboard Button is clicked by user.
+	 * @throws IOException
+	 */
+	@FXML
     public void openLeaderboard() throws IOException {
         Stage stage = (Stage) leaderboardbtn.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("Leaderboard.fxml"));
@@ -30,6 +34,10 @@ public class HomeCtrl {
         stage.setScene(new Scene(root));
     }
 
+	/**
+	 * Loads Game play elements and starts game when play Button is clicked by user.
+	 * @throws IOException
+	 */
     @FXML
     public void playGame() throws IOException {
         Stage stage = (Stage) playGamebtn.getScene().getWindow();
@@ -37,6 +45,11 @@ public class HomeCtrl {
 
         stage.setScene(new Scene(root));
     }
+
+	/**
+	 * Loads game play elements from previously saved state when resume Button is clicked by user.
+	 * @throws IOException
+	 */
     @FXML
     public void resumeGame() throws IOException {
         Stage stage = (Stage) resumebtn.getScene().getWindow();
@@ -44,6 +57,11 @@ public class HomeCtrl {
 
         //stage.setScene(new Scene(root));
     }
+
+	/**
+	 * Exits the game and closes when when Exit button is clicked by user.
+	 * @throws IOException
+	 */
     @FXML
     public void exitGame() throws IOException {
         Stage stage = (Stage) Exitbtn.getScene().getWindow();
@@ -52,6 +70,11 @@ public class HomeCtrl {
         //stage.setScene(new Scene(root));
     }
 
+	/**
+	 * Loads Settings page on stage when Settings Button is clicked by user.
+	 * TODO: Put correct path of settings FXML page.
+	 * @throws IOException
+	 */
     @FXML
     public void settingsGame() throws IOException {
         Stage stage = (Stage) Exitbtn.getScene().getWindow();

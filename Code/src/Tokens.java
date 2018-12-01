@@ -31,7 +31,7 @@ public abstract class Tokens {
         tokens.getChildren().add(TokenView);
 
         Group tokensgroup= (Group) scene.getRoot();
-        
+
 		tokensgroup.getChildren().add(tokens);
 
 		/**
