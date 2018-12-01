@@ -42,7 +42,7 @@ public class Game extends Application {
 		gameMenu.getItems().add(new MenuItem("Exit Game"));
 		Menu gameMenu2 = new Menu("Settings");
 		gameMenu2.getItems().add(new MenuItem("Modify settings"));
-		Menu gameMenu4 = new Menu ( "											Score: ");
+		Menu gameMenu4 = new Menu ( "								Score: ");
 		gameMenu3 = new Menu (Integer.toString(Score));
 
 
@@ -79,7 +79,10 @@ public class Game extends Application {
         primaryStage.setTitle("SnakeVsBlock");
         Game playGame = new Game();
 
+		//FXMLLoader loader = new FXMLLoader(getClass().getResource("Leaderboard.fxml"));
+		//Parent root = loader.load();
 		Group HomeGroup = new Group();
+		//HomeGroup.getChildren().add(root);
 
 		Scene scene = new Scene(HomeGroup);
 		primaryStage.setScene(scene);

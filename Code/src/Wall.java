@@ -36,7 +36,6 @@ public class Wall {
 
         Group wallgroup = (Group) scene.getRoot();
         wallgroup.getChildren().add(walls);
-
 		AnimationTimer timer = new AnimationTimer() {
 			@Override
 			public void handle(long now) {
