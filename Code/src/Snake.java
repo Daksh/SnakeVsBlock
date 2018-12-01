@@ -38,6 +38,11 @@ public class Snake {
     private boolean _goLeft, _goRight, _checkedCollision;
     private Scene _scene;
     private Blocks _blocksRef;
+    private static boolean _shield = false;
+
+    public static void setShield(boolean bool){
+        _shield = bool;
+    }
 
     public void setBlocksRef(Blocks blocks){
         _blocksRef = blocks;
@@ -93,7 +98,7 @@ public class Snake {
 	 * @param delta Change in length of snake
 	 */
 	public void reduce_length(int delta){
-        set_length(get_length()-delta);
+        if(!_shield) set_length(get_length()-delta);
 		Game.gameMenu3.setText(Integer.toString(Integer.parseInt(Game.gameMenu3.getText())+delta));
     }
 
