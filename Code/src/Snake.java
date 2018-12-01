@@ -16,7 +16,7 @@ import static javafx.scene.paint.Color.*;
  */
 
 /**
- * TODO: maybe implement Singular Design Concept
+ * Singleton Design Pattern
  */
 public class Snake {
 	/**
@@ -25,7 +25,9 @@ public class Snake {
 	 * STARTY: y coordinate of snake starting position on screen
 	 * BLOCKHEIGHT : Height of blocks that are initialized.
 	 */
-    private static final int SNAKEX = 250, RADIUS = 15, STARTY=510, BLOCKHEIGHT=Blocks.HEIGHT;
+    public static final int SNAKEX = 250, RADIUS = 15, STARTY=510, BLOCKHEIGHT=Blocks.HEIGHT;
+
+    private static Snake _onlySnake = null;
 
     private ArrayList<Circle> SnakeBody = new ArrayList<Circle>();
 
@@ -46,7 +48,7 @@ public class Snake {
 	 * @param length Length of snake to be initialized
 	 * @param scene Scene of game play
 	 */
-	public Snake(int length, Scene scene){
+	private Snake(int length, Scene scene){
         _length = length;
         _scene = scene;
         _checkedCollision = false;
@@ -72,6 +74,15 @@ public class Snake {
 
         animateSnake();
     }
+
+	public static Snake getInstance(int length, Scene scene){
+	    if(_onlySnake != null)
+            return _onlySnake;
+        return new Snake(length, scene);
+    }
+//    public static Snake getInstance(){
+//	    return _onlySnake;
+//    }
 
     public int get_length(){
         return _length;
@@ -166,6 +177,14 @@ public class Snake {
             }
         };
         timer.start();
+    }
+
+    public double getXCoordinate(){
+	    return _snakeGroup.getLayoutX();
+    }
+
+    public double getYCoordinate(){
+        return _snakeGroup.getLayoutY();
     }
 
     private void moveHorizontally(int delta){

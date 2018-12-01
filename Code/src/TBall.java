@@ -12,7 +12,6 @@ public class TBall extends Tokens {
 	/**
 	 * @return Path of the token image in directory
 	 */
-
     @Override
     protected String getPath() {
         return this.path;

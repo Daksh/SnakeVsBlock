@@ -19,20 +19,24 @@ public abstract class Tokens {
 	/**
 	 * Token speed defines the speed of downward motion of token
 	 */
-    public static double TOKEN_SPEED = 3;
-    private ImageView _TokenView = new ImageView();
-    private Snake _snake;
+    public static double TOKEN_SPEED = Blocks.BLOCK_SPEED;
+    private ImageView _tokenView = new ImageView();
+    private static Snake _snake;
+    private Group _tokenGroup = new Group();
+
+    public static void setSnake(Snake snake){
+        _snake = snake;
+    }
 
 	/**
 	 * adds a random taken to gameplay. Ramdom integer generated recurrently to determine the token to be spawned.
 	 * @param scene Provides scene to which token needs to be added. It is the game play scene.
 	 */
-	protected void addToken(Scene scene) {
-        Group tokens = new Group();
-        tokens.getChildren().add(_TokenView);
+	protected void addToken(Scene scene){
+        _tokenGroup.getChildren().add(_tokenView);
 
         Group tokensgroup = (Group)scene.getRoot();
-		tokensgroup.getChildren().add(tokens);
+		tokensgroup.getChildren().add(_tokenGroup);
 
 		/**
 		 * Animation Timer to translate token along with blocks.
@@ -45,23 +49,54 @@ public abstract class Tokens {
             public void handle(long now) {
                 Random random = new Random();
                 int rInt1 = random.nextInt(5);
-                if (tokens.getLayoutY()>750) {
+                if (_tokenGroup.getLayoutY()>750) {
+                    _tokenGroup.getChildren().clear();
+
                     Tokens t1= getToken(rInt1);
                     String path = t1.getPath();
                     File imagefile = new File(path);
                     Image TokenImage = new Image(imagefile.toURI().toString());
-                    _TokenView.setImage(TokenImage);
-                    _TokenView.setFitHeight(30);
-                    _TokenView.setFitWidth(30);
-                    tokens.setLayoutY(-700);
-                    tokens.setLayoutX(30+random.nextInt(440)-220-60);//Bounded from 20 to 220 when the screen is from 0 to 240
+                    _tokenView.setImage(TokenImage);
+                    _tokenView.setFitHeight(30);
+                    _tokenView.setFitWidth(30);
+
+                    _tokenGroup.getChildren().add(_tokenView);
+                    _tokenGroup.setLayoutY(-700);
+                    _tokenGroup.setLayoutX(20+random.nextInt(200));//Bounded from 20 to 220 when the screen is from 0 to 240
                 }
                 else{
-                    tokens.setLayoutY(tokens.getLayoutY()+TOKEN_SPEED);
+                    _tokenGroup.setLayoutY(_tokenGroup.getLayoutY()+TOKEN_SPEED);
+//                    System.out.println(_tokenGroup.getLayoutX()+","+_tokenGroup.getLayoutY());
+                    if(checkCollision()) collides();
                 }
             }
         };
         timer.start();
+    }
+
+    public void collides(){
+        if(_tokenGroup!=null && _snake!=null) {
+            System.out.println("COLLISION");
+            _tokenGroup.getChildren().clear();
+        }
+    }
+
+    private boolean checkCollision(){
+        if(_snake==null || _tokenGroup==null) {
+            System.out.println("is null");
+            return false;
+        }
+	    double sx = 240+_snake.getXCoordinate();
+	    double sy = 500+_snake.getYCoordinate(); //always 0 it seems
+	    double myx = _tokenGroup.getLayoutX();
+	    double myy = _tokenGroup.getLayoutY();
+//        System.out.println(sx+","+sy+"\t"+myx+","+myy);
+
+        if((Math.abs(sx-myx)<Snake.RADIUS) && Math.abs(sy-myy)<Snake.RADIUS){
+            System.out.println("TRUE");
+            return true;
+        }
+        return false;
     }
 
 	/**

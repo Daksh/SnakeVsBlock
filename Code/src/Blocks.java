@@ -168,10 +168,10 @@ public class Blocks {
 	private void moveBlockGroup(Group blockGroup){
         if (!_collision)
             blockGroup.setLayoutY(blockGroup.getLayoutY()+BLOCK_SPEED);
-        else{
-            //There is a _collision!
-            blockGroup.setLayoutY(blockGroup.getLayoutY()+BLOCK_SPEED/5);
-        }
+//        else{
+//            //There is a _collision!
+//            blockGroup.setLayoutY(blockGroup.getLayoutY()+BLOCK_SPEED/5);
+//        }
     }
 
 	/**
