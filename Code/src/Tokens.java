@@ -21,8 +21,13 @@ public abstract class Tokens {
 	 */
     public static double TOKEN_SPEED = Blocks.BLOCK_SPEED;
     private ImageView _tokenView = new ImageView();
-    private static Snake _snake;
-    private Group _tokenGroup = new Group();
+    private Tokens _currentTokenObj = null;
+    protected static Snake _snake;
+    protected static Group _tokenGroup = new Group();//should not be static, but it is messy
+
+    public Tokens(){
+        _currentTokenObj = this;
+    }
 
     public static void setSnake(Snake snake){
         _snake = snake;
@@ -49,11 +54,13 @@ public abstract class Tokens {
             public void handle(long now) {
                 Random random = new Random();
                 int rInt1 = random.nextInt(5);
+
+
                 if (_tokenGroup.getLayoutY()>750) {
                     _tokenGroup.getChildren().clear();
 
-                    Tokens t1= getToken(rInt1);
-                    String path = t1.getPath();
+                    _currentTokenObj = getToken(rInt1);
+                    String path = _currentTokenObj.getPath();
                     File imagefile = new File(path);
                     Image TokenImage = new Image(imagefile.toURI().toString());
                     _tokenView.setImage(TokenImage);
@@ -67,7 +74,8 @@ public abstract class Tokens {
                 else{
                     _tokenGroup.setLayoutY(_tokenGroup.getLayoutY()+TOKEN_SPEED);
 //                    System.out.println(_tokenGroup.getLayoutX()+","+_tokenGroup.getLayoutY());
-                    if(checkCollision()) collides();
+//                    if(_currentTokenObj !=null && _currentTokenObj.checkCollision()) _currentTokenObj.collides();
+                    if(checkCollision()) _currentTokenObj.collides();
                 }
             }
         };
@@ -104,7 +112,7 @@ public abstract class Tokens {
 	 * @param a Randomly generated integer which chooses the token to be instantiated.
 	 * @return Token object that has to be spawned.
 	 */
-	protected static Tokens getToken(int a) {
+	private static Tokens getToken(int a) {
         Tokens obj;
         switch (a) {
             case 0:
