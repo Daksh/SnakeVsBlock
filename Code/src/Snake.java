@@ -8,17 +8,24 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-
 import java.util.ArrayList;
-
 import static javafx.scene.paint.Color.*;
 
-//maybe implement Singular Design Concept
+/**
+ * Created by Daksh Shah and Arsh Verma
+ */
+
+/**
+ * TODO: maybe implement Singular Design Concept
+ */
 public class Snake {
     private static final int SNAKEX = 250, RADIUS = 15, STARTY=510, BLOCKHEIGHT=Blocks.HEIGHT;
 
     private ArrayList<Circle> SnakeBody = new ArrayList<Circle>();
 
+    /**
+     * Hi there
+     */
     private Group _snakeGroup;
     private Circle[] _snakeBody;
     private StackPane _snakeHead;
@@ -27,6 +34,10 @@ public class Snake {
     private Scene _scene;
     private Blocks _blocksRef;
 
+    /**
+     * setBlockssssssss
+     * @param blocks
+     */
     public void setBlocksRef(Blocks blocks){
         _blocksRef = blocks;
     }
