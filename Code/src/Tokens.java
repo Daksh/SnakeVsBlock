@@ -92,10 +92,8 @@ public abstract class Tokens {
 	    double myy = _tokenGroup.getLayoutY();
 //        System.out.println(sx+","+sy+"\t"+myx+","+myy);
 
-        if((Math.abs(sx-myx)<Snake.RADIUS) && Math.abs(sy-myy)<Snake.RADIUS){
-            System.out.println("TRUE");
+        if((Math.abs(sx-myx)<Snake.RADIUS) && Math.abs(sy-myy)<Snake.RADIUS)
             return true;
-        }
         return false;
     }
 
