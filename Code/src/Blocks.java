@@ -213,27 +213,16 @@ public class Blocks {
 	 * @param pos position ( block number inside stack with which collision occurs. )
 	 */
 	public void setCollisionWithSnake(StackPane stack, String by, int pos){
-//        System.out.println(stack.getChildren().getClass());
-
-//        Iterator iterator = stack.getChildren().iterator();
-//        while(iterator.hasNext()){
-//            System.out.println(iterator.next().getClass());
-//        }
-
-//        System.out.println(stack.getChildren().get(1).getClass());//TEXT
-
         String weightString = ((javafx.scene.text.Text)stack.getChildren().get(1)).getText();
-        //DOES NOT WORK FOR SOME REASON :(
-        //((javafx.scene.text.Text)stack.getChildren().get(1)).setText("WHAT");
-        int weight = Integer.parseInt(weightString);
 
+        int weight = Integer.parseInt(weightString);
         int snakeLen = _snakeRef.get_length();
 
         if(weight>=snakeLen)
             Game.over();
         else if(weight<=5) {
             _snakeRef.reduce_length(weight);
-//            stack.getChildren().removeAll();
+
             if(by.equals("one")) _oneBlockStack[pos].getChildren().remove(0,1);// .removeAll();
             else _anotherBlockStack[pos].getChildren().remove(0,1);//.clear();//removeAll();
             System.out.println("Removed all elements from stack");
@@ -242,16 +231,6 @@ public class Blocks {
             while(weight>1){
                 _snakeRef.reduce_length(1);
                 weight-=1;
-//                ((javafx.scene.text.Text)stack.getChildren().get(1)).setText(Integer.toString(weight));
-
-                //Trying to make the changes directly but this does not work either
-                /*if(by.equals("one")){
-                    if(_oneBlockStack[pos]!=null)
-                        ((javafx.scene.text.Text)_oneBlockStack[pos].getChildren().get(1)).setText(Integer.toString(weight));
-                } else{
-                    if(_anotherBlockStack[pos]!=null)
-                        ((javafx.scene.text.Text)_anotherBlockStack[pos].getChildren().get(1)).setText(Integer.toString(weight));
-                }*/
 
                 try {
                     Thread.sleep(SLEEPMIL);

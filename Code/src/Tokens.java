@@ -21,7 +21,11 @@ public abstract class Tokens {
 	 */
     public static double TOKEN_SPEED = 3;
     private ImageView _TokenView = new ImageView();
+    private Snake _snake;
 
+    public Tokens(Snake snake){
+        _snake = snake;
+    }
 
 	/**
 	 * adds a random taken to gameplay. Ramdom integer generated recurrently to determine the token to be spawned.
@@ -48,13 +52,13 @@ public abstract class Tokens {
                 if (tokens.getLayoutY()>750) {
                     Tokens t1= getToken(rInt1);
                     String path = t1.getPath();
-                    File imagefile= new File(path);
+                    File imagefile = new File(path);
                     Image TokenImage = new Image(imagefile.toURI().toString());
                     _TokenView.setImage(TokenImage);
                     _TokenView.setFitHeight(30);
                     _TokenView.setFitWidth(30);
                     tokens.setLayoutY(-700);
-                    tokens.setLayoutX(random.nextInt(440)-220);//Bounded from 20 to 220 when the screen is from 0 to 240
+                    tokens.setLayoutX(30+random.nextInt(440)-220-60);//Bounded from 20 to 220 when the screen is from 0 to 240
                 }
                 else{
                     tokens.setLayoutY(tokens.getLayoutY()+TOKEN_SPEED);
