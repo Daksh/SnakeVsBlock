@@ -19,6 +19,12 @@ import static javafx.scene.paint.Color.*;
  * TODO: maybe implement Singular Design Concept
  */
 public class Snake {
+	/**
+	 * SNAKEX : x coordinate of snake at beginning = centre of screen
+	 * RADIUS : Radius of snake body circle.
+	 * STARTY: y coordinate of snake starting position on screen
+	 * BLOCKHEIGHT : Height of blocks that are initialized.
+	 */
     private static final int SNAKEX = 250, RADIUS = 15, STARTY=510, BLOCKHEIGHT=Blocks.HEIGHT;
 
     private ArrayList<Circle> SnakeBody = new ArrayList<Circle>();
@@ -35,7 +41,12 @@ public class Snake {
         _blocksRef = blocks;
     }
 
-    public Snake(int length, Scene scene){
+	/**
+	 *  Initializes snake
+	 * @param length Length of snake to be initialized
+	 * @param scene Scene of game play
+	 */
+	public Snake(int length, Scene scene){
         _length = length;
         _scene = scene;
         _checkedCollision = false;
@@ -66,11 +77,19 @@ public class Snake {
         return _length;
     }
 
-    public void reduce_length(int delta){
+	/**
+	 * Reduces length of snake
+	 * @param delta Change in length of snake
+	 */
+	public void reduce_length(int delta){
         set_length(get_length()-delta);
     }
 
-    private void set_length(int length){
+	/**
+	 * Sets length of snake to specific value
+	 * @param length New length of snake
+	 */
+	private void set_length(int length){
         if(length==0){//REMOVE?
             System.out.println("END GAME!!!");
             //add code here :P
@@ -125,7 +144,10 @@ public class Snake {
         });
     }
 
-    private void animateSnake() {
+	/**
+	 * Move snake across screen, left to right
+	 */
+	private void animateSnake() {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -151,7 +173,12 @@ public class Snake {
         _snakeGroup.setLayoutX(_snakeGroup.getLayoutX() + delta);
     }
 
-    private int inRegionOfBlocks(Blocks B1) { //just by the y coordinate
+	/**
+	 * Checks y coordinate of block and snake to see if collision occurs with either set of blocks
+	 * @param B1 Blcoks object reference to check status of groups of blocks
+	 * @return
+	 */
+	private int inRegionOfBlocks(Blocks B1) { //just by the y coordinate
         double checkFrom = _snakeGroup.getLayoutY();
         double checkWith = B1.yCoordinateOfFirstSetOfBlocks()-400-BLOCKHEIGHT+((double)RADIUS/2);
         if (checkFrom>checkWith && checkFrom<checkWith+BLOCKHEIGHT)
