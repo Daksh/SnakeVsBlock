@@ -21,10 +21,19 @@ public abstract class Tokens {
 //
 //        path1 = tokenObj.getPath();
 //    }
+
+	/**
+	 * Token speed defines the speed of downward motion of token
+	 */
     public static double TOKEN_SPEED = 3;
     ImageView TokenView= new ImageView();
 
-    protected void addToken(Scene scene) {
+
+	/**
+	 * adds a random taken to gameplay. Ramdom integer generated recurrently to determine the token to be spawned.
+	 * @param scene Provides scene to which token needs to be added. It is the game play scene.
+	 */
+	protected void addToken(Scene scene) {
 
         Group tokens= new Group();
 

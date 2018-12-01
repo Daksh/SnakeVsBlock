@@ -16,22 +16,45 @@ import javafx.scene.text.Text;
 import java.util.Random;
 
 public class Blocks {
+	/**
+	 * WIDTH, HEIGHT : state of the blocks to be spawned.
+	 * NUM : Max number of blocks that can be spawned in a scene.
+	 * SLEEPMIL : Time for which Thread should stop running for each block
+	 * that is reduced in snake length (if BLOCK_WEIGHT>5);
+	 * BLOCK_SPEED : Defines the speed of downward transition of the block.
+	 */
     public static final int WIDTH = 98, HEIGHT = 100, NUM=5, SLEEPMIL=100;
     public static double BLOCK_SPEED = 3;
 
-    //Set of Colors of Google, https://www.color-hex.com/color-palette/67855
+	/**
+	 * Set of Colors of Google, https://www.color-hex.com/color-palette/67855
+	 */
     private static final javafx.scene.paint.Color[] colorPalette = {javafx.scene.paint.Color.web("#4285f4"),
             javafx.scene.paint.Color.web("#ea4335"),
             javafx.scene.paint.Color.web("#fbbc05"),
             javafx.scene.paint.Color.web("#34a853"),
             javafx.scene.paint.Color.web("#673ab7")};
-    private Group _oneBlockGroup, _anotherBlockGroup;
+
+	/**
+	 * _oneBlockGroup : First group of blocks that translate to bottom.
+	 * _anotherBlockGroup : Second groups of blocks that translate to bottom.
+	 * _oneBlockStack : Stack of first group of blocks. Contains information of each block in group.
+	 * _anotherBlockStack : Stack of second group of blocks. Contains information of each block in group.
+	 * _collision : boolean variable that checks for collision between block and snake
+	 * _snakeRef : Stores reference to snake object from the game.
+	 */
+	private Group _oneBlockGroup, _anotherBlockGroup;
     private StackPane[] _oneBlockStack, _anotherBlockStack;
     private boolean _collision;
     private Snake _snakeRef;
     private Random _random;
 
-    public Blocks(Snake snake, Scene scene){
+	/**
+	 * Initializes block groups amd adds them to scene. Starts their animation
+	 * @param snake Reference of snake object from game play
+	 * @param scene Reference of game play scene
+	 */
+	public Blocks(Snake snake, Scene scene){
         _snakeRef = snake;
         _random = new Random();
         _oneBlockStack = new StackPane[NUM];
