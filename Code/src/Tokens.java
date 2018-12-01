@@ -60,7 +60,14 @@ public abstract class Tokens {
         timer.start();
     }
 
-    protected static Tokens getToken(int a) {
+	/**
+	 * Generates a new token based on a randomly generated integer
+	 * (range 0 to 4; one for each of the 5 tokens)
+	 *
+	 * @param a Randomly generated integer which chooses the token to be instantiated.
+	 * @return Token object that has to be spawned.
+	 */
+	protected static Tokens getToken(int a) {
         Tokens obj;
         switch (a) {
             case 0:
@@ -84,6 +91,10 @@ public abstract class Tokens {
         return obj;
     }
 
-
+	/**
+	 * Abstract method implemented in subclasses;
+	 *
+	 * @return Returns the token path in file directory.
+	 */
     protected abstract String getPath();
 }
