@@ -151,7 +151,7 @@ public class Snake {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if (_checkedCollision==false && _blocksRef!=null && inRegionOfBlocks(_blocksRef)>0) {
+                if (!_checkedCollision && _blocksRef!=null && inRegionOfBlocks(_blocksRef)>0) {
                     double d1= _snakeGroup.getLayoutX();
                     _blocksRef.checkCollisionWithSnake(inRegionOfBlocks(_blocksRef),d1);//to confirm the block availab. at that position
                     _checkedCollision = true;
@@ -175,11 +175,11 @@ public class Snake {
 
 	/**
 	 * Checks y coordinate of block and snake to see if collision occurs with either set of blocks
-	 * @param B1 Blcoks object reference to check status of groups of blocks
-	 * @return
+	 * @param B1 Blocks object reference to check y coordinate of both blockGroups
+	 * @return 1,2 or 0
 	 */
-	private int inRegionOfBlocks(Blocks B1) { //just by the y coordinate
-        double checkFrom = _snakeGroup.getLayoutY();
+	private int inRegionOfBlocks(Blocks B1) {
+        double checkFrom = _snakeGroup.getLayoutY();//Snake's head's y
         double checkWith = B1.yCoordinateOfFirstSetOfBlocks()-400-BLOCKHEIGHT+((double)RADIUS/2);
         if (checkFrom>checkWith && checkFrom<checkWith+BLOCKHEIGHT)
             return 1;

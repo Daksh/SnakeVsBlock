@@ -15,18 +15,12 @@ import java.io.File;
 import java.util.Random;
 
 public abstract class Tokens {
-//    String path1;
-//    Tokens tokenObj;
-//    public Tokens() {
-//
-//        path1 = tokenObj.getPath();
-//    }
 
 	/**
 	 * Token speed defines the speed of downward motion of token
 	 */
     public static double TOKEN_SPEED = 3;
-    ImageView TokenView= new ImageView();
+    private ImageView _TokenView = new ImageView();
 
 
 	/**
@@ -34,13 +28,10 @@ public abstract class Tokens {
 	 * @param scene Provides scene to which token needs to be added. It is the game play scene.
 	 */
 	protected void addToken(Scene scene) {
+        Group tokens = new Group();
+        tokens.getChildren().add(_TokenView);
 
-        Group tokens= new Group();
-
-        tokens.getChildren().add(TokenView);
-
-        Group tokensgroup= (Group) scene.getRoot();
-
+        Group tokensgroup = (Group)scene.getRoot();
 		tokensgroup.getChildren().add(tokens);
 
 		/**
@@ -55,14 +46,13 @@ public abstract class Tokens {
                 Random random = new Random();
                 int rInt1 = random.nextInt(5);
                 if (tokens.getLayoutY()>750) {
-                    //System.out.println("hello");
                     Tokens t1= getToken(rInt1);
                     String path = t1.getPath();
                     File imagefile= new File(path);
                     Image TokenImage = new Image(imagefile.toURI().toString());
-                    TokenView.setImage(TokenImage);
-                    TokenView.setFitHeight(30);
-                    TokenView.setFitWidth(30);
+                    _TokenView.setImage(TokenImage);
+                    _TokenView.setFitHeight(30);
+                    _TokenView.setFitWidth(30);
                     tokens.setLayoutY(-700);
                     tokens.setLayoutX(random.nextInt(440)-220);//Bounded from 20 to 220 when the screen is from 0 to 240
                 }
@@ -108,7 +98,7 @@ public abstract class Tokens {
 	/**
 	 * Abstract method implemented in subclasses;
 	 *
-	 * @return Returns the token path in file directory.
+	 * @return Returns the token image path in file directory.
 	 */
     protected abstract String getPath();
 }
