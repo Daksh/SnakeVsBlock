@@ -61,6 +61,7 @@ public class Game extends Application {
 		masterSnake.setBlocksRef(testBlocks);
 
 		testMagnet.addToken(scene);
+		testWall.addWall(scene);
 	}
 
     public static void main(String[] args) {

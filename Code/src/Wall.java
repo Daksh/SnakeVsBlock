@@ -6,23 +6,27 @@
  * @author Daksh Shah & Arsh Verma
  */
 
-import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
-import javafx.animation.TranslateTransition;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
-
+import java.util.Random;
 import static javafx.scene.paint.Color.WHITE;
 
 public class Wall {
-    protected void addWall(Scene scene) {
-        Rectangle Wall1= new Rectangle(1,200, WHITE);
+	public static double WALL_SPEED = 3;
+	Random random = new Random();
+	Rectangle Wall1, Wall2;
 
-        Rectangle Wall2= new Rectangle(1,200, WHITE);
-        Wall1.setX(200);
-        Wall2.setX(400);
+	protected void addWall(Scene scene) {
+    	int r1 = random.nextInt(300)+250;
+		int r2 = random.nextInt(300)+250;
+        Wall1= new Rectangle(2,r1, WHITE);
+        Wall2= new Rectangle(2,r2, WHITE);
+		int r3 = random.nextInt(3)+1;
+		int r4 = random.nextInt(3)+1;
+        Wall1.setX(99*r3);
+        Wall2.setX(99*r4);
 
         Group walls= new Group();
 
@@ -30,31 +34,32 @@ public class Wall {
         walls.getChildren().add(Wall2);
         walls.setLayoutY(-700);
 
-        Group wallgroup= (Group) scene.getRoot();
-
+        Group wallgroup = (Group) scene.getRoot();
         wallgroup.getChildren().add(walls);
-        TranslateTransition transition1 = new TranslateTransition();
 
-        transition1.setNode(walls);
+		AnimationTimer timer = new AnimationTimer() {
+			@Override
+			public void handle(long now) {
 
-        transition1.setByY(1700);
-        transition1.setDuration(Duration.millis(7000));
-        transition1.setCycleCount(Animation.INDEFINITE);
-        transition1.play();
-
-        //wallgroup.setLayoutX();
-        AnimationTimer timer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                if (wallgroup.getLayoutY()>750) {
-                    wallgroup.setLayoutY(-500);
-                }
-                else{
-                    wallgroup.setLayoutY(wallgroup.getLayoutY()+5);
-                }
-            }
-        };
-        timer.start();
-
+				if (walls.getLayoutY()>750) {
+					int r1 = random.nextInt(300)+250;
+					int r2 = random.nextInt(300)+250;
+					Wall1= new Rectangle(2,r1, WHITE);
+					Wall2= new Rectangle(2,r2, WHITE);
+					int r3 = random.nextInt(3)+1;
+					int r4 = random.nextInt(3)+1;
+					Wall1.setX(99*r3);
+					Wall2.setX(99*r4);
+					walls.getChildren().clear();
+					walls.getChildren().add(Wall1);
+					walls.getChildren().add(Wall2);
+					walls.setLayoutY(-700);
+				}
+				else{
+					walls.setLayoutY(walls.getLayoutY()+WALL_SPEED);
+				}
+			}
+		};
+		timer.start();
     }
 }

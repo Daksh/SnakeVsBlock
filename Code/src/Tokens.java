@@ -23,9 +23,9 @@ public abstract class Tokens {
     private ImageView _TokenView = new ImageView();
     private Snake _snake;
 
-    public Tokens(Snake snake){
+    /*public Tokens(Snake snake){
         _snake = snake;
-    }
+    }*/
 
 	/**
 	 * adds a random taken to gameplay. Ramdom integer generated recurrently to determine the token to be spawned.
