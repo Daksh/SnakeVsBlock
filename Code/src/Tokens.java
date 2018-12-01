@@ -31,11 +31,16 @@ public abstract class Tokens {
         tokens.getChildren().add(TokenView);
 
         Group tokensgroup= (Group) scene.getRoot();
+        
+		tokensgroup.getChildren().add(tokens);
 
-        tokensgroup.getChildren().add(tokens);
+		/**
+		 * Animation Timer to translate token along with blocks.
+		 * Image of token is set inside imageView.
+		 * Token translated towards bottom end while it is inside screen. Moved to top when it violates lower bound.
+		 */
 
-
-        AnimationTimer timer = new AnimationTimer() {
+		AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 Random random = new Random();
