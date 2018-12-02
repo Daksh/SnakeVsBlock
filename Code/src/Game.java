@@ -124,9 +124,9 @@ public class Game extends Application {
         try {
             Thread.sleep(1000);
             Game.prevScore = Game.Score;
-            System.exit(1);
+            //System.exit(1);
 			HomeCtrl hm = new HomeCtrl();
-			hm.updatePrevBest();
+			//hm.updatePrevBest();
 			//hm.openHomeScreen(Game.mainStage);
 			//Thread.interrupted();
         } catch (InterruptedException e) {
