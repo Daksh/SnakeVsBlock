@@ -23,6 +23,7 @@ public abstract class Tokens {
     private ImageView _tokenView = new ImageView();
     private Tokens _currentTokenObj = null;
     protected static Snake _snake;
+    protected static Blocks _blocks;
     protected Group _tokenGroup = new Group();
 
     public Tokens(){
@@ -34,6 +35,7 @@ public abstract class Tokens {
     public static void setSnake(Snake snake){
         _snake = snake;
     }
+    public static void setBlocks(Blocks block){ _blocks = block;}
 
 	/**
 	 * adds a random taken to gameplay. Ramdom integer generated recurrently to determine the token to be spawned.

@@ -105,7 +105,7 @@ public class Snake {
 	 */
 	public void reduce_length(int delta){
         if(!_shieldStatus) set_length(get_length()-delta);
-		Game.gameMenu3.setText(Integer.toString(Integer.parseInt(Game.gameMenu3.getText())+delta));
+        Game.increaseScore(delta);
     }
 
 	/**

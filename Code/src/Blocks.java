@@ -4,7 +4,6 @@
  * @author Daksh Shah and Arsh Verma
  */
 
-import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -15,7 +14,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-
 import java.io.File;
 import java.util.Random;
 
@@ -165,6 +163,9 @@ public class Blocks {
                 if(_anotherBlockGroup.getLayoutY() > 750){
                     _anotherBlockGroup = initBlocks(rootSceneGroup,0,-500,"another");//-150 originally
                 } else moveBlockGroup(_anotherBlockGroup);
+//                System.out.println("_oneBlockGroup's y: "+_oneBlockGroup.getLayoutY());
+//                System.out.println("_anotherBlockGroup's y: "+_anotherBlockGroup.getLayoutY());
+
             }
         };
         timer.start();
@@ -214,6 +215,34 @@ public class Blocks {
             if(_anotherBlockStack[pos]!=null) setCollisionWithSnake(_anotherBlockStack[pos],"another",pos);
             else setCollisionWithSnake(false);
         }
+    }
+
+    public void destroyAllBlocksInScreen(){
+	    int totalWeight = 0;
+
+	    if(checkBlockSetInScreen(_oneBlockGroup)){
+	        for(int i=0; i<NUM; i++){
+                if(_oneBlockStack[i]!=null) {
+                    totalWeight += Integer.parseInt(((Text)_oneBlockStack[i].getChildren().get(1)).getText());
+                    _oneBlockStack[i].getChildren().clear();
+                }
+            }
+        }
+
+        if(checkBlockSetInScreen(_anotherBlockGroup)){
+            for(int i=0; i<NUM; i++){
+                if(_anotherBlockStack[i]!=null) {
+                    totalWeight += Integer.parseInt(((Text)_anotherBlockStack[i].getChildren().get(1)).getText());
+                    _anotherBlockStack[i].getChildren().clear();
+                }
+            }
+        }
+
+        Game.increaseScore(totalWeight);
+	}
+
+    private boolean checkBlockSetInScreen(Group blocksGroup){
+	    return blocksGroup.getLayoutY()>-100 && blocksGroup.getLayoutY()<650;
     }
 
 	/**

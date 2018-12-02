@@ -32,12 +32,15 @@ public class Game extends Application {
     private BorderPane layout;
     private Random random = new Random();
     private int rInt = random.nextInt(5);
+
+    private static Menu gameMenu3;
+
     public static int Score = 0;
     public static int prevScore=0;
-    public static Menu gameMenu3;
     public static int sceneCol=0;
-    Game playGame;
     public static boolean isResumable = false;
+
+    Game playGame;
     static Stage mainStage;
 
 	protected void setUpGame (Snake masterSnake, Blocks testBlocks, Wall testWall, Tokens testMagnet, Stage primaryStage) throws IOException
@@ -75,6 +78,7 @@ public class Game extends Application {
 		masterSnake = Snake.getInstance(20, scene);
 		testBlocks = new Blocks(masterSnake,scene);//needs Snake to know what kind of blocks to spell
 		masterSnake.setBlocksRef(testBlocks);
+		Tokens.setBlocks(testBlocks);
 		Tokens.setSnake(masterSnake);
 		Wall.setSnake(masterSnake);
 
@@ -119,6 +123,22 @@ public class Game extends Application {
 		MediaPlayer mediaPlayer = new MediaPlayer(sound);
 		mediaPlayer.play();
 	}
+
+	private static void updateScoreLabel(int score){
+	    Game.Score = score;
+        Game.gameMenu3.setText(Integer.toString(score));
+    }
+
+    public static void increaseScore(int delta){
+        Game.Score = Game.Score + delta;
+        updateScoreLabel(Game.Score);
+    }
+
+    public static int getScore(){
+        return Game.Score;
+    }
+
+
     public static void over() {
         System.out.println("GAME OVER from GAME.java");
         try {

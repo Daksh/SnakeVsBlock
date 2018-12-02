@@ -8,6 +8,7 @@ import javafx.scene.Group;
 
 public class DestroyBlocks extends Tokens {
     protected  String path = "./../Images/icons8-explosion-96.png";
+    private boolean coll = false;
 
     public DestroyBlocks(Group tg){super(tg);}
     public DestroyBlocks(){super();}
@@ -24,7 +25,22 @@ public class DestroyBlocks extends Tokens {
     public void collides(){
         if(_tokenGroup!=null && _snake!=null) {
             System.out.println("DestroyBlocks COLLISION");
-            _tokenGroup.getChildren().clear();
+
+            Thread t = new Thread(() -> {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                this.coll = false;
+            });
+            t.start();
+
+            if(!coll){
+                _blocks.destroyAllBlocksInScreen();
+                _tokenGroup.getChildren().clear();
+                coll = true;
+            }
         }
     }
 }
