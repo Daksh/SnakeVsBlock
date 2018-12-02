@@ -26,6 +26,7 @@ public class Magnet extends Tokens{
         if(_tokenGroup!=null && _snake!=null) {
             System.out.println("Magnet COLLISION");
             _tokenGroup.getChildren().clear();
+            Tokens.setMagnetOnFor(5000);
         }
     }
 }

@@ -20,11 +20,30 @@ public abstract class Tokens {
 	 * Token speed defines the speed of downward motion of token
 	 */
     public static double TOKEN_SPEED = Blocks.BLOCK_SPEED;
+    public static final int MAGNETMUL = 4;
+
     private ImageView _tokenView = new ImageView();
     private Tokens _currentTokenObj = null;
     protected static Snake _snake;
     protected static Blocks _blocks;
     protected Group _tokenGroup = new Group();
+
+    private static int _magnetMultiplier = 1;
+
+    public static void setMagnetOnFor(long duration){
+        Tokens._magnetMultiplier = Tokens.MAGNETMUL;
+
+        Thread t = new Thread(() -> {
+            try {
+                Thread.sleep(duration);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Turning off Magnet Affect");
+            Tokens._magnetMultiplier = 1;
+        });
+        t.start();
+    }
 
     public Tokens(){
         _currentTokenObj = this;
@@ -104,7 +123,7 @@ public abstract class Tokens {
 	    double myy = _tokenGroup.getLayoutY();
 //        System.out.println(sx+","+sy+"\t"+myx+","+myy);
 
-        if((Math.abs(sx-myx)<Snake.RADIUS+15) && Math.abs(sy-myy)<Snake.RADIUS)
+        if((Math.abs(sx-myx)<(Snake.RADIUS+15)*_magnetMultiplier) && Math.abs(sy-myy)<(Snake.RADIUS*_magnetMultiplier))
             return true;
         return false;
     }
