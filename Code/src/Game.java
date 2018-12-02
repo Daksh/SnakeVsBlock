@@ -83,6 +83,10 @@ public class Game extends Application implements Serializable {
 		masterSnake.setBlocksRef(testBlocks);
 		Tokens.setBlocks(testBlocks);
 		Tokens.setSnake(masterSnake);
+
+		BallTokens.setBlocks(testBlocks);
+		BallTokens.setSnake(masterSnake);
+
 		Wall.setSnake(masterSnake);
 
 		testMagnet.addToken(scene);
@@ -90,6 +94,11 @@ public class Game extends Application implements Serializable {
 		testMagnet2.addToken(scene);
 		scene1=scene;
 		new Magnet().addToken(scene);
+
+        new TokenBallInher().addToken(scene);
+        new TokenBallInher().addToken(scene);
+        new TokenBallInher().addToken(scene);
+        new TokenBallInher().addToken(scene);
 
 		testWall.addWall(scene);
 	}

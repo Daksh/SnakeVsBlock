@@ -125,6 +125,11 @@ public class Snake implements Serializable{
         Game.increaseScore(delta);
     }
 
+    public void increase_length(int delta){
+	    System.out.println("Trying to increase snake's length by "+delta);
+        set_length(get_length()+delta);
+    }
+
 	/**
 	 * Sets length of snake to specific value
 	 * @param length New length of snake
