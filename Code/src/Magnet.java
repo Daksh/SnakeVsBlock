@@ -9,7 +9,7 @@ public class Magnet extends Tokens{
     protected String path = "./../Images/icons8-magnet-96.png";
 
 	/**
-	 * @return Path of the token image in directory
+	 * at return Path of the token image in directory
 	 */
 	public Magnet(Group t){
 	    super(t);

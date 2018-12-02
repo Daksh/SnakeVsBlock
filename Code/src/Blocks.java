@@ -26,7 +26,7 @@ public class Blocks implements Serializable{
 	 * WIDTH, HEIGHT : state of the blocks to be spawned.
 	 * NUM : Max number of blocks that can be spawned in a scene.
 	 * SLEEPMIL : Time for which Thread should stop running for each block
-	 * that is reduced in snake length (if BLOCK_WEIGHT>5);
+	 * that is reduced in snake length (if BLOCK_WEIGHT &gt; 5);
 	 * BLOCK_SPEED : Defines the speed of downward transition of the block.
 	 */
     public static final int WIDTH = 98, HEIGHT = 100, NUM=5, SLEEPMIL=100;
@@ -90,7 +90,7 @@ public class Blocks implements Serializable{
 	/**
 	 * Makes a stack pane to link the block with its weight and xCoordinate
 	 *
-	 * @param weight Initial weight of block to be created. Weight  = 0 -> No block required in that position.
+	 * @param weight Initial weight of block to be created. Weight  = 0 - No block required in that position.
 	 * @param xCoord Horizontal position of block on screen.
 	 * @return StackPane of Block
 	 */
