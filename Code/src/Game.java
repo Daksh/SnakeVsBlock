@@ -96,10 +96,7 @@ public class Game extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-//		String musicFile = "./src/sound.mp3";
-//		Media sound = new Media(new File(musicFile).toURI().toString());
-//		MediaPlayer mediaPlayer = new MediaPlayer(sound);
-//		mediaPlayer.play();
+		//addMusic();
         primaryStage.setTitle("SnakeVsBlock");
         playGame = new Game();
 
@@ -115,6 +112,13 @@ public class Game extends Application {
 
         primaryStage.show();
     }
+
+    public void addMusic() {
+		String musicFile = "./src/sound.mp3";
+		Media sound = new Media(new File(musicFile).toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(sound);
+		mediaPlayer.play();
+	}
     public static void over() {
         System.out.println("GAME OVER from GAME.java");
         try {
