@@ -15,9 +15,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import java.io.File;
+import java.io.Serializable;
 import java.util.Random;
 
-public class Blocks {
+public class Blocks implements Serializable{
 	/**
 	 * WIDTH, HEIGHT : state of the blocks to be spawned.
 	 * NUM : Max number of blocks that can be spawned in a scene.

@@ -10,10 +10,12 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.shape.Rectangle;
+
+import java.io.Serializable;
 import java.util.Random;
 import static javafx.scene.paint.Color.WHITE;
 
-public final class Wall {
+public final class Wall implements Serializable {
 	public static double WALL_SPEED = Blocks.BLOCK_SPEED;
 
 	private static Random random = new Random();

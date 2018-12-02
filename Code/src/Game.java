@@ -18,8 +18,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Random;
 
 import static javafx.scene.paint.Color.*;
@@ -146,7 +145,7 @@ public class Game extends Application {
         try {
             Thread.sleep(1000);
             Game.prevScore = Game.Score;
-            //System.exit(1);
+            System.exit(1);
 			HomeCtrl hm = new HomeCtrl();
 			//hm.updatePrevBest();
 			//hm.openHomeScreen(Game.mainStage);

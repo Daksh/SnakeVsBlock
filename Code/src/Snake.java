@@ -9,6 +9,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+
+import java.io.*;
 import java.util.ArrayList;
 import static javafx.scene.paint.Color.*;
 
@@ -19,7 +21,7 @@ import static javafx.scene.paint.Color.*;
 /**
  * Singleton Design Pattern
  */
-public class Snake {
+public class Snake implements Serializable{
 	/**
 	 * SNAKEX : x coordinate of snake at beginning = centre of screen
 	 * RADIUS : Radius of snake body circle.
@@ -251,4 +253,5 @@ public class Snake {
             return 2;
         return 0;
     }
+
 }
