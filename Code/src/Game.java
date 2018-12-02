@@ -13,9 +13,12 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
@@ -51,7 +54,6 @@ public class Game extends Application {
 		gameMenu2.getItems().add(new MenuItem("Modify settings"));
 		Menu gameMenu4 = new Menu ( "								Score: ");
 		gameMenu3 = new Menu (Integer.toString(Score));
-
 
 		MenuBar Bar = new MenuBar();
 		Bar.getMenus().addAll(gameMenu,gameMenu2, gameMenu4,gameMenu3);
@@ -94,6 +96,10 @@ public class Game extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+//		String musicFile = "./src/sound.mp3";
+//		Media sound = new Media(new File(musicFile).toURI().toString());
+//		MediaPlayer mediaPlayer = new MediaPlayer(sound);
+//		mediaPlayer.play();
         primaryStage.setTitle("SnakeVsBlock");
         playGame = new Game();
 

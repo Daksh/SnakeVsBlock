@@ -11,33 +11,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginCtrl">
    <children>
-      <MenuBar layoutX="61.0" layoutY="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Game">
-            <items>
-                  <MenuItem mnemonicParsing="false" text="New Game" />
-                  <MenuItem disable="true" mnemonicParsing="false" text="Resume Game" />
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Leaderboard">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Player Leaderboard" />
-                  <MenuItem mnemonicParsing="false" text="Star Player" />
-                  <MenuItem mnemonicParsing="false" text="Global Leaderboard" />
-              </items>
-            </Menu>
-          <Menu mnemonicParsing="false" text="Settings" />
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <SplitPane dividerPositions="0.2" layoutY="32.0" maxHeight="700.0" maxWidth="500.0" minHeight="700.0" minWidth="500.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="500.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
+      <SplitPane dividerPositions="0.2" layoutY="32.0" maxHeight="700.0" maxWidth="500.0" minHeight="700.0" minWidth="500.0" orientation="VERTICAL" prefHeight="700.0" prefWidth="500.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="100.0" minWidth="160.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="100.0" minWidth="160.0" prefHeight="161.0" prefWidth="498.0">
                <children>
                   <Label alignment="CENTER" layoutX="194.0" layoutY="77.0" prefHeight="196.0" prefWidth="498.0" style="-fx-background-color: #000000;" text="Snake Vs Blocks" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
