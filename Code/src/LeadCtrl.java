@@ -32,18 +32,19 @@ public class LeadCtrl implements Initializable {
 	@FXML public TableColumn Name;
 	@FXML public TableColumn Date;
 	@FXML public TableColumn Score;
-
-	public ObservableList<User> data = FXCollections.observableArrayList(new User("Arsh", 34),new User("Daksh", 37));
+	public ObservableList<User> data = FXCollections.observableArrayList(new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37),new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34), new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37));
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//data.sort();
+		Score.setSortType(TableColumn.SortType.DESCENDING);
 		SNo.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(Integer.toString(data.size())));
 		//SNo.setCellValueFactory(new PropertyValueFactory<User, Integer>("S.No."));
 		Name.setCellValueFactory(new PropertyValueFactory<User, String>("Name"));
 		Date.setCellValueFactory(new PropertyValueFactory<User, LocalDate>("Date"));
 		Score.setCellValueFactory(new PropertyValueFactory<User, Integer>("Score"));
-		Score.setSortType(TableColumn.SortType.DESCENDING);
-		TableView.getItems().setAll(data);
 
+		TableView.getItems().setAll(data);
+		Score.setSortType(TableColumn.SortType.ASCENDING);
 	}
 
 	/**
