@@ -26,18 +26,7 @@ public class Shield extends Tokens {
         if(_tokenGroup!=null && _snake!=null) {
             System.out.println("Shield COLLISION");
             _tokenGroup.getChildren().clear();
-            Snake.setShieldStatus(true);
-
-            Thread t = new Thread(() -> {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                Snake.setShieldStatus(false);
-            });
-            t.start();
-
+            Snake.setShieldOnFor(5000);
         }
     }
 }

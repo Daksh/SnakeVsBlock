@@ -42,10 +42,24 @@ public class Snake {
     private static boolean _shieldStatus = false;
     public static int colour;
 
-    public static void setShieldStatus(boolean bool){
+    private static void setShieldStatus(boolean bool){
         System.out.println("Setting Snake Shield to "+bool);
         _shieldStatus = bool;
     }
+    public static void setShieldOnFor(long duration){
+        Snake.setShieldStatus(true);
+
+        Thread t = new Thread(() -> {
+            try {
+                Thread.sleep(duration);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Snake.setShieldStatus(false);
+        });
+        t.start();
+    }
+
     public static boolean getShieldStatus(){
         return _shieldStatus;
     }
