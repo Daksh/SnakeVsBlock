@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -17,6 +18,8 @@ import javafx.scene.text.Text;
 import java.io.File;
 import java.io.Serializable;
 import java.util.Random;
+
+import static javafx.scene.paint.Color.WHITE;
 
 public class Blocks implements Serializable{
 	/**
@@ -30,7 +33,7 @@ public class Blocks implements Serializable{
     public static double BLOCK_SPEED = 3;
 	File imagefile = new File("./BurstAnimation.gif");
 	Image burst = new Image(imagefile.toURI().toString());
-	private Scene scene;
+	private Scene _scene;
 	private Group AnimationGroup = new Group();
 	public ImageView AnimationView = new ImageView();
 	public static AnimationTimer timer;
@@ -71,6 +74,7 @@ public class Blocks implements Serializable{
         _random = new Random();
         _oneBlockStack = new StackPane[NUM];
         _anotherBlockStack = new StackPane[NUM];
+        _scene = scene;
 
         Group rootSceneGroup = (Group)scene.getRoot();
 
@@ -258,6 +262,19 @@ public class Blocks implements Serializable{
 	public void setCollisionWithSnake(StackPane stack, String by, int pos){
         if(stack.getChildren().isEmpty())
             return;
+
+	    Paint fill = _scene.getFill();
+        _scene.setFill(WHITE);
+        Thread t = new Thread(() -> {
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            _scene.setFill(fill);
+        });
+        t.start();
+
 		String weightString = ((Text)stack.getChildren().get(1)).getText();
 
         int weight = Integer.parseInt(weightString);
@@ -276,6 +293,7 @@ public class Blocks implements Serializable{
 //			AnimationView.setX(_snakeRef.getXCoordinate());
 //			AnimationView.setY(_snakeRef.getYCoordinate());
 //			AnimationGroup.getChildren().add(AnimationView);
+
             if(by.equals("one")) {
             	_oneBlockStack[pos].getChildren().clear();
 				_oneBlockGroup.getChildren().add(AnimationGroup);
