@@ -75,7 +75,7 @@ public abstract class Tokens {
                 }
                 else{
                     _tokenGroup.setLayoutY(_tokenGroup.getLayoutY()+TOKEN_SPEED);
-                    System.out.println(_tokenGroup.getLayoutX()+","+_tokenGroup.getLayoutY());
+//                    System.out.println(_tokenGroup.getLayoutX()+","+_tokenGroup.getLayoutY());
 //                    if(_currentTokenObj !=null && _currentTokenObj.checkCollision()) _currentTokenObj.collides();
                     if(checkCollision()) _currentTokenObj.collides();
                 }
@@ -102,7 +102,7 @@ public abstract class Tokens {
 	    double myy = _tokenGroup.getLayoutY();
 //        System.out.println(sx+","+sy+"\t"+myx+","+myy);
 
-        if((Math.abs(sx-myx)<Snake.RADIUS) && Math.abs(sy-myy)<Snake.RADIUS)
+        if((Math.abs(sx-myx)<Snake.RADIUS+15) && Math.abs(sy-myy)<Snake.RADIUS)
             return true;
         return false;
     }
