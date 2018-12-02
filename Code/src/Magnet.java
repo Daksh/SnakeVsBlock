@@ -1,3 +1,5 @@
+import javafx.scene.Group;
+
 /**
  * Inherits from Token class. Initializes a magnet image inside image view.
  *
@@ -9,6 +11,11 @@ public class Magnet extends Tokens{
 	/**
 	 * @return Path of the token image in directory
 	 */
+	public Magnet(Group t){
+	    super(t);
+    }
+    public Magnet(){super();};
+
 	@Override
     protected String getPath() {
         return this.path;

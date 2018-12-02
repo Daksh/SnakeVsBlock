@@ -1,3 +1,5 @@
+import javafx.scene.Group;
+
 /**
  * Inherits from Token class. Initializes a coin image inside image view.
  *
@@ -6,6 +8,11 @@
 
 public class Coin extends Tokens {
     protected  String path = "./../Images/icons8-cheap-2-96.png";
+
+    public Coin(Group tg){
+        super(tg);
+    }
+    public Coin(){super();}
 
 	/**
 	 * @return Path of the token image in directory

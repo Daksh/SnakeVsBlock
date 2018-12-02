@@ -1,3 +1,5 @@
+import javafx.scene.Group;
+
 /**
  * Inherits from Token class. Initializes a shield image inside image view.
  *
@@ -6,6 +8,10 @@
 
 public class Shield extends Tokens {
     protected  String path = "./../Images/icons8-shield-96.png";
+
+    public Shield(Group tg){
+        super(tg);
+    }
 
 	/**
 	 * @return Path of the token image in directory

@@ -1,3 +1,5 @@
+import javafx.scene.Group;
+
 /**
  * Inherits from Token class. Initializes the balls to be collected during game play
  * in accordance with avatar of snake.
@@ -8,6 +10,11 @@
 
 public class TBall extends Tokens {
     protected  String path = "./../Images/icons8-magnet-96.png";
+
+    public TBall(Group tg){
+        super(tg);
+    }
+    public TBall(){super();}
 
 	/**
 	 * @return Path of the token image in directory

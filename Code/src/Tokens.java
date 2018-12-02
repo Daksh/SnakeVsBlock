@@ -23,11 +23,13 @@ public abstract class Tokens {
     private ImageView _tokenView = new ImageView();
     private Tokens _currentTokenObj = null;
     protected static Snake _snake;
-    protected static Group _tokenGroup = new Group();//should not be static, but it is messy
+    protected Group _tokenGroup = new Group();
 
     public Tokens(){
         _currentTokenObj = this;
     }
+
+    public Tokens(Group tGroup){this._tokenGroup = tGroup; _currentTokenObj = this;}
 
     public static void setSnake(Snake snake){
         _snake = snake;
@@ -68,12 +70,12 @@ public abstract class Tokens {
                     _tokenView.setFitWidth(30);
 
                     _tokenGroup.getChildren().add(_tokenView);
-                    _tokenGroup.setLayoutY(-700);
+                    _tokenGroup.setLayoutY(-700+random.nextInt(600));//Check @Arsh
                     _tokenGroup.setLayoutX(20+random.nextInt(200));//Bounded from 20 to 220 when the screen is from 0 to 240
                 }
                 else{
                     _tokenGroup.setLayoutY(_tokenGroup.getLayoutY()+TOKEN_SPEED);
-//                    System.out.println(_tokenGroup.getLayoutX()+","+_tokenGroup.getLayoutY());
+                    System.out.println(_tokenGroup.getLayoutX()+","+_tokenGroup.getLayoutY());
 //                    if(_currentTokenObj !=null && _currentTokenObj.checkCollision()) _currentTokenObj.collides();
                     if(checkCollision()) _currentTokenObj.collides();
                 }
@@ -112,23 +114,23 @@ public abstract class Tokens {
 	 * @param a Randomly generated integer which chooses the token to be instantiated.
 	 * @return Token object that has to be spawned.
 	 */
-	private static Tokens getToken(int a) {
+	private Tokens getToken(int a) {
         Tokens obj;
         switch (a) {
             case 0:
-                obj = new Magnet();
+                obj = new Magnet(_tokenGroup);
                 break;
             case 1:
-                obj = new Shield();
+                obj = new Shield(_tokenGroup);
                 break;
             case 2:
-                obj = new Coin();
+                obj = new Coin(_tokenGroup);
                 break;
             case 3:
-                obj = new TBall();
+                obj = new TBall(_tokenGroup);
                 break;
             case 4:
-                obj = new DestroyBlocks();
+                obj = new DestroyBlocks(_tokenGroup);
                 break;
             default:
                 obj = null;

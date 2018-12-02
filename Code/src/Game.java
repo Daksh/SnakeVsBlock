@@ -67,8 +67,12 @@ public class Game extends Application {
 		testBlocks = new Blocks(masterSnake,scene);//needs Snake to know what kind of blocks to spell
 		masterSnake.setBlocksRef(testBlocks);
 		Tokens.setSnake(masterSnake);
+		Wall.setSnake(masterSnake);
 
 		testMagnet.addToken(scene);
+		Tokens testMagnet2 = new Magnet();
+		testMagnet2.addToken(scene);
+
 		testWall.addWall(scene);
 	}
 
@@ -81,15 +85,15 @@ public class Game extends Application {
         primaryStage.setTitle("SnakeVsBlock");
         playGame = new Game();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeScreen.fxml"));
-		Parent root = loader.load();
+//		FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeScreen.fxml"));
+//		Parent root = loader.load();
 		Group HomeGroup = new Group();
-		HomeGroup.getChildren().add(root);
+//		HomeGroup.getChildren().add(root);
 
 		Scene scene = new Scene(HomeGroup);
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
-        //playGame.setUpGame(masterSnake, testBlocks, testWall, testMagnet, primaryStage);
+        playGame.setUpGame(masterSnake, testBlocks, testWall, testMagnet, primaryStage);
 
         primaryStage.show();
     }
