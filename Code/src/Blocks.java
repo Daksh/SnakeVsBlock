@@ -240,11 +240,11 @@ public class Blocks {
 //			AnimationView.setY(_snakeRef.getYCoordinate());
 //			AnimationGroup.getChildren().add(AnimationView);
             if(by.equals("one")) {
-            	_oneBlockStack[pos].getChildren().remove(0,1);// .removeAll();
+            	_oneBlockStack[pos].getChildren().clear();
 				_oneBlockGroup.getChildren().add(AnimationGroup);
 			}
             else{
-            	_anotherBlockStack[pos].getChildren().remove(0,1);//.clear();//removeAll();
+                _anotherBlockStack[pos].getChildren().clear();
 
 				_anotherBlockGroup.getChildren().add(AnimationGroup);
 			}
@@ -263,8 +263,8 @@ public class Blocks {
                 }
             }
             _snakeRef.reduce_length(weight);
-            if(by.equals("one")) _oneBlockStack[pos].getChildren().remove(0,1);
-            else _anotherBlockStack[pos].getChildren().remove(0,1);
+            if(by.equals("one")) _oneBlockStack[pos].getChildren().clear();
+            else _anotherBlockStack[pos].getChildren().clear();
             this._collision = false;
         }
 
