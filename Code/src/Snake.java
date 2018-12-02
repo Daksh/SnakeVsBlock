@@ -166,8 +166,9 @@ public class Snake {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
-                    case LEFT: _goLeft = true; break;
+					case LEFT: _goLeft = true; break;
                     case RIGHT: _goRight = true; break;
+					case D: _blocksRef.destroyAllBlocksInScreen();
                 }
             }
         });
@@ -176,7 +177,7 @@ public class Snake {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
-                    case LEFT:  _goLeft = false; break;
+					case LEFT:  _goLeft = false; break;
                     case RIGHT: _goRight = false; break;
                 }
             }
