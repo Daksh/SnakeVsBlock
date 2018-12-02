@@ -15,9 +15,6 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LeadCtrl">
-   <center>
-      <ListView prefHeight="442.0" prefWidth="439.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER" />
-   </center>
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -65,4 +62,14 @@
    <right>
       <Region prefHeight="500.0" prefWidth="29.0" BorderPane.alignment="CENTER" />
    </right>
+   <center>
+      <TableView fx:id="TableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+            <TableColumn fx:id="SNo" prefWidth="51.0" text="S. No." />
+          <TableColumn fx:id="Name" prefWidth="184.0" text="Name" />
+          <TableColumn fx:id="Date" prefWidth="114.0" text="Date" />
+            <TableColumn fx:id="Score" prefWidth="89.0" text="Score" />
+        </columns>
+      </TableView>
+   </center>
 </BorderPane>

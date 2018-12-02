@@ -4,15 +4,19 @@
  * @author Daksh Shah and Arsh Verma
  */
 
+import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import java.io.File;
 import java.util.Random;
 
 public class Blocks {
@@ -48,6 +52,7 @@ public class Blocks {
     private boolean _collision;
     private Snake _snakeRef;
     private Random _random;
+
 
 	/**
 	 * Initializes block groups amd adds them to scene. Starts their animation
@@ -213,7 +218,8 @@ public class Blocks {
 	 * @param pos position ( block number inside stack with which collision occurs. )
 	 */
 	public void setCollisionWithSnake(StackPane stack, String by, int pos){
-        String weightString = ((javafx.scene.text.Text)stack.getChildren().get(1)).getText();
+
+		String weightString = ((Text)stack.getChildren().get(1)).getText();
 
         int weight = Integer.parseInt(weightString);
         int snakeLen = _snakeRef.get_length();
@@ -227,6 +233,7 @@ public class Blocks {
             else _anotherBlockStack[pos].getChildren().remove(0,1);//.clear();//removeAll();
             System.out.println("Removed all elements from stack");
             this._collision = false;
+
         } else{
             while(weight>1){
                 _snakeRef.reduce_length(1);

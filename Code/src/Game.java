@@ -85,15 +85,15 @@ public class Game extends Application {
         primaryStage.setTitle("SnakeVsBlock");
         playGame = new Game();
 
-//		FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeScreen.fxml"));
-//		Parent root = loader.load();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeScreen.fxml"));
+		Parent root = loader.load();
 		Group HomeGroup = new Group();
-//		HomeGroup.getChildren().add(root);
+		HomeGroup.getChildren().add(root);
 
 		Scene scene = new Scene(HomeGroup);
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
-        playGame.setUpGame(masterSnake, testBlocks, testWall, testMagnet, primaryStage);
+        //playGame.setUpGame(masterSnake, testBlocks, testWall, testMagnet, primaryStage);
 
         primaryStage.show();
     }
