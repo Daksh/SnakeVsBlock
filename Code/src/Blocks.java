@@ -223,7 +223,7 @@ public class Blocks {
 	    if(checkBlockSetInScreen(_oneBlockGroup)){
 	        for(int i=0; i<NUM; i++){
                 if(_oneBlockStack[i]!=null) {
-                    totalWeight += Integer.parseInt(((Text)_oneBlockStack[i].getChildren().get(1)).getText());
+                    if(!_oneBlockStack[i].getChildren().isEmpty()) totalWeight += Integer.parseInt(((Text)_oneBlockStack[i].getChildren().get(1)).getText());
                     _oneBlockStack[i].getChildren().clear();
                 }
             }
@@ -232,7 +232,7 @@ public class Blocks {
         if(checkBlockSetInScreen(_anotherBlockGroup)){
             for(int i=0; i<NUM; i++){
                 if(_anotherBlockStack[i]!=null) {
-                    totalWeight += Integer.parseInt(((Text)_anotherBlockStack[i].getChildren().get(1)).getText());
+                    if(!_anotherBlockStack[i].getChildren().isEmpty()) totalWeight += Integer.parseInt(((Text)_anotherBlockStack[i].getChildren().get(1)).getText());
                     _anotherBlockStack[i].getChildren().clear();
                 }
             }
@@ -252,7 +252,8 @@ public class Blocks {
 	 * @param pos position ( block number inside stack with which collision occurs. )
 	 */
 	public void setCollisionWithSnake(StackPane stack, String by, int pos){
-
+        if(stack.getChildren().isEmpty())
+            return;
 		String weightString = ((Text)stack.getChildren().get(1)).getText();
 
         int weight = Integer.parseInt(weightString);
