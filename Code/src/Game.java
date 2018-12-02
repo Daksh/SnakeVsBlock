@@ -28,6 +28,7 @@ public class Game extends Application {
     private Random random = new Random();
     private int rInt = random.nextInt(5);
     public static int Score = 0;
+    public static int prevScore=0;
     public static Menu gameMenu3;
     Game playGame;
     public static boolean isResumable = false;
@@ -92,7 +93,7 @@ public class Game extends Application {
         primaryStage.setTitle("SnakeVsBlock");
         playGame = new Game();
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeScreen.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInPage.fxml"));
 		Parent root = loader.load();
 		Group HomeGroup = new Group();
 		HomeGroup.getChildren().add(root);
@@ -108,8 +109,10 @@ public class Game extends Application {
         System.out.println("GAME OVER from GAME.java");
         try {
             Thread.sleep(1000);
+            Game.prevScore = Game.Score;
             System.exit(1);
-			//HomeCtrl hm = new HomeCtrl();
+			HomeCtrl hm = new HomeCtrl();
+			hm.updatePrevBest();
 			//hm.openHomeScreen(Game.mainStage);
 			//Thread.interrupted();
         } catch (InterruptedException e) {

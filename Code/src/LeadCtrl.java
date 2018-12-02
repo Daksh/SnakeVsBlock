@@ -28,22 +28,18 @@ import java.util.ResourceBundle;
 public class LeadCtrl implements Initializable {
     public Button homebtn;
     @ FXML public TableView TableView;
-    @ FXML public TableColumn SNo;
 	@FXML public TableColumn Name;
 	@FXML public TableColumn Date;
 	@FXML public TableColumn Score;
 	public ObservableList<User> data = FXCollections.observableArrayList(new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37),new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34), new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37));
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//data.sort();
-		Score.setSortType(TableColumn.SortType.DESCENDING);
-		SNo.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(Integer.toString(data.size())));
+
 		Name.setCellValueFactory(new PropertyValueFactory<User, String>("Name"));
 		Date.setCellValueFactory(new PropertyValueFactory<User, LocalDate>("Date"));
 		Score.setCellValueFactory(new PropertyValueFactory<User, Integer>("Score"));
 
 		TableView.getItems().setAll(data);
-		Score.setSortType(TableColumn.SortType.DESCENDING);
 	}
 
 	/**

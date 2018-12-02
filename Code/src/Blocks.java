@@ -29,6 +29,11 @@ public class Blocks {
 	 */
     public static final int WIDTH = 98, HEIGHT = 100, NUM=5, SLEEPMIL=100;
     public static double BLOCK_SPEED = 3;
+	File imagefile = new File("./BurstAnimation.gif");
+	Image burst = new Image(imagefile.toURI().toString());
+	private Scene scene;
+	private Group AnimationGroup = new Group();
+	public ImageView AnimationView = new ImageView();
 
 	/**
 	 * Set of Colors of Google, https://www.color-hex.com/color-palette/67855
@@ -228,9 +233,21 @@ public class Blocks {
             Game.over();
         else if(weight<=5 || Snake.getShieldStatus()) {
             _snakeRef.reduce_length(weight);
+//			AnimationView.setImage(burst);
+//			AnimationView.setFitHeight(98);
+//			AnimationView.setFitWidth(98);
+//			AnimationView.setX(_snakeRef.getXCoordinate());
+//			AnimationView.setY(_snakeRef.getYCoordinate());
+//			AnimationGroup.getChildren().add(AnimationView);
+            if(by.equals("one")) {
+            	_oneBlockStack[pos].getChildren().remove(0,1);// .removeAll();
+				_oneBlockGroup.getChildren().add(AnimationGroup);
+			}
+            else{
+            	_anotherBlockStack[pos].getChildren().remove(0,1);//.clear();//removeAll();
 
-            if(by.equals("one")) _oneBlockStack[pos].getChildren().remove(0,1);// .removeAll();
-            else _anotherBlockStack[pos].getChildren().remove(0,1);//.clear();//removeAll();
+				_anotherBlockGroup.getChildren().add(AnimationGroup);
+			}
             System.out.println("Removed all elements from stack");
             this._collision = false;
 

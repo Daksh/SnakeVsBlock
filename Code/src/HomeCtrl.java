@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -21,6 +22,7 @@ public class HomeCtrl {
     public Button Exitbtn;
     public Button resumebtn;
     public Button playGamebtn;
+    public Label ScoreLabel;
 
 	/**
 	 * Loads Leaderboard elements on stage when Leaderboard Button is clicked by user.
@@ -82,6 +84,11 @@ public class HomeCtrl {
 	public void openHomeScreen(Stage stage) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
 		stage.setScene(new Scene(root));
+	}
+
+	@FXML
+	public void updatePrevBest() {
+    	ScoreLabel.setText("Previous Best: "+ Integer.toString(Game.prevScore));
 	}
 
 }

@@ -1,4 +1,6 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class User {
 	private String Name;
@@ -7,7 +9,8 @@ public class User {
 	private int Score;
 	private LocalDate date;
 	public int coins;
-
+	public static HashMap<String, String> UserPasswords = new HashMap<String, String>();
+	public static ArrayList<User> Users = new ArrayList<User>();
 	public User (String Name,int CS) {
 		this.setName(Name);
 		this.setScore(CS);

@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginCtrl">
    <children>
       <MenuBar layoutX="61.0" layoutY="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -52,7 +52,7 @@
                     <items>
                       <AnchorPane minHeight="100.0" minWidth="160.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #000000;">
                            <children>
-                              <Button alignment="CENTER" layoutX="214.0" layoutY="155.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="35.0">
+                              <Button fx:id="loginbtn" alignment="CENTER" layoutX="214.0" layoutY="155.0" mnemonicParsing="false" onMouseClicked="#SignIn" prefHeight="32.0" prefWidth="35.0">
                                  <graphic>
                                     <ImageView fitHeight="49.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -60,8 +60,8 @@
                                        </image>
                                     </ImageView>
                                  </graphic></Button>
-                              <TextField layoutX="248.0" layoutY="33.0" promptText="Username" />
-                              <TextField layoutX="248.0" layoutY="94.0" promptText="Password" />
+                              <TextField fx:id="username" layoutX="248.0" layoutY="33.0" promptText="Username" />
+                              <TextField fx:id="pass" layoutX="248.0" layoutY="94.0" promptText="Password" />
                               <Label layoutX="70.0" layoutY="36.0" text="USERNAME:" textFill="#f8f6f6">
                                  <font>
                                     <Font size="16.0" />
@@ -72,7 +72,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Button alignment="CENTER" layoutX="214.0" layoutY="232.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="35.0">
+                              <Button fx:id="NewUserbtn" alignment="CENTER" layoutX="214.0" layoutY="232.0" mnemonicParsing="false" onMouseClicked="#NewSignUp" prefHeight="32.0" prefWidth="35.0">
                                  <graphic>
                                     <ImageView fitHeight="49.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -85,7 +85,7 @@
                         </AnchorPane>
                       <AnchorPane minWidth="496.0" prefHeight="448.0" prefWidth="496.0" style="-fx-background-color: #000000;">
                            <children>
-                              <Button alignment="CENTER" layoutX="212.0" layoutY="28.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="69.0">
+                              <Button fx:id="guestbtn" alignment="CENTER" layoutX="212.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#NewGuest" prefHeight="59.0" prefWidth="69.0">
                                  <graphic>
                                     <ImageView fitHeight="53.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -93,7 +93,7 @@
                                        </image>
                                     </ImageView>
                                  </graphic></Button>
-                              <Button alignment="CENTER" layoutX="211.0" layoutY="115.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="69.0">
+                              <Button fx:id="exitbtn" alignment="CENTER" layoutX="211.0" layoutY="115.0" mnemonicParsing="false" onMouseClicked="#Exit" prefHeight="63.0" prefWidth="69.0">
                                  <graphic>
                                     <ImageView fitHeight="62.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

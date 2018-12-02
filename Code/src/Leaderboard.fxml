@@ -65,10 +65,9 @@
    <center>
       <TableView fx:id="TableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
-            <TableColumn fx:id="SNo" prefWidth="51.0" text="S. No." />
           <TableColumn fx:id="Name" prefWidth="184.0" text="Name" />
-          <TableColumn fx:id="Date" prefWidth="114.0" text="Date" />
-            <TableColumn fx:id="Score" prefWidth="89.0" text="Score" />
+          <TableColumn fx:id="Date" prefWidth="127.0" text="Date" />
+            <TableColumn fx:id="Score" prefWidth="127.0" text="Score" />
         </columns>
       </TableView>
    </center>

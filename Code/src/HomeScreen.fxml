@@ -48,7 +48,7 @@
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #000000;">
                     <children>
-                        <Label layoutX="151.0" layoutY="20.0" text="Pevious Best: 0" textFill="WHITE">
+                        <Label fx:id="Scorelabel" layoutX="151.0" layoutY="20.0" text="Previous Best: 0" textFill="WHITE">
                             <font>
                                 <Font size="30.0" />
                             </font>
