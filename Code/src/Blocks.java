@@ -35,6 +35,8 @@ public class Blocks implements Serializable{
 	public ImageView AnimationView = new ImageView();
 	public static AnimationTimer timer;
 
+	private static boolean collFLAG = false;
+
 	/**
 	 * Set of Colors of Google, https://www.color-hex.com/color-palette/67855
 	 */
@@ -270,20 +272,34 @@ public class Blocks implements Serializable{
 
         else if(weight<=5 || Snake.getShieldStatus()) {
             _snakeRef.reduce_length(weight);
-//			AnimationView.setImage(burst);
-//			AnimationView.setFitHeight(98);
-//			AnimationView.setFitWidth(98);
-//			AnimationView.setX(_snakeRef.getXCoordinate());
-//			AnimationView.setY(_snakeRef.getYCoordinate());
-//			AnimationGroup.getChildren().add(AnimationView);
+
+            if(!collFLAG){
+                AnimationView.setImage(burst);
+                AnimationView.setFitHeight(98);
+                AnimationView.setFitWidth(98);
+                AnimationView.setX(_snakeRef.getXCoordinate());
+                AnimationView.setY(_snakeRef.getYCoordinate());
+                AnimationGroup.getChildren().add(AnimationView);
+            }
+
+            Thread t = new Thread(() -> {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                collFLAG=false;
+            });
+            t.start();
+
             if(by.equals("one")) {
             	_oneBlockStack[pos].getChildren().clear();
-				_oneBlockGroup.getChildren().add(AnimationGroup);
+                if(!collFLAG)_oneBlockStack[pos].getChildren().add(AnimationGroup);
 			}
             else{
                 _anotherBlockStack[pos].getChildren().clear();
 
-				_anotherBlockGroup.getChildren().add(AnimationGroup);
+                if(!collFLAG)_anotherBlockStack[pos].getChildren().add(AnimationGroup);
 			}
             System.out.println("Removed all elements from stack");
             this._collision = false;
