@@ -86,6 +86,8 @@ public class Game extends Application {
 		Tokens testMagnet2 = new Magnet();
 		testMagnet2.addToken(scene);
 
+		new Magnet().addToken(scene);
+
 		testWall.addWall(scene);
 	}
 
