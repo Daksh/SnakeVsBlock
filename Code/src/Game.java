@@ -32,7 +32,7 @@ public class Game extends Application {
     public static int Score = 0;
     public static int prevScore=0;
     public static Menu gameMenu3;
-    public static int sceneCol;
+    public static int sceneCol=0;
     Game playGame;
     public static boolean isResumable = false;
     static Stage mainStage;
@@ -69,6 +69,7 @@ public class Game extends Application {
 			case 1: scene.setFill(LIGHTBLUE);
 			case 2: scene.setFill(LIGHTGREEN);
 			case 3: scene.setFill(ORANGERED);
+			default: scene.setFill(BLACK);
 		}
 		mainStage = primaryStage;
 		primaryStage.setScene(scene);
