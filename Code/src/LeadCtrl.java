@@ -4,14 +4,11 @@
  * @author Daksh Shah and Arsh Verma
  */
 
-import javafx.application.Application;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,20 +18,23 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class LeadCtrl implements Initializable {
+public class LeadCtrl implements Initializable, Serializable
+{
     public Button homebtn;
     @ FXML public TableView TableView;
 	@FXML public TableColumn Name;
 	@FXML public TableColumn Date;
 	@FXML public TableColumn Score;
-	public ObservableList<User> data = FXCollections.observableArrayList(new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37),new User("Arsh", 34),new User("Daksh", 37), new User("Arsh", 34), new User("Daksh", 37), new User("Arsh", 34),new User("Daksh", 37));
+	public static ArrayList<User> data = new ArrayList();
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
 		Name.setCellValueFactory(new PropertyValueFactory<User, String>("Name"));
 		Date.setCellValueFactory(new PropertyValueFactory<User, LocalDate>("Date"));
 		Score.setCellValueFactory(new PropertyValueFactory<User, Integer>("Score"));
@@ -53,5 +53,7 @@ public class LeadCtrl implements Initializable {
 
         stage.setScene(new Scene(root));
     }
+
+
 }
 

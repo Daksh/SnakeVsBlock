@@ -20,7 +20,16 @@ public class HomeCtrl {
     public Button Exitbtn;
     public Button resumebtn;
     public Button playGamebtn;
-    public Label Scorelabel;
+    public Label Scorelabel = new Label("Previous Score: "+ Integer.toString(0));
+
+    /*public HomeCtrl() {
+    	if (Game.isResumable) {
+    		resumebtn.setVisible(true);
+		}
+		else{
+			resumebtn.setVisible(false);
+		}
+	}*/
 
 	/**
 	 * Loads Leaderboard elements on stage when Leaderboard Button is clicked by user.
@@ -87,7 +96,7 @@ public class HomeCtrl {
 
 	@FXML
 	public void updatePrevBest() {
-    	Scorelabel.setText("Previous Best: "+ Integer.toString(Game.prevScore));
+    	Scorelabel.setText("Previous Score: "+ Integer.toString(10));
 	}
 
 }

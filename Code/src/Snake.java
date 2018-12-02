@@ -105,7 +105,8 @@ public class Snake implements Serializable{
 	public static Snake getInstance(int length, Scene scene){
 	    if(_onlySnake != null)
             return _onlySnake;
-        return new Snake(length, scene);
+	    _onlySnake = new Snake(length, scene);
+        return _onlySnake;
     }
 //    public static Snake getInstance(){
 //	    return _onlySnake;
@@ -145,7 +146,14 @@ public class Snake implements Serializable{
             if(i<length-1) _snakeBody[i].setVisible(true);
             else _snakeBody[i].setVisible(false);
         }
-    }
+		try
+		{
+			Game.serializeSnake(_onlySnake);
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
 
     private StackPane getHead(int length){
         StackPane x = new StackPane();
@@ -185,6 +193,7 @@ public class Snake implements Serializable{
 					case LEFT: _goLeft = true; break;
                     case RIGHT: _goRight = true; break;
 					case D: _blocksRef.destroyAllBlocksInScreen();
+					case S: setShieldOnFor(5000);
                 }
             }
         });

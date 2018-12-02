@@ -5,6 +5,7 @@
  */
 
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -19,13 +20,15 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 import static javafx.scene.paint.Color.*;
 
-public class Game extends Application {
+public class Game extends Application implements Serializable {
     private Snake masterSnake;
-    private Blocks testBlocks;
+    private Blocks testBlocks= new Blocks();
     private Wall testWall = new Wall(); //White lines
     private Tokens testMagnet = new Magnet();
     private BorderPane layout;
@@ -37,7 +40,8 @@ public class Game extends Application {
     public static int Score = 0;
     public static int prevScore=0;
     public static int sceneCol=0;
-    public static boolean isResumable = false;
+    public static boolean isResumable = true;
+    public static Scene scene1;
 
     Game playGame;
     static Stage mainStage;
@@ -84,7 +88,7 @@ public class Game extends Application {
 		testMagnet.addToken(scene);
 		Tokens testMagnet2 = new Magnet();
 		testMagnet2.addToken(scene);
-
+		scene1=scene;
 		new Magnet().addToken(scene);
 
 		testWall.addWall(scene);
@@ -101,7 +105,13 @@ public class Game extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-		//addMusic();
+		addMusic();
+		if (isResumable) {
+			//Game.deserializeScore();
+			//masterSnake=Game.deserializeSnake();
+		}
+		//Game.deserializeLeaderboard();
+		//Game.deserializeUser();
         primaryStage.setTitle("SnakeVsBlock");
         playGame = new Game();
 
@@ -109,7 +119,7 @@ public class Game extends Application {
 		Parent root = loader.load();
 		Group HomeGroup = new Group();
 		HomeGroup.getChildren().add(root);
-
+		testBlocks.LoadData();
 		Scene scene = new Scene(HomeGroup);
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
@@ -128,7 +138,14 @@ public class Game extends Application {
 	private static void updateScoreLabel(int score){
 	    Game.Score = score;
         Game.gameMenu3.setText(Integer.toString(score));
-    }
+		try
+		{
+			serializeScore();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
 
     public static void increaseScore(int delta){
         Game.Score = Game.Score + delta;
@@ -145,20 +162,155 @@ public class Game extends Application {
         try {
             Thread.sleep(1000);
             Game.prevScore = Game.Score;
+            Game.serializeUser();
+            Game.serializeLeaderboard();
+            Game.isResumable=false;
             System.exit(1);
 			HomeCtrl hm = new HomeCtrl();
-			//hm.updatePrevBest();
-			//hm.openHomeScreen(Game.mainStage);
-			//Thread.interrupted();
+			hm.updatePrevBest();
+			hm.openHomeScreen(Game.mainStage);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        } catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 //        catch (IOException e)
 //		{
 //			e.printStackTrace();
 //		}
 	}
 
+	public static void serializeSnake(Snake S1) throws IOException {
+		ObjectOutputStream out = null;
+		try {
+			out =new ObjectOutputStream(new FileOutputStream(("snake.txt")));
+			out.writeObject(S1.get_length());
+		}
+		finally	{
+			out.close();
+		}
+
+	}
+	public static Snake deserializeSnake() throws IOException, ClassNotFoundException {
+		ObjectInputStream in = null;
+		try {
+			in = new ObjectInputStream(new FileInputStream("snake.txt"));
+			return Snake.getInstance((Integer) in.readObject(), scene1);
+		}
+		finally
+		{
+			in.close();
+		}
+	}
+
+	public static void serializeLeaderboard() throws IOException {
+		ObjectOutputStream out = null;
+		try {
+			out =new ObjectOutputStream(new FileOutputStream(("Leaderboard.txt")));
+
+			out.writeObject(LeadCtrl.data);
+		}
+		finally	{
+			out.close();
+		}
+
+	}
+	public static void deserializeLeaderboard() throws IOException, ClassNotFoundException {
+		ObjectInputStream in = null;
+		try {
+			in = new ObjectInputStream(new FileInputStream("Leaderboard.txt"));
+			LeadCtrl.data= (ArrayList<User>) in.readObject();
+		}
+		finally
+		{
+			in.close();
+		}
+	}
+
+	public static void serializeScore() throws IOException {
+		ObjectOutputStream out = null;
+		try {
+			out =new ObjectOutputStream(new FileOutputStream(("Leaderboard.txt")));
+
+			out.writeObject(Game.Score);
+		}
+		finally	{
+			out.close();
+		}
+		out = null;
+		try {
+			out =new ObjectOutputStream(new FileOutputStream(("Resumable.txt")));
+
+			out.writeObject(Game.isResumable);
+		}
+		finally	{
+			out.close();
+		}
+
+	}
+	public static void deserializeScore() throws IOException, ClassNotFoundException {
+		ObjectInputStream in = null;
+		try {
+			in = new ObjectInputStream(new FileInputStream("Leaderboard.txt"));
+			Game.Score = (int) in.readObject();
+		}
+		finally
+		{
+			in.close();
+		}
+		in = null;
+		try {
+			in = new ObjectInputStream(new FileInputStream("Resumable.txt"));
+			Game.isResumable= (boolean) in.readObject();
+		}
+		finally
+		{
+			in.close();
+		}
+	}
+
+	public static void serializeUser() throws IOException {
+		ObjectOutputStream out = null;
+		try {
+			out =new ObjectOutputStream(new FileOutputStream(("UserData.txt")));
+
+			out.writeObject(User.Users);
+		}
+		finally	{
+			out.close();
+		}
+		out = null;
+		try {
+			out =new ObjectOutputStream(new FileOutputStream(("UserPass.txt")));
+
+			out.writeObject(User.UserPasswords);
+		}
+		finally	{
+			out.close();
+		}
+
+	}
+	public static void deserializeUser() throws IOException, ClassNotFoundException {
+		ObjectInputStream in = null;
+		try {
+			in = new ObjectInputStream(new FileInputStream("UserData.txt"));
+			User.Users = (ArrayList<User>) in.readObject();
+		}
+		finally
+		{
+			in.close();
+		}
+		in = null;
+		try {
+			in = new ObjectInputStream(new FileInputStream("UserPass.txt"));
+			User.UserPasswords= (HashMap<String, String>) in.readObject();
+		}
+		finally
+		{
+			in.close();
+		}
+	}
 }
 
 

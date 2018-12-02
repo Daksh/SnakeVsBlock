@@ -33,6 +33,7 @@ public class Blocks implements Serializable{
 	private Scene scene;
 	private Group AnimationGroup = new Group();
 	public ImageView AnimationView = new ImageView();
+	public static AnimationTimer timer;
 
 	/**
 	 * Set of Colors of Google, https://www.color-hex.com/color-palette/67855
@@ -58,11 +59,13 @@ public class Blocks implements Serializable{
     private Random _random;
 
 
+	public Blocks() {}
 	/**
 	 * Initializes block groups amd adds them to scene. Starts their animation
 	 * @param snake Reference of snake object from game play
 	 * @param scene Reference of game play scene
 	 */
+
 	public Blocks(Snake snake, Scene scene){
         _snakeRef = snake;
         _random = new Random();
@@ -151,7 +154,7 @@ public class Blocks implements Serializable{
 	 */
 	private void animateBlocks(Group rootSceneGroup) {
         //To repeat the inner code
-        AnimationTimer timer = new AnimationTimer() {
+        timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 //How many blocks do we wish to spawn - we get from Random
@@ -260,8 +263,11 @@ public class Blocks implements Serializable{
         int weight = Integer.parseInt(weightString);
         int snakeLen = _snakeRef.get_length();
 
-        if(weight>=snakeLen && !Snake.getShieldStatus())
-            Game.over();
+        if(weight>=snakeLen && !Snake.getShieldStatus()) {
+			//timer.stop();
+			Game.over();
+		}
+
         else if(weight<=5 || Snake.getShieldStatus()) {
             _snakeRef.reduce_length(weight);
 //			AnimationView.setImage(burst);
@@ -311,4 +317,31 @@ public class Blocks implements Serializable{
     public int yCoordinateOfSecondSetOfBlocks(){
         return (int) _anotherBlockGroup.getLayoutY();
     }
+
+	public void LoadData () {
+		LeadCtrl.data.add(new User("Arsh", 1243));
+		LeadCtrl.data.add(new User("Arsh", 1220));
+		LeadCtrl.data.add(new User("Arsh", 1203));
+		LeadCtrl.data.add(new User("Arsh", 1197));
+		LeadCtrl.data.add(new User("Arsh", 1170));
+		LeadCtrl.data.add(new User("Arsh", 1146));
+		LeadCtrl.data.add(new User("Daksh", 1123));
+		LeadCtrl.data.add(new User("Arsh", 1102));
+		LeadCtrl.data.add(new User("Daksh", 1101));
+		LeadCtrl.data.add(new User("Arsh", 1094));
+		LeadCtrl.data.add(new User("Arsh", 1090));
+		LeadCtrl.data.add(new User("Arsh", 1090));
+		LeadCtrl.data.add(new User("Arsh", 1056));
+		LeadCtrl.data.add(new User("Arsh", 1033));
+		LeadCtrl.data.add(new User("Daksh", 1011));
+		LeadCtrl.data.add(new User("Arsh", 1002));
+		LeadCtrl.data.add(new User("Arsh", 1001));
+		LeadCtrl.data.add(new User("Arsh", 994));
+		LeadCtrl.data.add(new User("Daksh", 983));
+		LeadCtrl.data.add(new User("Arsh", 945));
+	}
+
+	public void explosion (double x, double y){
+		
+	}
 }
