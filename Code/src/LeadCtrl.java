@@ -38,13 +38,12 @@ public class LeadCtrl implements Initializable {
 		//data.sort();
 		Score.setSortType(TableColumn.SortType.DESCENDING);
 		SNo.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(Integer.toString(data.size())));
-		//SNo.setCellValueFactory(new PropertyValueFactory<User, Integer>("S.No."));
 		Name.setCellValueFactory(new PropertyValueFactory<User, String>("Name"));
 		Date.setCellValueFactory(new PropertyValueFactory<User, LocalDate>("Date"));
 		Score.setCellValueFactory(new PropertyValueFactory<User, Integer>("Score"));
 
 		TableView.getItems().setAll(data);
-		Score.setSortType(TableColumn.SortType.ASCENDING);
+		Score.setSortType(TableColumn.SortType.DESCENDING);
 	}
 
 	/**

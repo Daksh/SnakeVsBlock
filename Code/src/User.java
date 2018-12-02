@@ -6,6 +6,7 @@ public class User {
 	private int Previous_Score;
 	private int Score;
 	private LocalDate date;
+	public int coins;
 
 	public User (String Name,int CS) {
 		this.setName(Name);

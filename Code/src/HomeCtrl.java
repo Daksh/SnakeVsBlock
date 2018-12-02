@@ -41,9 +41,8 @@ public class HomeCtrl {
     @FXML
     public void playGame() throws IOException {
         Stage stage = (Stage) playGamebtn.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("PlayDisp.fxml"));
-
-        stage.setScene(new Scene(root));
+        Game newGame =new Game();
+        newGame.Play(stage);
     }
 
 	/**

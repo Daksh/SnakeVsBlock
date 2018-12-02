@@ -76,6 +76,11 @@ public class Game extends Application {
 		testWall.addWall(scene);
 	}
 
+	public void Play(Stage primaryStage) throws IOException
+	{
+		this.setUpGame(masterSnake, testBlocks, testWall, testMagnet, primaryStage);
+	}
+
     public static void main(String[] args) {
         launch(args);
     }
