@@ -235,6 +235,7 @@ public class Snake implements Serializable{
                 }
             }
         };
+        Game.ANIMTimers.add(timer);
         timer.start();
     }
 

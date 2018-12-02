@@ -4,6 +4,7 @@
  * @author	Daksh Shah & Arsh Verma
  */
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -42,6 +43,7 @@ public class Game extends Application implements Serializable {
     public static int sceneCol=0;
     public static boolean isResumable = true;
     public static Scene scene1;
+    public static ArrayList<AnimationTimer> ANIMTimers = new ArrayList<AnimationTimer>();
 
     Game playGame;
     static Stage mainStage;
@@ -168,6 +170,8 @@ public class Game extends Application implements Serializable {
 
     public static void over() {
         System.out.println("GAME OVER from GAME.java");
+        for(int i=0; i<ANIMTimers.size(); i++)
+            ANIMTimers.get(i).stop();
         try {
             Thread.sleep(1000);
             Game.prevScore = Game.Score;
@@ -188,6 +192,7 @@ public class Game extends Application implements Serializable {
 //		{
 //			e.printStackTrace();
 //		}
+        Game.Score = 0;
 	}
 
 	public static void serializeSnake(Snake S1) throws IOException {

@@ -109,6 +109,7 @@ public abstract class Tokens {
                 }
             }
         };
+		Game.ANIMTimers.add(timer);
         timer.start();
     }
 
@@ -151,6 +152,7 @@ public abstract class Tokens {
                 }
             }
         };
+        Game.ANIMTimers.add(timer);
         timer.start();
     }
 

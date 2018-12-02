@@ -177,6 +177,7 @@ public class Blocks implements Serializable{
 
             }
         };
+        Game.ANIMTimers.add(timer);
         timer.start();
     }
 

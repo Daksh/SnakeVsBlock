@@ -113,6 +113,7 @@ public abstract class BallTokens {
                 }
             }
         };
+		Game.ANIMTimers.add(timer);
         timer.start();
     }
 
