@@ -63,14 +63,8 @@ public class Game extends Application {
 
 		superGroup.getChildren().addAll(ballGroup, root);
 		Scene scene = new Scene(superGroup, 500,700, BLACK);
-
-		switch (sceneCol) {
-			case 0: scene.setFill(BLACK);
-			case 1: scene.setFill(LIGHTBLUE);
-			case 2: scene.setFill(LIGHTGREEN);
-			case 3: scene.setFill(ORANGERED);
-			default: scene.setFill(BLACK);
-		}
+		Color[] arr = {BLACK, LIGHTBLUE, LIGHTGREEN, WHITE};
+		scene.setFill(arr[sceneCol]);
 		mainStage = primaryStage;
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
