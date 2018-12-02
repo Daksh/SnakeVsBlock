@@ -78,5 +78,11 @@ public class HomeCtrl {
         Parent root = FXMLLoader.load(getClass().getResource("Settings.fxml"));
         stage.setScene(new Scene(root));
     }
+	@FXML
+	public void openHomeScreen(Stage stage) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
+		stage.setScene(new Scene(root));
+	}
+
 }
 

@@ -4,6 +4,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -39,6 +40,7 @@ public class Snake {
     private Scene _scene;
     private Blocks _blocksRef;
     private static boolean _shieldStatus = false;
+    public static int colour;
 
     public static void setShieldStatus(boolean bool){
         System.out.println("Setting Snake Shield to "+bool);
@@ -131,9 +133,25 @@ public class Snake {
 
     private StackPane getHead(int length){
         StackPane x = new StackPane();
-        Circle circle = new Circle(RADIUS, GREEN);
+		Circle circle;
+		Color[] a = {GREEN, BLUE, YELLOW, RED};
+        switch (colour){
+			case 0 :  circle = new Circle(RADIUS, GREEN);
+			case 1 :  circle = new Circle(RADIUS, BLUE);
+			case 2 :  circle = new Circle(RADIUS, YELLOW);
+			case 3 :  circle = new Circle(RADIUS, RED);
+			default: circle = new Circle(RADIUS, a[colour]);
+		}
+
+
         Text text = new Text(Integer.toString(length));
-        text.setFill(WHITE);
+        if (Snake.colour==2) {
+			text.setFill(BLACK);
+		}
+		else{
+			text.setFill(WHITE);
+		}
+
         text.setFont(Font.font(null, FontWeight.BOLD, RADIUS));
 
         x.getChildren().addAll(circle, text);

@@ -14,6 +14,10 @@ import java.io.IOException;
  */
 public class SettingsCtrl {
 	public Button homebtn;
+	public Button yellowbtn;
+	public Button redbtn;
+	public Button greenbtn;
+	public Button bluebtn;
 
 	/**
 	 * Loads Home Screen elements on stage when Home Button is clicked by user.
@@ -25,5 +29,23 @@ public class SettingsCtrl {
 		Parent root = FXMLLoader.load(getClass().getResource("HomeScreen.fxml"));
 
 		stage.setScene(new Scene(root));
+	}
+
+	@FXML
+	public void handlegreenBtnClick() throws IOException {
+		Snake.colour = 0;
+	}
+	@FXML
+	public void handleblueBtnClick() throws IOException {
+		Snake.colour = 1;
+	}
+	@FXML
+	public void handleyellowBtnClick() throws IOException {
+		Snake.colour = 2;
+	}
+
+	@FXML
+	public void handleredBtnClick() throws IOException {
+		Snake.colour = 3;
 	}
 }

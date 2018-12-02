@@ -80,7 +80,7 @@
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Region prefHeight="100.0" prefWidth="60.0" />
-                              <Button mnemonicParsing="false" style="-fx-background-color: #000000;">
+                              <Button fx:id="yellowbtn" mnemonicParsing="false" onMouseClicked="#handleyellowBtnClick" style="-fx-background-color: #000000;">
                                  <graphic>
                                     <ImageView fitHeight="89.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -89,7 +89,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: #000000;">
+                              <Button fx:id="redbtn" mnemonicParsing="false" onMouseClicked="#handleredBtnClick" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: #000000;">
                                  <graphic>
                                     <ImageView fitHeight="107.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -98,7 +98,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button mnemonicParsing="false" style="-fx-background-color: #000000;">
+                              <Button fx:id="bluebtn" mnemonicParsing="false" onMouseClicked="#handleblueBtnClick" style="-fx-background-color: #000000;">
                                  <graphic>
                                     <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -107,7 +107,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button layoutX="258.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #000000;">
+                              <Button fx:id="greenbtn" layoutX="258.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#handlegreenBtnClick" style="-fx-background-color: #000000;">
                                  <graphic>
                                     <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

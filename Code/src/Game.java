@@ -31,6 +31,7 @@ public class Game extends Application {
     public static Menu gameMenu3;
     Game playGame;
     public static boolean isResumable = false;
+    static Stage mainStage;
 
 	protected void setUpGame (Snake masterSnake, Blocks testBlocks, Wall testWall, Tokens testMagnet, Stage primaryStage) throws IOException
 	{
@@ -59,6 +60,7 @@ public class Game extends Application {
 		superGroup.getChildren().addAll(ballGroup, root);
 		Scene scene = new Scene(superGroup, 500,700, Color.BLACK);
 
+		mainStage = primaryStage;
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
 
@@ -107,10 +109,17 @@ public class Game extends Application {
         try {
             Thread.sleep(1000);
             System.exit(1);
+			//HomeCtrl hm = new HomeCtrl();
+			//hm.openHomeScreen(Game.mainStage);
+			//Thread.interrupted();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
+//        catch (IOException e)
+//		{
+//			e.printStackTrace();
+//		}
+	}
 
 }
 
