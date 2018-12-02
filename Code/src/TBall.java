@@ -9,7 +9,7 @@ import javafx.scene.Group;
  */
 
 public class TBall extends Tokens {
-    protected  String path = "./../Images/icons8-magnet-96.png";
+    protected  String path = "./../Images/icons8-mega_ball.png";
 
     public TBall(Group tg){
         super(tg);
