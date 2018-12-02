@@ -48,4 +48,26 @@ public class SettingsCtrl {
 	public void handleredBtnClick() throws IOException {
 		Snake.colour = 3;
 	}
+
+	@FXML
+	public void handleGreenBGClick() throws IOException {
+		Game.sceneCol = 2;
+	}
+
+	@FXML
+	public void handleBlackBGClick() throws IOException {
+		Game.sceneCol = 0;
+	}
+
+	@FXML
+	public void handleBlueBGClick() throws IOException {
+		Game.sceneCol = 1;
+	}
+
+	@FXML
+	public void handleYellowBGClick() throws IOException {
+		Game.sceneCol = 3;
+	}
+
+
 }

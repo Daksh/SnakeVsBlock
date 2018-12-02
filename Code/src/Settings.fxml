@@ -178,7 +178,7 @@
                         <HBox layoutX="10.0" layoutY="90.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Region prefHeight="100.0" prefWidth="60.0" />
-                              <Button mnemonicParsing="false" style="-fx-background-color: #000000;">
+                              <Button mnemonicParsing="false" onMouseClicked="#handleBlueBGClick" style="-fx-background-color: #000000;">
                                  <graphic>
                                     <ImageView fitHeight="89.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -187,7 +187,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: #000000;">
+                              <Button mnemonicParsing="false" onMouseDragged="#handleGreenBGClick" prefHeight="61.0" prefWidth="54.0" style="-fx-background-color: #000000;">
                                  <graphic>
                                     <ImageView fitHeight="107.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -196,7 +196,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button mnemonicParsing="false" style="-fx-background-color: #000000;">
+                              <Button mnemonicParsing="false" onMouseClicked="#handleBlackBGClick" style="-fx-background-color: #000000;">
                                  <graphic>
                                     <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -205,7 +205,7 @@
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <Button layoutX="258.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #000000;">
+                              <Button layoutX="258.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#handleYellowBGClick" style="-fx-background-color: #000000;">
                                  <graphic>
                                     <ImageView fitHeight="88.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

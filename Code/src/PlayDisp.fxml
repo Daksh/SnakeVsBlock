@@ -11,7 +11,7 @@
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <AnchorPane prefHeight="670.0" prefWidth="500.0" style="-fx-background-color: #000000;">
+            <AnchorPane prefHeight="670.0" prefWidth="500.0">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin></AnchorPane>

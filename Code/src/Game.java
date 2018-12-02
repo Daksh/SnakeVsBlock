@@ -19,6 +19,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Random;
 
+import static javafx.scene.paint.Color.*;
+
 public class Game extends Application {
     private Snake masterSnake;
     private Blocks testBlocks;
@@ -30,6 +32,7 @@ public class Game extends Application {
     public static int Score = 0;
     public static int prevScore=0;
     public static Menu gameMenu3;
+    public static int sceneCol;
     Game playGame;
     public static boolean isResumable = false;
     static Stage mainStage;
@@ -59,8 +62,14 @@ public class Game extends Application {
 		ballGroup.getChildren().add(Bar);
 
 		superGroup.getChildren().addAll(ballGroup, root);
-		Scene scene = new Scene(superGroup, 500,700, Color.BLACK);
+		Scene scene = new Scene(superGroup, 500,700, BLACK);
 
+		switch (sceneCol) {
+			case 0: scene.setFill(BLACK);
+			case 1: scene.setFill(LIGHTBLUE);
+			case 2: scene.setFill(LIGHTGREEN);
+			case 3: scene.setFill(ORANGERED);
+		}
 		mainStage = primaryStage;
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
