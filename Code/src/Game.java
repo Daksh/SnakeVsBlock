@@ -174,7 +174,7 @@ public class Game extends Application implements Serializable {
             Game.serializeUser();
             Game.serializeLeaderboard();
             Game.isResumable=false;
-            System.exit(1);
+            //System.exit(1);
 			HomeCtrl hm = new HomeCtrl();
 			hm.updatePrevBest();
 			hm.openHomeScreen(Game.mainStage);
