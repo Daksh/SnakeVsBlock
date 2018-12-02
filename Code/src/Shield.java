@@ -22,17 +22,14 @@ public class Shield extends Tokens {
             _tokenGroup.getChildren().clear();
             Snake.setShieldStatus(true);
 
-            Thread t = new Thread()
-            {
-                public void run() {
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    Snake.setShieldStatus(false);
+            Thread t = new Thread(() -> {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-            };
+                Snake.setShieldStatus(false);
+            });
             t.start();
 
         }
