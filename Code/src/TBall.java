@@ -1,4 +1,17 @@
+import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+
+import java.io.File;
+import java.util.Random;
+
+import static javafx.scene.paint.Color.RED;
 
 /**
  * Inherits from Token class. Initializes the balls to be collected during game play
@@ -9,7 +22,8 @@ import javafx.scene.Group;
  */
 
 public class TBall extends Tokens {
-    protected  String path = "./../Images/icons8-mega_ball.png";
+//    protected  String path = "./../Images/icons8-mega_ball.png";
+    private int _weight;
 
     public TBall(Group tg){
         super(tg);
@@ -21,7 +35,7 @@ public class TBall extends Tokens {
 	 */
     @Override
     protected String getPath() {
-        return this.path;
+        return "";
     }
 
     @Override
@@ -30,5 +44,10 @@ public class TBall extends Tokens {
             System.out.println("TBall COLLISION");
             _tokenGroup.getChildren().clear();
         }
+    }
+
+    @Override
+    protected void addToken(Scene scene){
+        this.addTBALL(scene);
     }
 }

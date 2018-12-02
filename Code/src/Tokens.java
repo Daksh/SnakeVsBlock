@@ -10,9 +10,16 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 import java.io.File;
 import java.util.Random;
+
+import static javafx.scene.paint.Color.RED;
 
 public abstract class Tokens {
 
@@ -23,7 +30,7 @@ public abstract class Tokens {
     public static final int MAGNETMUL = 4;
 
     private ImageView _tokenView = new ImageView();
-    private Tokens _currentTokenObj = null;
+    protected Tokens _currentTokenObj = null;
     protected static Snake _snake;
     protected static Blocks _blocks;
     protected Group _tokenGroup = new Group();
@@ -105,6 +112,59 @@ public abstract class Tokens {
         timer.start();
     }
 
+
+    protected void addTBALL(Scene scene){
+        Random random = new Random();
+        int _weight = 1+random.nextInt(5);
+
+        Circle circle = new Circle(Snake.RADIUS, RED);
+        Text text = new Text(Integer.toString(_weight));
+        text.setFont(Font.font(null, FontWeight.BOLD, Snake.RADIUS));
+
+        StackPane x = new StackPane();
+        x.getChildren().addAll(circle, text);
+
+        _tokenGroup.getChildren().add(x);
+
+        Group tokensgroup = (Group)scene.getRoot();
+        tokensgroup.getChildren().add(_tokenGroup);
+
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                Random random = new Random();
+                int rInt1 = random.nextInt(5);
+
+                if (_tokenGroup.getLayoutY()>750) {
+                    _tokenGroup.getChildren().clear();
+
+                    _currentTokenObj = getToken(rInt1);
+
+                    int _weight = 1+random.nextInt(5);
+
+                    Circle circle = new Circle(Snake.RADIUS, RED);
+                    Text text = new Text(Integer.toString(_weight));
+                    text.setFont(Font.font(null, FontWeight.BOLD, Snake.RADIUS));
+
+                    StackPane x = new StackPane();
+                    x.getChildren().addAll(circle, text);
+
+                    _tokenGroup.getChildren().add(x);
+
+                    _tokenGroup.setLayoutY(-700+random.nextInt(600));
+                    _tokenGroup.setLayoutX(20+random.nextInt(200));//Bounded from 20 to 220 when the screen is from 0 to 240
+                }
+                else{
+                    _tokenGroup.setLayoutY(_tokenGroup.getLayoutY()+TOKEN_SPEED);
+//                    System.out.println(_tokenGroup.getLayoutX()+","+_tokenGroup.getLayoutY());
+//                    if(_currentTokenObj !=null && _currentTokenObj.checkCollision()) _currentTokenObj.collides();
+                    if(checkCollision()) _currentTokenObj.collides();
+                }
+            }
+        };
+        timer.start();
+    }
+
     public void collides(){
         if(_tokenGroup!=null && _snake!=null) {
             System.out.println("COLLISION");
@@ -112,7 +172,7 @@ public abstract class Tokens {
         }
     }
 
-    private boolean checkCollision(){
+    protected boolean checkCollision(){
         if(_snake==null || _tokenGroup==null) {
             System.out.println("is null");
             return false;
@@ -135,7 +195,7 @@ public abstract class Tokens {
 	 * @param a Randomly generated integer which chooses the token to be instantiated.
 	 * @return Token object that has to be spawned.
 	 */
-	private Tokens getToken(int a) {
+    protected Tokens getToken(int a) {
         Tokens obj;
         switch (a) {
             case 0:
