@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.Random;
 
+import static javafx.scene.paint.Color.BLACK;
 import static javafx.scene.paint.Color.WHITE;
 
 public class Blocks implements Serializable{
@@ -263,17 +264,7 @@ public class Blocks implements Serializable{
         if(stack.getChildren().isEmpty())
             return;
 
-	    Paint fill = _scene.getFill();
-        _scene.setFill(WHITE);
-        Thread t = new Thread(() -> {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            _scene.setFill(fill);
-        });
-        t.start();
+
 
 		String weightString = ((Text)stack.getChildren().get(1)).getText();
 
@@ -321,8 +312,19 @@ public class Blocks implements Serializable{
             if(by.equals("one")) _oneBlockStack[pos].getChildren().clear();
             else _anotherBlockStack[pos].getChildren().clear();
             this._collision = false;
-        }
 
+        }
+		Paint fill = _scene.getFill();
+		_scene.setFill(WHITE);
+		Thread t = new Thread(() -> {
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			_scene.setFill(fill);
+		});
+		t.start();
 
     }
     public void setCollisionWithSnake(Boolean x){
