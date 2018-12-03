@@ -26,7 +26,6 @@ public abstract class Tokens {
 	/**
 	 * Token speed defines the speed of downward motion of token
 	 */
-    public static double TOKEN_SPEED = Main.BLOCK_SPEED;
     public static final int MAGNETMUL = 4;
 
     private ImageView _tokenView = new ImageView();
@@ -102,7 +101,7 @@ public abstract class Tokens {
                     _tokenGroup.setLayoutX(20+random.nextInt(200));//Bounded from 20 to 220 when the screen is from 0 to 240
                 }
                 else{
-                    _tokenGroup.setLayoutY(_tokenGroup.getLayoutY()+TOKEN_SPEED);
+                    _tokenGroup.setLayoutY(_tokenGroup.getLayoutY()+Main.SPEED);
 //                    System.out.println(_tokenGroup.getLayoutX()+","+_tokenGroup.getLayoutY());
 //                    if(_currentTokenObj !=null && _currentTokenObj.checkCollision()) _currentTokenObj.collides();
                     if(checkCollision()) _currentTokenObj.collides();
@@ -146,7 +145,7 @@ public abstract class Tokens {
                     _tokenGroup.setLayoutX(20+random.nextInt(200));//Bounded from 20 to 220 when the screen is from 0 to 240
                 }
                 else{
-                    _tokenGroup.setLayoutY(_tokenGroup.getLayoutY()+TOKEN_SPEED);
+                    _tokenGroup.setLayoutY(_tokenGroup.getLayoutY()+Main.SPEED);
 //                    System.out.println(_tokenGroup.getLayoutX()+","+_tokenGroup.getLayoutY());
                     if(checkCollision()) _currentTokenObj.collides();
                 }

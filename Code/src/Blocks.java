@@ -185,7 +185,7 @@ public class Blocks implements Serializable{
 	 */
 	private void moveBlockGroup(Group blockGroup){
         if (!_collision)
-            blockGroup.setLayoutY(blockGroup.getLayoutY()+Main.BLOCK_SPEED);
+            blockGroup.setLayoutY(blockGroup.getLayoutY()+Main.SPEED);
 //        else{
 //            //There is a _collision!
 //            blockGroup.setLayoutY(blockGroup.getLayoutY()+BLOCK_SPEED/5);

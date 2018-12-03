@@ -29,7 +29,8 @@ public class Main extends Application {
      * WIDTH, BLOCK_HEIGHT : state of the blocks to be spawned.
      * BLOCK_SPEED : Defines the speed of downward transition of the block.
      */
-    public static final int BLOCK_WIDTH = 98, BLOCK_HEIGHT = 100, BLOCK_SPEED = 3, SNAKE_RADIUS = 15;
+    public static final int BLOCK_WIDTH = 98, BLOCK_HEIGHT = 100, SNAKE_RADIUS = 15;
+    public static double SPEED = 3;
 
     // We need to have it, for ex. AnimationTimers need to be added to the GamePlay's list of Timers
     // _gamePlay.increaseScore, over,

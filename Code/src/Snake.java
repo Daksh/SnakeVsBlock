@@ -133,12 +133,14 @@ public class Snake implements Serializable{
 	 * @param length New length of snake
 	 */
 	private void set_length(int length){
-        if(length==0){//REMOVE?
+        if(length==0){
             System.out.println("END GAME!!!");
             //add code here :P
             return;
         }
         _length = length;
+        Main.SPEED = (double)_length * 3 / 20;
+        if(Main.SPEED<2) Main.SPEED = 2;
 
         //update the label on snake's head
         StackPane pseudo = getHead(length);
