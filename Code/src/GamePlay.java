@@ -16,7 +16,7 @@ import static javafx.scene.paint.Color.*;
 
 
 public class GamePlay {
-
+    private static final double LIFEINC = 0.2f;
 
     public int sceneCol;
     public ArrayList<AnimationTimer> ANIMTimers;
@@ -57,7 +57,7 @@ public class GamePlay {
         //gameMenu2.getItems().add(new MenuItem("Modify settings"));
 		Menu gameMenu6 = new Menu ( "			Life: ");
 		_gameMenu5 = new Menu (Double.toString(_life));
-		Menu gameMenu4 = new Menu ( "			Score: ");
+		Menu gameMenu4 = new Menu ( "		Score: ");
 		_gameMenu3 = new Menu (Integer.toString(_score));
 
         MenuBar Bar = new MenuBar();
@@ -105,27 +105,9 @@ public class GamePlay {
         new TokenBallInher().addToken(scene);
     }
 
-    private void updateScoreLabel(int score){
-        _score = score;
-        _gameMenu3.setText(Integer.toString(score));
-    }
-
-    //TODO:CALL THIS LABEL
-	private void updateLifeLabel(double life){
-		_life = life;
-		_gameMenu3.setText(Double.toString(life));
-	}
-
-    public void increaseScore(int delta){
-        _score = _score + delta;
-        updateScoreLabel(_score);
-    }
-
-    public int getScore(){
-        return this._score;
-    }
-
     public void over() {
+        if(reduceLifeByOne()) return;
+
         System.out.println("GAME OVER from GAME.java");
         for(int i=0; i<ANIMTimers.size(); i++)
             ANIMTimers.get(i).stop();
@@ -144,4 +126,43 @@ public class GamePlay {
         this._score = 0;
     }
 
+
+    private void updateScoreLabel(int score){
+        _score = score;
+        _gameMenu3.setText(Integer.toString(score));
+    }
+
+    public void increaseScore(int delta){
+        _score = _score + delta;
+        updateScoreLabel(_score);
+    }
+
+    public int getScore(){
+        return this._score;
+    }
+
+
+    private void updateLifeLabel(double life){
+        _life = life;
+        _gameMenu3.setText(Double.toString(life));
+    }
+
+    /**
+     * Increases the life by LIFEINC
+     */
+    public void increaseLife(){
+        updateLifeLabel(_life+LIFEINC);
+    }
+
+    /**
+     * When you run into a block and loose a life
+     * @return success boolean
+     */
+    public boolean reduceLifeByOne(){
+        if(_life-1<0)
+            return false;
+
+        updateLifeLabel(_life-1);
+        return true;
+    }
 }

@@ -27,6 +27,7 @@ public class Coin extends Tokens {
         if(_tokenGroup!=null && _snake!=null) {
             System.out.println("Coin COLLISION");
             _tokenGroup.getChildren().clear();
+            Main._gamePlay.increaseLife();
         }
     }
 }
