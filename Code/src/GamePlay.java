@@ -18,8 +18,8 @@ import static javafx.scene.paint.Color.*;
 public class GamePlay {
 
 
-    public int sceneCol=0;
-    public ArrayList<AnimationTimer> ANIMTimers = new ArrayList<AnimationTimer>();
+    public int sceneCol;
+    public ArrayList<AnimationTimer> ANIMTimers;
 
     private int _score;
     private double _life;
@@ -30,11 +30,16 @@ public class GamePlay {
     private Stage _mainStage;
     private Snake _snake;
 
-    public GamePlay(Stage primaryStage, int snakeLength, int score, double life){
+    public GamePlay(Stage primaryStage, int score, double life){
+        sceneCol = 0;
+        ANIMTimers = new ArrayList<AnimationTimer>();
         _score = score;
         _life = life;
+    }
 
+    public void startGame(Stage primaryStage, int snakeLength){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayDisp.fxml"));
+
         Group ballGroup= new Group();
         Parent root = null;
         try {
@@ -42,6 +47,7 @@ public class GamePlay {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         Group superGroup = new Group();
 
         Menu gameMenu = new Menu("New Game");
