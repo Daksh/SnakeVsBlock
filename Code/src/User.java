@@ -56,6 +56,6 @@ public class User implements Serializable{
 	}
 
 	public void setDate() {
-		this.date = java.time.LocalDate.now();
+		this.date = java.time.LocalDate.now().minusDays(2);
 	}
 }
