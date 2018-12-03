@@ -51,22 +51,22 @@ public class SettingsCtrl {
 
 	@FXML
 	public void handleGreenBGClick() throws IOException {
-		Game.sceneCol = 2;
+		Main.sceneCol = 2;
 	}
 
 	@FXML
 	public void handleBlackBGClick() throws IOException {
-		Game.sceneCol = 0;
+		Main.sceneCol = 0;
 	}
 
 	@FXML
 	public void handleBlueBGClick() throws IOException {
-		Game.sceneCol = 1;
+		Main.sceneCol = 1;
 	}
 
 	@FXML
 	public void handleYellowBGClick() throws IOException {
-		Game.sceneCol = 3;
+		Main.sceneCol = 3;
 	}
 
 

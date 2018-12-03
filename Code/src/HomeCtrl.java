@@ -23,7 +23,7 @@ public class HomeCtrl {
     public Label Scorelabel = new Label("Previous Score: "+ Integer.toString(0));
 
     /*public HomeCtrl() {
-    	if (Game.isResumable) {
+    	if (Main.isResumable) {
     		resumebtn.setVisible(true);
 		}
 		else{
@@ -44,15 +44,15 @@ public class HomeCtrl {
     }
 
 	/**
-	 * Loads Game play elements and starts game when play Button is clicked by user.
+	 * Loads Main play elements and starts game when play Button is clicked by user.
 	 * @throws IOException
 	 */
     @FXML
     public void playGame() throws IOException {
         Stage stage = (Stage) playGamebtn.getScene().getWindow();
-        Game newGame =new Game();
+        Main newMain =new Main();
 
-        newGame.Play(stage);
+        newMain.Play(stage);
     }
 
 	/**
@@ -102,7 +102,7 @@ public class HomeCtrl {
 
 	@FXML
 	private void initialize() {
-		Scorelabel.setText("Previous Score: "+ Integer.toString(Game.prevScore));
+		Scorelabel.setText("Previous Score: "+ Integer.toString(Main.prevScore));
 	}
 
 }

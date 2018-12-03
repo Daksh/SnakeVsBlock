@@ -31,7 +31,7 @@ import static javafx.scene.paint.Color.*;
  * 2. static variables start with a lowercase letter
  * 3. constants (final) variables are CAPITAL
  */
-public class Game extends Application implements Serializable {
+public class Main extends Application implements Serializable {
     //public static
     public static int score = 0;
     public static int prevScore=0;
@@ -59,9 +59,9 @@ public class Game extends Application implements Serializable {
 		Parent root = loader.load();
 		Group superGroup = new Group();
 
-		Menu gameMenu = new Menu("Game");
-		gameMenu.getItems().add(new MenuItem("Restart Game"));
-		gameMenu.getItems().add(new MenuItem("Exit Game"));
+		Menu gameMenu = new Menu("Main");
+		gameMenu.getItems().add(new MenuItem("Restart Main"));
+		gameMenu.getItems().add(new MenuItem("Exit Main"));
 		Menu gameMenu2 = new Menu("Settings");
 		gameMenu2.getItems().add(new MenuItem("Modify settings"));
 		Menu gameMenu4 = new Menu ( "								score: ");
@@ -131,7 +131,7 @@ public class Game extends Application implements Serializable {
 		addMusic(); // Does not seem to work on Mac
 
         primaryStage.setTitle("SnakeVsBlock");
-        Game playGame = new Game();
+        Main playMain = new Main();
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInPage.fxml"));
 		Parent root = loader.load();
@@ -146,7 +146,7 @@ public class Game extends Application implements Serializable {
 
 		//Earlier we were directly calling setUpGame which opens the gamePlay but now this
         //  is being called from HomeCtrl.java which is linked as a controller to FXML file
-        //playGame.setUpGame(_masterSnake, _blocks, _wall, _token, primaryStage);
+        //playMain.setUpGame(_masterSnake, _blocks, _wall, _token, primaryStage);
 
         primaryStage.show();
     }
@@ -159,8 +159,8 @@ public class Game extends Application implements Serializable {
 	}
 
 	private static void updateScoreLabel(int score){
-	    Game.score = score;
-        Game.gameMenu3.setText(Integer.toString(score));
+	    Main.score = score;
+        Main.gameMenu3.setText(Integer.toString(score));
 		try {
 			serializeScore();
 		} catch (IOException e) {
@@ -169,12 +169,12 @@ public class Game extends Application implements Serializable {
 	}
 
     public static void increaseScore(int delta){
-        Game.score = Game.score + delta;
-        updateScoreLabel(Game.score);
+        Main.score = Main.score + delta;
+        updateScoreLabel(Main.score);
     }
 
     public static int getScore(){
-        return Game.score;
+        return Main.score;
     }
 
 
@@ -184,20 +184,20 @@ public class Game extends Application implements Serializable {
             ANIMTimers.get(i).stop();
         try {
             Thread.sleep(1000);
-            Game.prevScore = Game.score;
-            Game.serializeUser();
-            Game.serializeLeaderboard();
-            Game.isResumable=false;
+            Main.prevScore = Main.score;
+            Main.serializeUser();
+            Main.serializeLeaderboard();
+            Main.isResumable=false;
             //System.exit(1);
 			HomeCtrl hm = new HomeCtrl();
 			hm.updatePrevBest();
-			hm.openHomeScreen(Game.mainStage);
+			hm.openHomeScreen(Main.mainStage);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (IOException e) {
 			e.printStackTrace();
 		}
-        Game.score = 0;
+        Main.score = 0;
 	}
 
 	public static void serializeSnake(Snake S1) throws IOException {
@@ -252,7 +252,7 @@ public class Game extends Application implements Serializable {
 		try {
 			out =new ObjectOutputStream(new FileOutputStream(("Leaderboard.txt")));
 
-			out.writeObject(Game.score);
+			out.writeObject(Main.score);
 		}
 		finally	{
 			out.close();
@@ -261,7 +261,7 @@ public class Game extends Application implements Serializable {
 		try {
 			out =new ObjectOutputStream(new FileOutputStream(("Resumable.txt")));
 
-			out.writeObject(Game.isResumable);
+			out.writeObject(Main.isResumable);
 		}
 		finally	{
 			out.close();
@@ -272,7 +272,7 @@ public class Game extends Application implements Serializable {
 		ObjectInputStream in = null;
 		try {
 			in = new ObjectInputStream(new FileInputStream("Leaderboard.txt"));
-			Game.score = (int) in.readObject();
+			Main.score = (int) in.readObject();
 		}
 		finally
 		{
@@ -281,7 +281,7 @@ public class Game extends Application implements Serializable {
 		in = null;
 		try {
 			in = new ObjectInputStream(new FileInputStream("Resumable.txt"));
-			Game.isResumable= (boolean) in.readObject();
+			Main.isResumable= (boolean) in.readObject();
 		}
 		finally
 		{

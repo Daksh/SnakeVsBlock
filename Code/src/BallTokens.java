@@ -8,7 +8,6 @@
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
@@ -16,7 +15,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-import java.io.File;
 import java.util.Random;
 
 import static javafx.scene.paint.Color.RED;
@@ -113,7 +111,7 @@ public abstract class BallTokens {
                 }
             }
         };
-		Game.ANIMTimers.add(timer);
+		Main.ANIMTimers.add(timer);
         timer.start();
     }
 

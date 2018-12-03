@@ -122,7 +122,7 @@ public class Snake implements Serializable{
 	 */
 	public void reduce_length(int delta){
         if(!_shieldStatus) set_length(get_length()-delta);
-        Game.increaseScore(delta);
+        Main.increaseScore(delta);
     }
 
     public void increase_length(int delta){
@@ -153,7 +153,7 @@ public class Snake implements Serializable{
         }
 		try
 		{
-			Game.serializeSnake(_onlySnake);
+			Main.serializeSnake(_onlySnake);
 		} catch (IOException e)
 		{
 			e.printStackTrace();
@@ -235,7 +235,7 @@ public class Snake implements Serializable{
                 }
             }
         };
-        Game.ANIMTimers.add(timer);
+        Main.ANIMTimers.add(timer);
         timer.start();
     }
 

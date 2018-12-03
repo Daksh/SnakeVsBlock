@@ -32,7 +32,7 @@
                                 <Insets />
                             </opaqueInsets>
                         </Label>
-                        <Button fx:id="playGamebtn" layoutX="211.0" layoutY="57.0" mnemonicParsing="false" onMouseClicked="#playGame" prefHeight="65.0" prefWidth="75.0" style="-fx-background-color: #000000;">
+                        <Button fx:id="playGamebtn" layoutX="211.0" layoutY="57.0" mnemonicParsing="false" onMouseClicked="#playMain" prefHeight="65.0" prefWidth="75.0" style="-fx-background-color: #000000;">
                             <graphic>
                                 <ImageView fitHeight="72.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                                     <image>

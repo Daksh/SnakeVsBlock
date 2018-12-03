@@ -19,7 +19,6 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.Random;
 
-import static javafx.scene.paint.Color.BLACK;
 import static javafx.scene.paint.Color.WHITE;
 
 public class Blocks implements Serializable{
@@ -177,7 +176,7 @@ public class Blocks implements Serializable{
 
             }
         };
-        Game.ANIMTimers.add(timer);
+        Main.ANIMTimers.add(timer);
         timer.start();
     }
 
@@ -248,7 +247,7 @@ public class Blocks implements Serializable{
             }
         }
 
-        Game.increaseScore(totalWeight);
+        Main.increaseScore(totalWeight);
 	}
 
     private boolean checkBlockSetInScreen(Group blocksGroup){
@@ -274,7 +273,7 @@ public class Blocks implements Serializable{
 
         if(weight>=snakeLen && !Snake.getShieldStatus()) {
 			//timer.stop();
-			Game.over();
+			Main.over();
 		}
 
         else if(weight<=5 || Snake.getShieldStatus()) {
