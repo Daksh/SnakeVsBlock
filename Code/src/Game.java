@@ -32,8 +32,20 @@ import static javafx.scene.paint.Color.*;
  * 3. constants (final) variables are CAPITAL
  */
 public class Game extends Application implements Serializable {
-	private Random random = new Random();
+    //public static
+    public static int score = 0;
+    public static int prevScore=0;
+    public static int sceneCol=0;
+    public static boolean isResumable = true;
+    public static Random random = new Random();
+    public static Scene scene1;
+    public static ArrayList<AnimationTimer> ANIMTimers = new ArrayList<AnimationTimer>();
 
+    //private static Variables
+    private static Menu gameMenu3;
+    private static Stage mainStage;
+
+    //private field variables
     private Snake _masterSnake;
     private Blocks _blocks = new Blocks();
     private Wall _wall = new Wall(); //White lines
@@ -41,20 +53,7 @@ public class Game extends Application implements Serializable {
     private BorderPane _layout;
     private int rInt = random.nextInt(5); //check once
 
-    private static Menu gameMenu3;
-
-    public static int score = 0;
-    public static int prevScore=0;
-    public static int sceneCol=0;
-    public static boolean isResumable = true;
-    public static Scene scene1;
-    public static ArrayList<AnimationTimer> ANIMTimers = new ArrayList<AnimationTimer>();
-
-    Game playGame;
-    static Stage mainStage;
-
-	protected void setUpGame (Snake masterSnake, Blocks testBlocks, Wall testWall, Tokens testMagnet, Stage primaryStage) throws IOException
-	{
+	protected void setUpGame (Snake masterSnake, Blocks testBlocks, Wall testWall, Tokens testMagnet, Stage primaryStage) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayDisp.fxml"));
 		Group ballGroup= new Group();
 		Parent root = loader.load();
@@ -110,35 +109,43 @@ public class Game extends Application implements Serializable {
 		testWall.addWall(scene);
 	}
 
-	public void Play(Stage primaryStage) throws IOException
-	{
+	public void Play(Stage primaryStage) throws IOException {
 		this.setUpGame(_masterSnake, _blocks, _wall, _token, primaryStage);
 	}
 
+    /**
+     * Indirectly calls the start() method
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * First Function that is called automatically at the very beginning of the Application
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
-		addMusic();
-		if (isResumable) {
-			//Game.deserializeScore();
-			//_masterSnake=Game.deserializeSnake();
-		}
-		//Game.deserializeLeaderboard();
-		//Game.deserializeUser();
+		addMusic(); // Does not seem to work on Mac
+
         primaryStage.setTitle("SnakeVsBlock");
-        playGame = new Game();
+        Game playGame = new Game();
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInPage.fxml"));
 		Parent root = loader.load();
 		Group HomeGroup = new Group();
 		HomeGroup.getChildren().add(root);
-		_blocks.LoadData();
+
+		Leaderboard.loadData();//Populate the Leaders Board
+
 		Scene scene = new Scene(HomeGroup);
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
+
+		//Earlier we were directly calling setUpGame which opens the gamePlay but now this
+        //  is being called from HomeCtrl.java which is linked as a controller to FXML file
         //playGame.setUpGame(_masterSnake, _blocks, _wall, _token, primaryStage);
 
         primaryStage.show();
@@ -154,11 +161,9 @@ public class Game extends Application implements Serializable {
 	private static void updateScoreLabel(int score){
 	    Game.score = score;
         Game.gameMenu3.setText(Integer.toString(score));
-		try
-		{
+		try {
 			serializeScore();
-		} catch (IOException e)
-		{
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -189,14 +194,9 @@ public class Game extends Application implements Serializable {
 			hm.openHomeScreen(Game.mainStage);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        } catch (IOException e)
-		{
+        } catch (IOException e) {
 			e.printStackTrace();
 		}
-//        catch (IOException e)
-//		{
-//			e.printStackTrace();
-//		}
         Game.score = 0;
 	}
 
