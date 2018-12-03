@@ -4,20 +4,15 @@
  * @author	Daksh Shah & Arsh Verma
  */
 
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
 /**
@@ -51,11 +46,13 @@ public class Main extends Application {
      * @throws IOException
      */
 	public void play(Stage primaryStage) throws IOException {
-	    _gamePlay = new GamePlay(primaryStage, 20, 0, 0f);
+	    _gamePlay = new GamePlay(primaryStage, 0, 0f);
+	    _gamePlay.startGame(primaryStage, 20);
 	}
 
 	public void play(Stage primaryStage, int snakeLength, int score, double life){
-        _gamePlay = new GamePlay(primaryStage, snakeLength, score, life);
+        _gamePlay = new GamePlay(primaryStage, score, life);
+        _gamePlay.startGame(primaryStage, snakeLength);
     }
 
     /**
