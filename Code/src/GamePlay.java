@@ -24,6 +24,7 @@ public class GamePlay {
     private int _score;
     private double _life;
     private Menu _gameMenu3;
+	private Menu _gameMenu5;
     private Blocks _blocks;
     private Wall _wall;
     private Stage _mainStage;
@@ -48,11 +49,13 @@ public class GamePlay {
         gameMenu.getItems().add(new MenuItem("Exit Main"));
         Menu gameMenu2 = new Menu("Settings");
         gameMenu2.getItems().add(new MenuItem("Modify settings"));
-        Menu gameMenu4 = new Menu ( "								Score: ");
-        _gameMenu3 = new Menu (Integer.toString(_score));
+		Menu gameMenu6 = new Menu ( "				Life: ");
+		_gameMenu5 = new Menu (Double.toString(_life));
+		Menu gameMenu4 = new Menu ( "				Score: ");
+		_gameMenu3 = new Menu (Integer.toString(_score));
 
         MenuBar Bar = new MenuBar();
-        Bar.getMenus().addAll(gameMenu,gameMenu2, gameMenu4, _gameMenu3);
+        Bar.getMenus().addAll(gameMenu,gameMenu2, gameMenu6, _gameMenu5, gameMenu4, _gameMenu3);
         Bar.setMinWidth(500.0);
 
         BorderPane layout = new BorderPane();
@@ -100,6 +103,12 @@ public class GamePlay {
         _score = score;
         _gameMenu3.setText(Integer.toString(score));
     }
+
+    //TODO:CALL THIS LABEL
+	private void updateLifeLabel(double life){
+		_life = life;
+		_gameMenu3.setText(Double.toString(life));
+	}
 
     public void increaseScore(int delta){
         _score = _score + delta;
