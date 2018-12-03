@@ -1,3 +1,4 @@
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -10,12 +11,35 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static javafx.scene.paint.Color.*;
 
 public class GamePlay {
 
-    protected void setUpGame (Snake masterSnake, Blocks testBlocks, Wall testWall, Tokens testMagnet, Stage primaryStage) throws IOException {
+
+
+
+    public static int score = 0;
+    public static int sceneCol=0;
+    public static ArrayList<AnimationTimer> ANIMTimers = new ArrayList<AnimationTimer>();
+
+    private static Menu gameMenu3;
+
+
+
+    private Blocks _blocks;
+    private Wall _wall;
+    private Tokens _tokens;
+
+    public GamePlay(){
+        _blocks = new Blocks();
+        _wall = new Wall(); //White lines
+        _tokens = new Magnet();
+    }
+
+    protected void setUpGame (Stage primaryStage) throws IOException {
+        //Blocks testBlocks, Wall testWall, Tokens testMagnet
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayDisp.fxml"));
         Group ballGroup= new Group();
         Parent root = loader.load();
@@ -60,7 +84,7 @@ public class GamePlay {
         testMagnet.addToken(scene);
         Tokens testMagnet2 = new Magnet();
         testMagnet2.addToken(scene);
-        scene1=scene;
+
         new Magnet().addToken(scene);
 
         new TokenBallInher().addToken(scene);
@@ -99,7 +123,7 @@ public class GamePlay {
             Main.prevScore = Main.score;
             Main.serializeUser();
             Main.serializeLeaderboard();
-            Main.isResumable=false;
+
             //System.exit(1);
             HomeCtrl hm = new HomeCtrl();
             hm.updatePrevBest();

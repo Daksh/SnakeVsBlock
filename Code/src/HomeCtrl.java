@@ -52,7 +52,7 @@ public class HomeCtrl {
         Stage stage = (Stage) playGamebtn.getScene().getWindow();
         Main newMain =new Main();
 
-        newMain.Play(stage);
+        newMain.play(stage);
     }
 
 	/**

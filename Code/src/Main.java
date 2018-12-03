@@ -28,35 +28,25 @@ import java.util.Random;
  */
 public class Main extends Application {
     //public static
-    public static int score = 0;
-    public static int prevScore=0;
-    public static int sceneCol=0;
-    public static boolean isResumable = true;
     public static Random random = new Random();
-    public static Scene scene1;
-    public static ArrayList<AnimationTimer> ANIMTimers = new ArrayList<AnimationTimer>();
+    public static int prevScore=0;//might want to move to User class
 
     //private static Variables
-    private static Menu gameMenu3;
     private static Stage mainStage;
-
-    //private field variables
-    private Snake _masterSnake; //Dummy variable; useless
-    private Blocks _blocks = new Blocks();
-    private Wall _wall = new Wall(); //White lines
-    private Tokens _token = new Magnet();
-    private BorderPane _layout;
-    private int rInt = random.nextInt(5); //check once
 
     /**
      * Function to start the Game, it is called from HomeCtrl.java
      * @param primaryStage
      * @throws IOException
      */
-	public void Play(Stage primaryStage) throws IOException {
+	public void play(Stage primaryStage) throws IOException {
 	    GamePlay gamePlay = new GamePlay();
-		this.setUpGame(_masterSnake, _blocks, _wall, _token, primaryStage);
+		gamePlay.setUpGame(primaryStage);
 	}
+
+	public void play(Stage primaryStage, int snakeLength, int score, double life){
+
+    }
 
     /**
      * Indirectly calls the start() method
@@ -74,9 +64,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 		addMusic(); // Does not seem to work on Mac
+        LeadersBoard.loadData();//Populate the Leaders Board
 
         primaryStage.setTitle("SnakeVsBlock");
-        Main playMain = new Main();
 
         //We start the Game-Application by opening the Login Page
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInPage.fxml"));
@@ -84,12 +74,11 @@ public class Main extends Application {
 		Group HomeGroup = new Group();
 		HomeGroup.getChildren().add(root);
 
-		LeadersBoard.loadData();//Populate the Leaders Board
-
+        //@Arsh the next two lines might not be needed TODO
 		Scene scene = new Scene(HomeGroup);
 		primaryStage.setScene(scene);
-		primaryStage.setResizable(false);
 
+		primaryStage.setResizable(false);
         primaryStage.show();
     }
 
