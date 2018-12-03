@@ -7,6 +7,7 @@ import javafx.scene.Group;
  */
 
 public class Coin extends Tokens {
+    private boolean flag=false;
     protected  String path = "./../Images/icons8-cheap-2-96.png";
 
     public Coin(Group tg){
@@ -26,8 +27,20 @@ public class Coin extends Tokens {
     public void collides(){
         if(_tokenGroup!=null && _snake!=null) {
             System.out.println("Coin COLLISION");
+
+            if(!flag) Main._gamePlay.increaseLife();
+            flag = true;
+            Thread t = new Thread(() -> {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                flag=false;
+            });
+            t.start();
+
             _tokenGroup.getChildren().clear();
-            Main._gamePlay.increaseLife();
         }
     }
 }

@@ -181,6 +181,9 @@ public class Snake implements Serializable{
         return x;
     }
 
+    /**
+     * Key Press Listeners
+     */
     private void addKeyListeners(){
         _scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -188,8 +191,9 @@ public class Snake implements Serializable{
                 switch (event.getCode()) {
 					case LEFT: _goLeft = true; break;
                     case RIGHT: _goRight = true; break;
-					case D: _blocksRef.destroyAllBlocksInScreen();
-					case S: setShieldOnFor(5000);
+					case D: _blocksRef.destroyAllBlocksInScreen(); break;
+					case S: setShieldOnFor(5000); break;
+                    case C: Main._gamePlay.increaseLife(); break;
                 }
             }
         });

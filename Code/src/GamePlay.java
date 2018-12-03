@@ -144,7 +144,7 @@ public class GamePlay {
 
     private void updateLifeLabel(double life){
         _life = life;
-        _gameMenu3.setText(Double.toString(life));
+        _gameMenu5.setText(String.format("%.2f", life));
     }
 
     /**
