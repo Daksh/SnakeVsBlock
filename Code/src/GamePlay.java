@@ -24,21 +24,18 @@ public class GamePlay {
     private Menu gameMenu3;
     private Blocks _blocks;
     private Wall _wall;
-    private Tokens _token;
     private Stage _mainStage;
     private Snake _snake;
 
-
-    public GamePlay(){
-        _blocks = new Blocks();
-        _wall = new Wall(); //White lines
-        _token = new Magnet();
-    }
-
-    protected void setUpGame (Stage primaryStage) throws IOException {
+    public GamePlay(Stage primaryStage){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayDisp.fxml"));
         Group ballGroup= new Group();
-        Parent root = loader.load();
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Group superGroup = new Group();
 
         Menu gameMenu = new Menu("Main");
@@ -69,26 +66,27 @@ public class GamePlay {
         _snake = Snake.getInstance(20, scene);
         _blocks = new Blocks(_snake,scene);//needs Snake to know what kind of _blocks to spell
         _snake.setBlocksRef(_blocks);
+
+        _wall = new Wall();
+        Wall.setSnake(_snake);
+        _wall.addWall(scene);
+
+        //Configuring Tokens and BallTokens Classes
         Tokens.setBlocks(_blocks);
         Tokens.setSnake(_snake);
-
         BallTokens.setBlocks(_blocks);
         BallTokens.setSnake(_snake);
 
-        Wall.setSnake(_snake);
-
-        _token.addToken(scene);
-        Tokens _tokens2 = new Magnet();
-        _tokens2.addToken(scene);
-
+        //Spawning 3 Tokens (recurrently)
+        new Magnet().addToken(scene);
+        new Magnet().addToken(scene);
         new Magnet().addToken(scene);
 
+        //Spawning 4 Balls (recurrently)
         new TokenBallInher().addToken(scene);
         new TokenBallInher().addToken(scene);
         new TokenBallInher().addToken(scene);
         new TokenBallInher().addToken(scene);
-
-        _wall.addWall(scene);
     }
 
     private void updateScoreLabel(int score){
