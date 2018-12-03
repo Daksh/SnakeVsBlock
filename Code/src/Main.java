@@ -46,7 +46,7 @@ public class Game extends Application implements Serializable {
     private static Stage mainStage;
 
     //private field variables
-    private Snake _masterSnake;
+    private Snake _masterSnake; //Dummy variable; useless
     private Blocks _blocks = new Blocks();
     private Wall _wall = new Wall(); //White lines
     private Tokens _token = new Magnet();
