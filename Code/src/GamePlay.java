@@ -17,17 +17,22 @@ import static javafx.scene.paint.Color.*;
 
 public class GamePlay {
 
-    public int score = 0;
+
     public int sceneCol=0;
     public ArrayList<AnimationTimer> ANIMTimers = new ArrayList<AnimationTimer>();
 
-    private Menu gameMenu3;
+    private int _score;
+    private double _life;
+    private Menu _gameMenu3;
     private Blocks _blocks;
     private Wall _wall;
     private Stage _mainStage;
     private Snake _snake;
 
-    public GamePlay(Stage primaryStage){
+    public GamePlay(Stage primaryStage, int snakeLength, int score, double life){
+        _score = score;
+        _life = life;
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayDisp.fxml"));
         Group ballGroup= new Group();
         Parent root = null;
@@ -43,11 +48,11 @@ public class GamePlay {
         gameMenu.getItems().add(new MenuItem("Exit Main"));
         Menu gameMenu2 = new Menu("Settings");
         gameMenu2.getItems().add(new MenuItem("Modify settings"));
-        Menu gameMenu4 = new Menu ( "								score: ");
-        gameMenu3 = new Menu (Integer.toString(score));
+        Menu gameMenu4 = new Menu ( "								Score: ");
+        _gameMenu3 = new Menu (Integer.toString(_score));
 
         MenuBar Bar = new MenuBar();
-        Bar.getMenus().addAll(gameMenu,gameMenu2, gameMenu4,gameMenu3);
+        Bar.getMenus().addAll(gameMenu,gameMenu2, gameMenu4, _gameMenu3);
         Bar.setMinWidth(500.0);
 
         BorderPane layout = new BorderPane();
@@ -62,8 +67,10 @@ public class GamePlay {
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
 
-        //There is a problem as both of the following need each other :\
-        _snake = Snake.getInstance(20, scene);
+        //Generating a snake
+        _snake = Snake.getInstance(snakeLength, scene);
+        System.out.println("Asked for a snake with length "+snakeLength+"; got one for "+_snake.get_length());
+
         _blocks = new Blocks(_snake,scene);//needs Snake to know what kind of _blocks to spell
         _snake.setBlocksRef(_blocks);
 
@@ -90,17 +97,17 @@ public class GamePlay {
     }
 
     private void updateScoreLabel(int score){
-        this.score = score;
-        this.gameMenu3.setText(Integer.toString(score));
+        _score = score;
+        _gameMenu3.setText(Integer.toString(score));
     }
 
     public void increaseScore(int delta){
-        this.score = this.score + delta;
-        updateScoreLabel(this.score);
+        _score = _score + delta;
+        updateScoreLabel(_score);
     }
 
     public int getScore(){
-        return this.score;
+        return this._score;
     }
 
     public void over() {
@@ -109,7 +116,7 @@ public class GamePlay {
             ANIMTimers.get(i).stop();
         try {
             Thread.sleep(1000);
-            Main.prevScore = this.score;
+            Main.prevScore = this._score;
 
             //System.exit(1);
             HomeCtrl hm = new HomeCtrl();
@@ -119,7 +126,7 @@ public class GamePlay {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        this.score = 0;
+        this._score = 0;
     }
 
 }

@@ -50,12 +50,11 @@ public class Main extends Application {
      * @throws IOException
      */
 	public void play(Stage primaryStage) throws IOException {
-	    _gamePlay = new GamePlay();
-		_gamePlay.setUpGame(primaryStage);
+	    _gamePlay = new GamePlay(primaryStage, 20, 0, 0f);
 	}
 
 	public void play(Stage primaryStage, int snakeLength, int score, double life){
-
+        _gamePlay = new GamePlay(primaryStage, snakeLength, score, life);
     }
 
     /**
