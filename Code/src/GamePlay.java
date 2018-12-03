@@ -79,7 +79,8 @@ public class GamePlay {
 		RestartGamebtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				//playnew(primaryStage);
+				Main newMain = new Main();
+				newMain.restartGame(primaryStage);
 			}
 		});
 		Exitbtn.setOnAction(event -> System.exit(1));
@@ -87,7 +88,7 @@ public class GamePlay {
         BorderPane layout = new BorderPane();
         layout.setTop(Bar);
         ballGroup.getChildren().add(Bar);
-        ballGroup.getChildren().add(NewGamebtn);
+        ballGroup.getChildren().add(RestartGamebtn);
         ballGroup.getChildren().add(Exitbtn);
 
         superGroup.getChildren().addAll(ballGroup, root);
