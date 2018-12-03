@@ -73,9 +73,15 @@ public class GamePlay {
         MenuBar Bar = new MenuBar();
         Bar.getMenus().addAll(gameMenu,gameMenu2, gameMenu6, _gameMenu5, gameMenu4, _gameMenu3);
         Bar.setMinWidth(500.0);
-		Button	NewGamebtn = new Button("New Game");
+		Button	RestartGamebtn = new Button("Restart Game");
 		Button	Exitbtn = new Button("Exit");
 		Exitbtn.setLayoutX(100);
+		RestartGamebtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				//playnew(primaryStage);
+			}
+		});
 		Exitbtn.setOnAction(event -> System.exit(1));
 
         BorderPane layout = new BorderPane();
