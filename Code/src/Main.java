@@ -66,6 +66,11 @@ public class Main extends Application {
         }
 	}
 
+	public void playNew(Stage primaryStage) throws IOException{
+        _gamePlay = new GamePlay(primaryStage, 0, 0f);
+        _gamePlay.startGame(primaryStage, 20);
+    }
+
 	public void play(Stage primaryStage, int snakeLength, int score, double life){
         _gamePlay = new GamePlay(primaryStage, score, life);
         _gamePlay.startGame(primaryStage, snakeLength);
