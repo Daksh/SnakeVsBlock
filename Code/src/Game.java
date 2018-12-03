@@ -6,7 +6,6 @@
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -19,7 +18,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,18 +25,25 @@ import java.util.Random;
 
 import static javafx.scene.paint.Color.*;
 
+/**
+ * Following Name Conventions:
+ * 1. private field variables start with _, followed by lowercase letter
+ * 2. static variables start with a lowercase letter
+ * 3. constants (final) variables are CAPITAL
+ */
 public class Game extends Application implements Serializable {
-    private Snake masterSnake;
-    private Blocks testBlocks= new Blocks();
-    private Wall testWall = new Wall(); //White lines
-    private Tokens testMagnet = new Magnet();
-    private BorderPane layout;
-    private Random random = new Random();
-    private int rInt = random.nextInt(5);
+	private Random random = new Random();
+
+    private Snake _masterSnake;
+    private Blocks _blocks = new Blocks();
+    private Wall _wall = new Wall(); //White lines
+    private Tokens _token = new Magnet();
+    private BorderPane _layout;
+    private int rInt = random.nextInt(5); //check once
 
     private static Menu gameMenu3;
 
-    public static int Score = 0;
+    public static int score = 0;
     public static int prevScore=0;
     public static int sceneCol=0;
     public static boolean isResumable = true;
@@ -60,8 +65,8 @@ public class Game extends Application implements Serializable {
 		gameMenu.getItems().add(new MenuItem("Exit Game"));
 		Menu gameMenu2 = new Menu("Settings");
 		gameMenu2.getItems().add(new MenuItem("Modify settings"));
-		Menu gameMenu4 = new Menu ( "								Score: ");
-		gameMenu3 = new Menu (Integer.toString(Score));
+		Menu gameMenu4 = new Menu ( "								score: ");
+		gameMenu3 = new Menu (Integer.toString(score));
 
 		MenuBar Bar = new MenuBar();
 		Bar.getMenus().addAll(gameMenu,gameMenu2, gameMenu4,gameMenu3);
@@ -81,7 +86,7 @@ public class Game extends Application implements Serializable {
 
 		//There is a problem as both of the following need each other :\
 		masterSnake = Snake.getInstance(20, scene);
-		testBlocks = new Blocks(masterSnake,scene);//needs Snake to know what kind of blocks to spell
+		testBlocks = new Blocks(masterSnake,scene);//needs Snake to know what kind of _blocks to spell
 		masterSnake.setBlocksRef(testBlocks);
 		Tokens.setBlocks(testBlocks);
 		Tokens.setSnake(masterSnake);
@@ -107,7 +112,7 @@ public class Game extends Application implements Serializable {
 
 	public void Play(Stage primaryStage) throws IOException
 	{
-		this.setUpGame(masterSnake, testBlocks, testWall, testMagnet, primaryStage);
+		this.setUpGame(_masterSnake, _blocks, _wall, _token, primaryStage);
 	}
 
     public static void main(String[] args) {
@@ -119,7 +124,7 @@ public class Game extends Application implements Serializable {
 		addMusic();
 		if (isResumable) {
 			//Game.deserializeScore();
-			//masterSnake=Game.deserializeSnake();
+			//_masterSnake=Game.deserializeSnake();
 		}
 		//Game.deserializeLeaderboard();
 		//Game.deserializeUser();
@@ -130,11 +135,11 @@ public class Game extends Application implements Serializable {
 		Parent root = loader.load();
 		Group HomeGroup = new Group();
 		HomeGroup.getChildren().add(root);
-		testBlocks.LoadData();
+		_blocks.LoadData();
 		Scene scene = new Scene(HomeGroup);
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
-        //playGame.setUpGame(masterSnake, testBlocks, testWall, testMagnet, primaryStage);
+        //playGame.setUpGame(_masterSnake, _blocks, _wall, _token, primaryStage);
 
         primaryStage.show();
     }
@@ -147,7 +152,7 @@ public class Game extends Application implements Serializable {
 	}
 
 	private static void updateScoreLabel(int score){
-	    Game.Score = score;
+	    Game.score = score;
         Game.gameMenu3.setText(Integer.toString(score));
 		try
 		{
@@ -159,12 +164,12 @@ public class Game extends Application implements Serializable {
 	}
 
     public static void increaseScore(int delta){
-        Game.Score = Game.Score + delta;
-        updateScoreLabel(Game.Score);
+        Game.score = Game.score + delta;
+        updateScoreLabel(Game.score);
     }
 
     public static int getScore(){
-        return Game.Score;
+        return Game.score;
     }
 
 
@@ -174,7 +179,7 @@ public class Game extends Application implements Serializable {
             ANIMTimers.get(i).stop();
         try {
             Thread.sleep(1000);
-            Game.prevScore = Game.Score;
+            Game.prevScore = Game.score;
             Game.serializeUser();
             Game.serializeLeaderboard();
             Game.isResumable=false;
@@ -192,7 +197,7 @@ public class Game extends Application implements Serializable {
 //		{
 //			e.printStackTrace();
 //		}
-        Game.Score = 0;
+        Game.score = 0;
 	}
 
 	public static void serializeSnake(Snake S1) throws IOException {
@@ -247,7 +252,7 @@ public class Game extends Application implements Serializable {
 		try {
 			out =new ObjectOutputStream(new FileOutputStream(("Leaderboard.txt")));
 
-			out.writeObject(Game.Score);
+			out.writeObject(Game.score);
 		}
 		finally	{
 			out.close();
@@ -267,7 +272,7 @@ public class Game extends Application implements Serializable {
 		ObjectInputStream in = null;
 		try {
 			in = new ObjectInputStream(new FileInputStream("Leaderboard.txt"));
-			Game.Score = (int) in.readObject();
+			Game.score = (int) in.readObject();
 		}
 		finally
 		{
