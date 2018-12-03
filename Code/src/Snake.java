@@ -191,9 +191,9 @@ public class Snake implements Serializable{
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
-					case LEFT: _goLeft = true; break;
-                    case RIGHT: _goRight = true; break;
-					case D: _blocksRef.destroyAllBlocksInScreen(); break;
+					case A: _goLeft = true; break;
+					case D: _goRight = true; break;
+					case B: _blocksRef.destroyAllBlocksInScreen(); break;
 					case S: setShieldOnFor(5000); break;
                     case C: Main._gamePlay.increaseLife(); break;
                 }
@@ -204,8 +204,8 @@ public class Snake implements Serializable{
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
-					case LEFT:  _goLeft = false; break;
-                    case RIGHT: _goRight = false; break;
+					case A:  _goLeft = false; break;
+					case D: _goRight = false; break;
                 }
             }
         });

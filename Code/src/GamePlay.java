@@ -1,11 +1,15 @@
 import javafx.animation.AnimationTimer;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -50,10 +54,8 @@ public class GamePlay {
 
         Group superGroup = new Group();
 
-        Menu gameMenu = new Menu("New Game");
-        //gameMenu.getItems().add(new MenuItem("Restart Game"));
-        //gameMenu.getItems().add(new MenuItem("Exit Game"));
-        Menu gameMenu2 = new Menu("Exit");
+        Menu gameMenu = new Menu("		");
+        Menu gameMenu2 = new Menu("		");
         //gameMenu2.getItems().add(new MenuItem("Modify settings"));
 		Menu gameMenu6 = new Menu ( "			Life: ");
 		_gameMenu5 = new Menu (Double.toString(_life));
@@ -63,10 +65,16 @@ public class GamePlay {
         MenuBar Bar = new MenuBar();
         Bar.getMenus().addAll(gameMenu,gameMenu2, gameMenu6, _gameMenu5, gameMenu4, _gameMenu3);
         Bar.setMinWidth(500.0);
+		Button	NewGamebtn = new Button("New Game");
+		Button	Exitbtn = new Button("Exit");
+		Exitbtn.setLayoutX(100);
+		Exitbtn.setOnAction(event -> System.exit(1));
 
         BorderPane layout = new BorderPane();
         layout.setTop(Bar);
         ballGroup.getChildren().add(Bar);
+        ballGroup.getChildren().add(NewGamebtn);
+        ballGroup.getChildren().add(Exitbtn);
 
         superGroup.getChildren().addAll(ballGroup, root);
         Scene scene = new Scene(superGroup, 500,700, BLACK);
