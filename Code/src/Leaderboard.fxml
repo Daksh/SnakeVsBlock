@@ -19,7 +19,7 @@
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Region prefHeight="100.0" prefWidth="108.0" />
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Leaderboard" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="LeadersBoard" textAlignment="CENTER" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="48.0" />
                </font>

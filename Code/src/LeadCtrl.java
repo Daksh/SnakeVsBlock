@@ -1,5 +1,5 @@
 /**
- * Serves as controller class for Leaderboard FXML file.
+ * Serves as controller class for LeadersBoard FXML file.
  *
  * @author Daksh Shah and Arsh Verma
  */

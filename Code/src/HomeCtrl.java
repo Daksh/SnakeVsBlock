@@ -32,7 +32,7 @@ public class HomeCtrl {
 	}*/
 
 	/**
-	 * Loads Leaderboard elements on stage when Leaderboard Button is clicked by user.
+	 * Loads LeadersBoard elements on stage when LeadersBoard Button is clicked by user.
 	 * @throws IOException
 	 */
 	@FXML

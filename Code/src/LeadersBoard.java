@@ -1,17 +1,17 @@
 /**
  * Singleton Design Pattern
  */
-public class Leaderboard {
+public class LeadersBoard {
 
-    private static Leaderboard board = new Leaderboard();
+    private static LeadersBoard board = new LeadersBoard();
 
-    private Leaderboard(){
+    private LeadersBoard(){
 
     }
 
-    public static Leaderboard getInstance(){
+    public static LeadersBoard getInstance(){
         if(board == null)
-            board = new Leaderboard();
+            board = new LeadersBoard();
         return board;
     }
 
