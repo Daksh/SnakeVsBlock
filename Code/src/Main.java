@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+
+import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.Random;
 
@@ -29,6 +31,8 @@ public class Main extends Application {
      * BLOCK_SPEED : Defines the speed of downward transition of the block.
      */
     public static final int BLOCK_WIDTH = 98, BLOCK_HEIGHT = 100, SNAKE_RADIUS = 15;
+    public static final String fPathDS = "dataStore.txt";
+
     public static double SPEED = 3;
 
     // We need to have it, for ex. AnimationTimers need to be added to the GamePlay's list of Timers
@@ -44,8 +48,22 @@ public class Main extends Application {
      * @throws IOException
      */
 	public void play(Stage primaryStage) throws IOException {
-	    _gamePlay = new GamePlay(primaryStage, 0, 0f);
-	    _gamePlay.startGame(primaryStage, 20);
+	    if(new File(fPathDS).isFile()){
+            DataStore ds = null;
+            try {
+                ds = DataStore.deserialize();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            _gamePlay = new GamePlay(primaryStage, ds._score, ds._life);
+            _gamePlay.startGame(primaryStage, ds._snakeLength);
+            Main.SPEED = ds._speed;
+            Snake.colour = ds._snakeColor;
+            Main._gamePlay.sceneCol = ds._sceneCol;
+        } else{
+            _gamePlay = new GamePlay(primaryStage, 0, 0f);
+            _gamePlay.startGame(primaryStage, 20);
+        }
 	}
 
 	public void play(Stage primaryStage, int snakeLength, int score, double life){
@@ -96,6 +114,11 @@ public class Main extends Application {
 
 	public static void removeGameRef(){
         Main.SPEED = 3;
+        try {
+            DataStore.serialize(new DataStore(20,0,3,0,0,0));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Snake.setNull();
         _gamePlay = null;
     }

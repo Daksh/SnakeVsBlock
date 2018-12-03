@@ -34,6 +34,14 @@ public class GamePlay {
     private Stage _mainStage;
     private Snake _snake;
 
+    public double getLife(){
+        return _life;
+    }
+
+    public Snake getSnake(){
+        return _snake;
+    }
+
     public GamePlay(Stage primaryStage, int score, double life){
         sceneCol = 0;
         ANIMTimers = new ArrayList<AnimationTimer>();
@@ -139,6 +147,7 @@ public class GamePlay {
     private void updateScoreLabel(int score){
         _score = score;
         _gameMenu3.setText(Integer.toString(score));
+        DataStore.serialize();
     }
 
     public void increaseScore(int delta){

@@ -9,6 +9,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+
+import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.ArrayList;
 import static javafx.scene.paint.Color.*;
@@ -151,6 +153,7 @@ public class Snake implements Serializable{
             if(i<length-1) _snakeBody[i].setVisible(true);
             else _snakeBody[i].setVisible(false);
         }
+        DataStore.serialize();
 	}
 
     private StackPane getHead(int length){
