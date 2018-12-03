@@ -37,6 +37,7 @@ public class Main extends Application {
     public static final int BLOCK_WIDTH = 98, BLOCK_HEIGHT = 100, BLOCK_SPEED = 3, SNAKE_RADIUS = 15;
 
     // We need to have it, for ex. AnimationTimers need to be added to the GamePlay's list of Timers
+    // _gamePlay.increaseScore, over,
     public static GamePlay _gamePlay;
 
     public static Random random = new Random();

@@ -120,7 +120,7 @@ public class Snake implements Serializable{
 	 */
 	public void reduce_length(int delta){
         if(!_shieldStatus) set_length(get_length()-delta);
-        Main.increaseScore(delta);
+        Main._gamePlay.increaseScore(delta);
     }
 
     public void increase_length(int delta){
@@ -149,13 +149,6 @@ public class Snake implements Serializable{
             if(i<length-1) _snakeBody[i].setVisible(true);
             else _snakeBody[i].setVisible(false);
         }
-		try
-		{
-			Main.serializeSnake(_onlySnake);
-		} catch (IOException e)
-		{
-			e.printStackTrace();
-		}
 	}
 
     private StackPane getHead(int length){
@@ -233,7 +226,7 @@ public class Snake implements Serializable{
                 }
             }
         };
-        Main.ANIMTimers.add(timer);
+        Main._gamePlay.ANIMTimers.add(timer);
         timer.start();
     }
 

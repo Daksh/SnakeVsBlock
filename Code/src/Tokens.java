@@ -26,7 +26,7 @@ public abstract class Tokens {
 	/**
 	 * Token speed defines the speed of downward motion of token
 	 */
-    public static double TOKEN_SPEED = Blocks.BLOCK_SPEED;
+    public static double TOKEN_SPEED = Main.BLOCK_SPEED;
     public static final int MAGNETMUL = 4;
 
     private ImageView _tokenView = new ImageView();
@@ -109,7 +109,7 @@ public abstract class Tokens {
                 }
             }
         };
-		Main.ANIMTimers.add(timer);
+		Main._gamePlay.ANIMTimers.add(timer);
         timer.start();
     }
 
@@ -152,7 +152,7 @@ public abstract class Tokens {
                 }
             }
         };
-        Main.ANIMTimers.add(timer);
+        Main._gamePlay.ANIMTimers.add(timer);
         timer.start();
     }
 

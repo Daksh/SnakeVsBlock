@@ -16,7 +16,7 @@ import java.util.Random;
 import static javafx.scene.paint.Color.WHITE;
 
 public final class Wall implements Serializable {
-	public static double WALL_SPEED = Blocks.BLOCK_SPEED;
+	public static double WALL_SPEED = Main.BLOCK_SPEED;
 
 	private static Random random = new Random();
     private static Snake _snake;
@@ -72,7 +72,7 @@ public final class Wall implements Serializable {
 				}
 			}
 		};
-        Main.ANIMTimers.add(timer);
+        Main._gamePlay.ANIMTimers.add(timer);
 		timer.start();
     }
 

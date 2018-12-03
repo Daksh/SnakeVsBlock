@@ -174,7 +174,7 @@ public class Blocks implements Serializable{
 
             }
         };
-        Main.ANIMTimers.add(timer);
+        Main._gamePlay.ANIMTimers.add(timer);
         timer.start();
     }
 
@@ -245,7 +245,7 @@ public class Blocks implements Serializable{
             }
         }
 
-        Main.increaseScore(totalWeight);
+        Main._gamePlay.increaseScore(totalWeight);
 	}
 
     private boolean checkBlockSetInScreen(Group blocksGroup){
@@ -262,8 +262,6 @@ public class Blocks implements Serializable{
         if(stack.getChildren().isEmpty())
             return;
 
-
-
 		String weightString = ((Text)stack.getChildren().get(1)).getText();
 
         int weight = Integer.parseInt(weightString);
@@ -271,7 +269,7 @@ public class Blocks implements Serializable{
 
         if(weight>=snakeLen && !Snake.getShieldStatus()) {
 			//timer.stop();
-			Main.over();
+			Main._gamePlay.over();
 		}
 
         else if(weight<=5 || Snake.getShieldStatus()) {
