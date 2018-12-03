@@ -127,6 +127,15 @@ public class Main extends Application {
         Snake.setNull();
         _gamePlay = null;
     }
+
+    public void restartGame(Stage primaryStage){
+        Main._gamePlay.over();
+        try {
+            playNew(primaryStage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 
