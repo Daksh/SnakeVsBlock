@@ -51,8 +51,7 @@ public class HomeCtrl {
     public void playMain() throws IOException {
         Stage stage = (Stage) playGamebtn.getScene().getWindow();
         Main newMain =new Main();
-
-        newMain.play(stage);
+        newMain.playNew(stage);
     }
 
 	/**
@@ -62,9 +61,8 @@ public class HomeCtrl {
     @FXML
     public void resumeGame() throws IOException {
         Stage stage = (Stage) resumebtn.getScene().getWindow();
-        //Parent root = FXMLLoader.load(getClass().getResource("PlayDisp.fxml"));
-
-        //stage.setScene(new Scene(root));
+		Main newMain =new Main();
+		newMain.play(stage);
     }
 
 	/**
