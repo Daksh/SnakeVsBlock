@@ -124,6 +124,7 @@ public class GamePlay {
             e.printStackTrace();
         }
         this._score = 0;
+        Main.removeGameRef();
     }
 
 

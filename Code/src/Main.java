@@ -22,10 +22,9 @@ import java.util.Random;
  * 3. constants (final) variables are CAPITAL
  */
 public class Main extends Application {
-
-    //Constants
-
     /**
+     * Constants
+     *
      * WIDTH, BLOCK_HEIGHT : state of the blocks to be spawned.
      * BLOCK_SPEED : Defines the speed of downward transition of the block.
      */
@@ -38,8 +37,6 @@ public class Main extends Application {
 
     public static Random random = new Random();
     public static int prevScore=0;//might want to move to User class
-
-
 
     /**
      * Function to start the Game, it is called from HomeCtrl.java
@@ -97,6 +94,11 @@ public class Main extends Application {
 		mediaPlayer.play();
 	}
 
+	public static void removeGameRef(){
+        Main.SPEED = 3;
+        Snake.setNull();
+        _gamePlay = null;
+    }
 }
 
 

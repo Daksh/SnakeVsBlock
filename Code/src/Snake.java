@@ -236,6 +236,10 @@ public class Snake implements Serializable{
         timer.start();
     }
 
+    public static void setNull(){
+        _onlySnake = null;
+    }
+
     public double getXCoordinate(){
 	    return _snakeGroup.getLayoutX();
     }
