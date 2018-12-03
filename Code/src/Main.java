@@ -27,12 +27,22 @@ import java.util.Random;
  * 3. constants (final) variables are CAPITAL
  */
 public class Main extends Application {
-    //public static
+
+    //Constants
+
+    /**
+     * WIDTH, BLOCK_HEIGHT : state of the blocks to be spawned.
+     * BLOCK_SPEED : Defines the speed of downward transition of the block.
+     */
+    public static final int BLOCK_WIDTH = 98, BLOCK_HEIGHT = 100, BLOCK_SPEED = 3, SNAKE_RADIUS = 15;
+
+    // We need to have it, for ex. AnimationTimers need to be added to the GamePlay's list of Timers
+    public static GamePlay _gamePlay;
+
     public static Random random = new Random();
     public static int prevScore=0;//might want to move to User class
 
-    //private static Variables
-    private static Stage mainStage;
+
 
     /**
      * Function to start the Game, it is called from HomeCtrl.java
@@ -40,8 +50,8 @@ public class Main extends Application {
      * @throws IOException
      */
 	public void play(Stage primaryStage) throws IOException {
-	    GamePlay gamePlay = new GamePlay();
-		gamePlay.setUpGame(primaryStage);
+	    _gamePlay = new GamePlay();
+		_gamePlay.setUpGame(primaryStage);
 	}
 
 	public void play(Stage primaryStage, int snakeLength, int score, double life){

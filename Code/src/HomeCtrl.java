@@ -95,12 +95,6 @@ public class HomeCtrl {
 	}
 
 	@FXML
-	public void updatePrevBest() {
-
-    	Scorelabel.setText("Previous Score: "+ Integer.toString(20));
-	}
-
-	@FXML
 	private void initialize() {
 		Scorelabel.setText("Previous Score: "+ Integer.toString(Main.prevScore));
 	}

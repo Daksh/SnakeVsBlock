@@ -9,7 +9,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-
 import java.io.*;
 import java.util.ArrayList;
 import static javafx.scene.paint.Color.*;
@@ -26,9 +25,8 @@ public class Snake implements Serializable{
 	 * SNAKEX : x coordinate of snake at beginning = centre of screen
 	 * RADIUS : Radius of snake body circle.
 	 * STARTY: y coordinate of snake starting position on screen
-	 * BLOCKHEIGHT : Height of blocks that are initialized.
 	 */
-    public static final int SNAKEX = 250, RADIUS = 15, STARTY=510, BLOCKHEIGHT=Blocks.HEIGHT;
+    public static final int SNAKEX = 250, STARTY=510;
 
     private static Snake _onlySnake = null;
 
@@ -89,7 +87,7 @@ public class Snake implements Serializable{
         _snakeGroup.getChildren().add(_snakeHead);
 
         for(int i = 0; i< _snakeBody.length; i++) {
-            _snakeBody[i] = new Circle(SNAKEX, STARTY+ 2*RADIUS*(i+1), RADIUS, RED);
+            _snakeBody[i] = new Circle(SNAKEX, STARTY+ 2*Main.SNAKE_RADIUS*(i+1), Main.SNAKE_RADIUS, RED);
             _snakeGroup.getChildren().add(_snakeBody[i]);
         }
         _snakeGroup.setLayoutX(0);
@@ -165,11 +163,11 @@ public class Snake implements Serializable{
 		Circle circle;
 		Color[] a = {GREEN, BLUE, YELLOW, RED};
         switch (colour){
-			case 0 :  circle = new Circle(RADIUS, GREEN);
-			case 1 :  circle = new Circle(RADIUS, BLUE);
-			case 2 :  circle = new Circle(RADIUS, YELLOW);
-			case 3 :  circle = new Circle(RADIUS, RED);
-			default: circle = new Circle(RADIUS, a[colour]);
+			case 0 :  circle = new Circle(Main.SNAKE_RADIUS, GREEN);
+			case 1 :  circle = new Circle(Main.SNAKE_RADIUS, BLUE);
+			case 2 :  circle = new Circle(Main.SNAKE_RADIUS, YELLOW);
+			case 3 :  circle = new Circle(Main.SNAKE_RADIUS, RED);
+			default: circle = new Circle(Main.SNAKE_RADIUS, a[colour]);
 		}
 
 
@@ -181,12 +179,12 @@ public class Snake implements Serializable{
 			text.setFill(WHITE);
 		}
 
-        text.setFont(Font.font(null, FontWeight.BOLD, RADIUS));
+        text.setFont(Font.font(null, FontWeight.BOLD, Main.SNAKE_RADIUS));
 
         x.getChildren().addAll(circle, text);
-        //-10 (-RADIUS instead) because circle and StackPane have different defns of positioning
-        x.setLayoutX(SNAKEX-RADIUS);
-        x.setLayoutY(STARTY-RADIUS);
+        //-10 (-Main.SNAKE_RADIUS instead) because circle and StackPane have different defns of positioning
+        x.setLayoutX(SNAKEX-Main.SNAKE_RADIUS);
+        x.setLayoutY(STARTY-Main.SNAKE_RADIUS);
         return x;
     }
 
@@ -259,12 +257,12 @@ public class Snake implements Serializable{
 	 */
 	private int inRegionOfBlocks(Blocks B1) {
         double checkFrom = _snakeGroup.getLayoutY();//Snake's head's y
-        double checkWith = B1.yCoordinateOfFirstSetOfBlocks()-400-BLOCKHEIGHT+((double)RADIUS/2);
-        if (checkFrom>checkWith && checkFrom<checkWith+BLOCKHEIGHT)
+        double checkWith = B1.yCoordinateOfFirstSetOfBlocks()-400-Main.BLOCK_HEIGHT+((double)Main.SNAKE_RADIUS/2);
+        if (checkFrom>checkWith && checkFrom<checkWith+Main.BLOCK_HEIGHT)
             return 1;
 
-        checkWith = B1.yCoordinateOfSecondSetOfBlocks()-400-BLOCKHEIGHT+((double)RADIUS/2);
-        if(checkFrom>checkWith && checkFrom<checkWith+BLOCKHEIGHT)
+        checkWith = B1.yCoordinateOfSecondSetOfBlocks()-400-Main.BLOCK_HEIGHT+((double)Main.SNAKE_RADIUS/2);
+        if(checkFrom>checkWith && checkFrom<checkWith+Main.BLOCK_HEIGHT)
             return 2;
         return 0;
     }

@@ -9,37 +9,33 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
 import static javafx.scene.paint.Color.*;
 
+
 public class GamePlay {
 
+    public int score = 0;
+    public int sceneCol=0;
+    public ArrayList<AnimationTimer> ANIMTimers = new ArrayList<AnimationTimer>();
 
-
-
-    public static int score = 0;
-    public static int sceneCol=0;
-    public static ArrayList<AnimationTimer> ANIMTimers = new ArrayList<AnimationTimer>();
-
-    private static Menu gameMenu3;
-
-
-
+    private Menu gameMenu3;
     private Blocks _blocks;
     private Wall _wall;
-    private Tokens _tokens;
+    private Tokens _token;
+    private Stage _mainStage;
+    private Snake _snake;
+
 
     public GamePlay(){
         _blocks = new Blocks();
         _wall = new Wall(); //White lines
-        _tokens = new Magnet();
+        _token = new Magnet();
     }
 
     protected void setUpGame (Stage primaryStage) throws IOException {
-        //Blocks testBlocks, Wall testWall, Tokens testMagnet
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PlayDisp.fxml"));
         Group ballGroup= new Group();
         Parent root = loader.load();
@@ -65,25 +61,25 @@ public class GamePlay {
         Scene scene = new Scene(superGroup, 500,700, BLACK);
         Color[] arr = {BLACK, LIGHTBLUE, LIGHTGREEN, WHITE};
         scene.setFill(arr[sceneCol]);
-        mainStage = primaryStage;
+        _mainStage = primaryStage;
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
 
         //There is a problem as both of the following need each other :\
-        masterSnake = Snake.getInstance(20, scene);
-        testBlocks = new Blocks(masterSnake,scene);//needs Snake to know what kind of _blocks to spell
-        masterSnake.setBlocksRef(testBlocks);
-        Tokens.setBlocks(testBlocks);
-        Tokens.setSnake(masterSnake);
+        _snake = Snake.getInstance(20, scene);
+        _blocks = new Blocks(_snake,scene);//needs Snake to know what kind of _blocks to spell
+        _snake.setBlocksRef(_blocks);
+        Tokens.setBlocks(_blocks);
+        Tokens.setSnake(_snake);
 
-        BallTokens.setBlocks(testBlocks);
-        BallTokens.setSnake(masterSnake);
+        BallTokens.setBlocks(_blocks);
+        BallTokens.setSnake(_snake);
 
-        Wall.setSnake(masterSnake);
+        Wall.setSnake(_snake);
 
-        testMagnet.addToken(scene);
-        Tokens testMagnet2 = new Magnet();
-        testMagnet2.addToken(scene);
+        _token.addToken(scene);
+        Tokens _tokens2 = new Magnet();
+        _tokens2.addToken(scene);
 
         new Magnet().addToken(scene);
 
@@ -92,48 +88,40 @@ public class GamePlay {
         new TokenBallInher().addToken(scene);
         new TokenBallInher().addToken(scene);
 
-        testWall.addWall(scene);
+        _wall.addWall(scene);
     }
 
-    private static void updateScoreLabel(int score){
-        Main.score = score;
-        Main.gameMenu3.setText(Integer.toString(score));
-        try {
-            serializeScore();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void updateScoreLabel(int score){
+        this.score = score;
+        this.gameMenu3.setText(Integer.toString(score));
     }
 
-    public static void increaseScore(int delta){
-        Main.score = Main.score + delta;
-        updateScoreLabel(Main.score);
+    public void increaseScore(int delta){
+        this.score = this.score + delta;
+        updateScoreLabel(this.score);
     }
 
-    public static int getScore(){
-        return Main.score;
+    public int getScore(){
+        return this.score;
     }
 
-    public static void over() {
+    public void over() {
         System.out.println("GAME OVER from GAME.java");
         for(int i=0; i<ANIMTimers.size(); i++)
             ANIMTimers.get(i).stop();
         try {
             Thread.sleep(1000);
-            Main.prevScore = Main.score;
-            Main.serializeUser();
-            Main.serializeLeaderboard();
+            Main.prevScore = this.score;
 
             //System.exit(1);
             HomeCtrl hm = new HomeCtrl();
-            hm.updatePrevBest();
-            hm.openHomeScreen(Main.mainStage);
+            hm.openHomeScreen(this._mainStage); // removes elements of GamePlay from screen and adds the HomeScreen elements
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Main.score = 0;
+        this.score = 0;
     }
 
 }

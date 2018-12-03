@@ -133,9 +133,9 @@ public abstract class Tokens {
 
                     int _weight = 1+random.nextInt(5);
 
-                    Circle circle = new Circle(Snake.RADIUS, RED);
+                    Circle circle = new Circle(Main.SNAKE_RADIUS, RED);
                     Text text = new Text(Integer.toString(_weight));
-                    text.setFont(Font.font(null, FontWeight.BOLD, Snake.RADIUS));
+                    text.setFont(Font.font(null, FontWeight.BOLD, Main.SNAKE_RADIUS));
 
                     StackPane x = new StackPane();
                     x.getChildren().addAll(circle, text);
@@ -174,7 +174,7 @@ public abstract class Tokens {
 	    double myy = _tokenGroup.getLayoutY();
 //        System.out.println(sx+","+sy+"\t"+myx+","+myy);
 
-        if((Math.abs(sx-myx)<(Snake.RADIUS+15)*_magnetMultiplier) && Math.abs(sy-myy)<(Snake.RADIUS*_magnetMultiplier))
+        if((Math.abs(sx-myx)<(Main.SNAKE_RADIUS+15)*_magnetMultiplier) && Math.abs(sy-myy)<(Main.SNAKE_RADIUS*_magnetMultiplier))
             return true;
         return false;
     }

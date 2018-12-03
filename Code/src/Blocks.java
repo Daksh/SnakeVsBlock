@@ -23,14 +23,12 @@ import static javafx.scene.paint.Color.WHITE;
 
 public class Blocks implements Serializable{
 	/**
-	 * WIDTH, HEIGHT : state of the blocks to be spawned.
-	 * NUM : Max number of blocks that can be spawned in a scene.
-	 * SLEEPMIL : Time for which Thread should stop running for each block
-	 * that is reduced in snake length (if BLOCK_WEIGHT &gt; 5);
-	 * BLOCK_SPEED : Defines the speed of downward transition of the block.
+     * NUM : Max number of blocks that can be spawned in a scene.
+     * SLEEPMIL : When the block size is > 5, it sleeps for blockWeight * SLEEPMIL
 	 */
-    public static final int WIDTH = 98, HEIGHT = 100, NUM=5, SLEEPMIL=100;
-    public static double BLOCK_SPEED = 3;
+    private static final int NUM=5, SLEEPMIL=100;
+
+
 	File imagefile = new File("./BurstAnimation.gif");
 	Image burst = new Image(imagefile.toURI().toString());
 	private Scene _scene;
@@ -98,7 +96,7 @@ public class Blocks implements Serializable{
         if(weight == 0)
             return null;
 
-        Rectangle block = new Rectangle(WIDTH,HEIGHT,colorPalette[_random.nextInt(colorPalette.length)]);
+        Rectangle block = new Rectangle(Main.BLOCK_WIDTH, Main.BLOCK_HEIGHT,colorPalette[_random.nextInt(colorPalette.length)]);
         //Setting the height and width of the arc
         block.setArcWidth(30.0);
         block.setArcHeight(20.0);
@@ -187,7 +185,7 @@ public class Blocks implements Serializable{
 	 */
 	private void moveBlockGroup(Group blockGroup){
         if (!_collision)
-            blockGroup.setLayoutY(blockGroup.getLayoutY()+BLOCK_SPEED);
+            blockGroup.setLayoutY(blockGroup.getLayoutY()+Main.BLOCK_SPEED);
 //        else{
 //            //There is a _collision!
 //            blockGroup.setLayoutY(blockGroup.getLayoutY()+BLOCK_SPEED/5);

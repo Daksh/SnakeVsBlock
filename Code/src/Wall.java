@@ -97,10 +97,10 @@ public final class Wall implements Serializable {
         double sy = _snake.getYCoordinate(); //always 0 it seems
         double myx = _wallGroup.getLayoutX();
 //        double myy = _wallGroup.getLayoutY()-_wallHeight;
-        double myy = _wallGroup.getLayoutY();//-_wallHeight+((double)Snake.RADIUS/2);
+        double myy = _wallGroup.getLayoutY();//-_wallHeight+((double)Main.SNAKE_RADIUS/2);
 //        System.out.println("Snake: ("+sx+","+sy+")\tWall: ("+myx+","+myy+")\tWall Height: "+_wallHeight+"\t"+_wallRect.getY());
 
-        if((Math.abs(sx-myx)<Snake.RADIUS) && myy>500-_wallHeight && myy<500)
+        if((Math.abs(sx-myx)<Main.SNAKE_RADIUS) && myy>500-_wallHeight && myy<500)
             return true;
         return false;
     }
