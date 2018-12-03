@@ -44,14 +44,14 @@ public class GamePlay {
         }
         Group superGroup = new Group();
 
-        Menu gameMenu = new Menu("Main");
-        gameMenu.getItems().add(new MenuItem("Restart Main"));
-        gameMenu.getItems().add(new MenuItem("Exit Main"));
-        Menu gameMenu2 = new Menu("Settings");
-        gameMenu2.getItems().add(new MenuItem("Modify settings"));
-		Menu gameMenu6 = new Menu ( "				Life: ");
+        Menu gameMenu = new Menu("New Game");
+        //gameMenu.getItems().add(new MenuItem("Restart Game"));
+        //gameMenu.getItems().add(new MenuItem("Exit Game"));
+        Menu gameMenu2 = new Menu("Exit");
+        //gameMenu2.getItems().add(new MenuItem("Modify settings"));
+		Menu gameMenu6 = new Menu ( "			Life: ");
 		_gameMenu5 = new Menu (Double.toString(_life));
-		Menu gameMenu4 = new Menu ( "				Score: ");
+		Menu gameMenu4 = new Menu ( "			Score: ");
 		_gameMenu3 = new Menu (Integer.toString(_score));
 
         MenuBar Bar = new MenuBar();

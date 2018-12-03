@@ -48,7 +48,7 @@ public class HomeCtrl {
 	 * @throws IOException
 	 */
     @FXML
-    public void playGame() throws IOException {
+    public void playMain() throws IOException {
         Stage stage = (Stage) playGamebtn.getScene().getWindow();
         Main newMain =new Main();
 
